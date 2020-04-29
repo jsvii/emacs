@@ -1,0 +1,123 @@
+* eclip 代码库系统
+
+** load, load-file, autoload 之间的区别
+
+http://ergoemacs.org/emacs/elisp_library_system.html
+
+*** load
+
+load → is the general function for loading a file.
+
+Syntax is:
+
+#+BEGIN_SRC emacs-lisp
+(load FILE &optional NOERROR NOMESSAGE NOSUFFIX MUST-SUFFIX)
+#+END_SRC
+
+If no optional argument is given, it'll try to load the FILE by searching for it in a list of directory stored in
+variable load-path, by first appending .elc to the argument FILE, and if none found, it'll try appending .el, and
+others, and finally try just FILE as given.
+
+For example, if you
+
+(load "x"), it'll first try
+
+1 x.elc
+2 x.el
+3 x
+
+*** load-file
+
+load-file → load one specific file. The file name argument should contain file name extension, such as .el .elc
+
+#+BEGIN_SRC emacs-lisp
+(load-file file_name)
+
+;; just calls 两者等价
+(load (expand-file-name file_name) nil nil t)
+#+END_SRC
+
+Use load-file when you have a specific full path of a file in mind.
+
+*** autoload
+
+autoload → Load a file only when a function is called.
+
+#+BEGIN_SRC emacs-lisp
+(autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
+#+END_SRC
+
+autoload associates a function name with a file path. When the function is called, load the file, and execute the
+function.
+
+If you are writing a major mode, have your package installation go by autoload if possible. It saves startup time.
+
+ (info "(elisp) How Programs Do Loading")
+ (info "(emacs) Lisp Libraries")
+ (info "(elisp) Loading")
+
+See also: Elisp: How to Name Your Major Mode.
+
+*** require
+
+require 会检查一个库 symbol FEATUREin 存在于 variable features
+
+require → Load a package if it has not already been loaded by checking the features variable.
+
+#+BEGIN_SRC emacs-lisp
+(require FEATURE &optional FILENAME NOERROR)
+#+END_SRC
+
+require checks if the symbol FEATURE is in variable features. If not, then it calls load to load it.
+
+File name is guessed from the feature name FEATURE, or specified in the optional argument.
+
+require is best used in elisp libraries or scripts, similar to other language's “require” or “import”.
+
+[see Elisp: provide, require, features]
+
+
+** What's Library, Package, Feature?
+
+*** No Namespace
+
+Emacs lisp the language does not have namespace. Everything is global. So, don't expect library or module to be
+structured namespace like python module system or Java's Package system.
+
+[see Python: How to Write a Module]
+
+[see Java: Package]
+
+*** What's the difference between a Package and Library?
+
+These words are used losely, and do NOT have TECHNICAL definitions in elisp.
+
+library → elisp file(s) containing a collection of useful stuff. For example, the command comment-dwim is defined in
+newcomment.el, which is a library of functions.
+
+package → any useful elisp library for emacs users. For example: major mode or minor mode.
+
+The term “module” is not used by emacs.
+
+*** Emacs's Concept of Feature
+
+Elisp: provide, require, features
+
+Package/Library/Feature are not Managed
+
+There is no absolute relation between any concept of package/library/feature/autoload facilities and the file name.
+
+By convention, if a elisp file name is xyz-mode.el, it OFTEN provides a lisp symbol “xyz-mode” as its feature name
+(if it does at all), and the command to invoke the mode is OFTEN named “xyz-mode”. Sometimes the “-mode” part is
+omitted in any of {file name, feature symbol name, command name}.
+
+This is only a lose convention. There are a lot exceptions. For example:
+
+* The file lisp-mode.el provides the symbol lisp-mode as feature, and is invoked by a command named emacs-lisp-mode.
+* The cua-base.el file provides symbols cua-base and cua as features, and is invoked by a command named cua-mode.
+* The text-mode.el file does not provide any symbol for feature. It is invoked by a command named text-mode.
+* The file desktop.el provides the symbol desktop as feature, and the command name to invoke it is desktop-save-mode.
+
+All the above means, you could have a file named Joe-xyz-mode_v2.1.el, which provides a feature named “abc”, while
+the command name to activate it may be “opq”, and it might be displayed in mode line as “OPQ helper”. And, this file
+can be considered as a package or library.

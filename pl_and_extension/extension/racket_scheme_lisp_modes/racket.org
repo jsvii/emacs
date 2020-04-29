@@ -1,0 +1,7 @@
+#+TITLE: racket
+
+https://www.racket-mode.com/
+
+#+BEGIN_SRC emacs-lisp
+(setq racket-program "/usr/bin/racket")
+#+END_SRC

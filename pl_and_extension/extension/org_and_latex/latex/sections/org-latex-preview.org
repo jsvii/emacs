@@ -1,0 +1,60 @@
+* math
+
+** 命令行工具中显示latex 或者数学公式
+
+1. emacs 安装 latex-math-preview
+
+1. 使用 ~Xming~  或者 ~vcxsrv~ 来显示org文件中的图片 emacs x server
+
+   - ~vcxsrv~ visual C Xserver的意思
+
+#+BEGIN_COMMENT
+使用xcxsrv来，维护更多，Xming的最新版本是要捐赠，并有版权问题
+#+END_COMMENT
+
+1. 用display命令来显示
+
+#+BEGIN_SRC bash
+display /tmp/demo.png
+#+END_SRC
+
+1. 添加 ~vcxsrc~ 脚本
+
+默认使用 ~display-images-p~ 来显示image
+
+光标移入上面的脚本中，使用 ~xserver-latex-math-preview~
+
+#+BEGIN_SRC latex
+\begin{math}
+ax^2 + bx + c = 0
+\end{math}
+#+END_SRC
+
+
+\begin{equation}
+ y = \sqrt{y}
+\end{equation}
+
+
+\begin{equation}
+ x = {-b \pm \sqrt{b^2-4ac} \over 2a}
+\end{equation}
+
+
+
+
+If $a^2=b$ and \( b=2 \), then the solution must be either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
+
+
+#+BEGIN_SRC emacs-lisp
+(defun xserver-latex-math-preview ()
+  "Execute COMMAND asynchronously,
+display latex in X mingServer."
+  (interactive)
+  (let ((str (latex-math-preview-cut-mathematical-expression)))
+    (if str
+        (let ((dot-tex (latex-math-preview-make-temporary-tex-file str latex-math-preview-latex-template-header)))
+          (setenv "DISPLAY" "localhost:10.0")
+          (start-process "Display Latex Image" nil "display" (latex-math-preview-make-png-file dot-tex)))
+      (message "Not in a TeX mathematical expression."))))
+#+END_SRC

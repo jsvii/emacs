@@ -1,0 +1,95 @@
+GNU Emacs
+==========
+
+
+# Important concept
+
+## screen
++ Window
+
++ frames // graphic windows
+    - tool-bar
+    - pointer
+    - mode-line
++ menu bar
++ Echo area
+
+## 4 User input
+
+
+## 5 Enter Emacs
+
+`emacsclient`
+
+## 6 Exiting Emacs
+
+`C-x C-c`
+kill emacs
+
+`C-z`
+On a text terminal, suspend Emacs; on a graphical display, “minimize” the selected frame (suspend-emacs).
+
+
+## The Organization of the Screen
+
+pointer
+
+Echo Area
+
+Mode line
+
+
+# Fundamental Editing Commands
+
+## 7 Basic Editing Commands
+
+### 7.1 Inserting Text
+
+
+<DEL> delete-backward-char
+
+`C-j` new line
+
+`C-q`作为前辍，可以输入非字符格式的
+
+`C-x 8 <RET>`用于输入字符，
+
+C-x 8 <RET> infinity <RET>
+C-x 8 <RET> 221e <RET>
+∞
+∞
+
+
+### 7.2 Changing the Location of Point
+
+
+`C-f`
+
+`C-b`
+
+`C-n`
+
+`C-p`
+
+`M-f`
+
+`M-b`
+
+`M-r`
+Without moving the text on the screen, reposition point on the left margin of the center-most text line of the window;
+
+`M-<`
+
+`M->`
+
+
+`C-v`
+
+`M-v`
+
+`M-g c` 输入一个数字`n`，跳转到文档第`n`个char处。
+
+`M-g g` goto-line
+
+
+`M-g <TAB>`

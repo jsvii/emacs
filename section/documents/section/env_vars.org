@@ -1,0 +1,19 @@
+* env
+
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH"
+  (concat
+   "C:/cygwin/usr/local/bin" ";"
+   "C:/cygwin/usr/bin" ";"
+   "C:/cygwin/bin" ";"
+   (getenv "PATH")
+  )
+)
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+(getenv "PATH")
+#+END_SRC
+
+  http://ergoemacs.org/emacs/emacs_env_var_paths.html

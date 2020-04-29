@@ -1,0 +1,17 @@
+#+TITLE: emacs java 设置
+
+* java
+
+  - lsp-java 最为推荐
+
+  - emacs-eclim
+
+  - meghanada-emacs
+
+
+
+** TODO 一些配置
+
+  - https://emacs.nasy.moe/
+
+  - https://lupan.pl/dotemacs/

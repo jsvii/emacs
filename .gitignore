@@ -1,0 +1,20 @@
+# mac files
+.DS_Store
+# emacs
+\#*
+.\#*
+# java
+.classpath
+.project
+.settings/*
+target/*
+# my git rules
+download/*
+*/*/download/*
+# node
+node_modules
+# org-mode export latex middle file
+*.tex
+*.log
+*.aux
+*.pdf

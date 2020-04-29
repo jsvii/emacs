@@ -1,0 +1,12 @@
+* load vs require
+
+
+if you load a library repeatedly, that file will be read and its code evaluated repeatedly (each and every time you load it).
+
+If you require a library repeatedly, it will load the library once (at most -- and not at all if the library had already been loaded).
+
+require provides this efficiency even if require wasn't used to load the library initially, because (the vast majority of) libraries contain the code (provide 'FEATURE) for their particular FEATURE name. That code is evaluated when the library is loaded, regardless of how it was loaded, and at that time it updates the data which require checks when deciding whether it needs to do anything.
+
+Mostly you want to use require in your own code, if you need to ensure that a given library has been loaded.
+
+The reason you often don't need to do this with ELPA packages is that the package manager automatically processes any autoload cookies in the package, and generates a file of autoloads for that package. When the package system is initialised when you start Emacs, the autoload file for each package is evaluated, which identifies all of the autoloaded functions. When an autoloaded function is called, the library which contains the real definition of the function is automatically loaded.

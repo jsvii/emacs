@@ -1,0 +1,17 @@
+* helm
+
+#+BEGIN_SRC elips
+(global-set-key (kbd "M-x") 'helm-M-x)
+#+END_SRC elips
+
+** defvar defcustom
+
+defcustom 就是用来方便自定义的
+
+** addhook
+
+A hook is an ordinary Lisp variable whose value is a list of functions that get executed under specific conditions.
+
+** advice
+
+A piece of advice attached to a Lisp function is code that gets executed before or after the function each time the function is invoked. Before advice can affect the arguments before they're passed to the advised function. After advice can affect the return value that comes out of the advised function. Advice is a little bit like hook variables, but whereas Emacs defines only a few dozen hook variables for very particular circumstances, you get to choose which functions get "advised."

@@ -1,0 +1,5 @@
+* json mode
+
+** 重要变量
+
+  - 缩进 js-indent-level

@@ -1,0 +1,5 @@
+* 宏
+
+** documentclass
+
+https://ctan.org/topic/class

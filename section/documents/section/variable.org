@@ -1,0 +1,12 @@
+* variables
+
+
+#+BEGIN_SRC elisp
+(loop for x being the symbols
+    if (boundp x)
+    collect (symbol-name x))
+#+END_SRC
+
+** A
+
+  - auto-mode-alist automode的list 定义了文件打开时会使用什么mode

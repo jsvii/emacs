@@ -1,0 +1,3 @@
+* syntax coloring
+
+http://ergoemacs.org/emacs/elisp_syntax_coloring.html

@@ -1,0 +1,12 @@
+* Hippie-expand
+
+emacs 默认的补全机制
+
+通过  ~M-/~ 会调用 hippie-expand
+
+try-expand-dabbrev-all-buffers
+
+
+** 其他
+
+company-complete

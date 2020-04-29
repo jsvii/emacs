@@ -1,0 +1,27 @@
+* append & nconc
+
+** 介绍
+
+Doc: Concatenate any number of lists by altering them. Only the last argument is not altered, and need not be a list.
+
+This function returns a list containing all the elements of lists. Unlike append (see Building Lists), the lists are not copied. Instead, the last cdr of each of the lists is changed to refer to the following list. The last of the lists is not altered. For example:
+
+与 ~append~ 不一样，这个没有copy，而是
+
+#+BEGIN_SRC elisp
+(setq a '(a 1 2 ))
+a
+;; ⇒ (a 1 2)
+(setq b (append a '(b 3 3)))
+a
+;; ⇒ (a 1 2)
+b
+;; ⇒ (a 1 2 b 3 3)
+
+(setq x '(1 2 3))
+;; ⇒ (1 2 3)
+(nconc x '(4 5))
+;; ⇒ (1 2 3 4 5)
+x
+;; ⇒ (1 2 3 4 5)
+#+END_SRC elisp

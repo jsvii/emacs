@@ -1,0 +1,23 @@
+* hook
+
+** 什么是hook
+
+hook 是个变量，它的值是一组函数(lisp symbols或者 lambda)
+
+#+BEGIN_SRC elisp
+(add-hook 'lisp-mode-hook (lambda ()
+                            (unless (featurep 'slime)
+                              (require 'slime)
+                              (normal-mode))))
+#+END_SRC
+
+~Alt+x apropos-variable~ 然后输入 ~lisp-mode-hook~ 可以查看这个值
+
+** 呈现所有hook
+
+~Alt+x apropos-variable~ then type “-hook”.
+
+
+** docs
+
+- http://ergoemacs.org/emacs/emacs_whats_hook.html

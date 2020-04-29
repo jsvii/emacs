@@ -1,0 +1,11 @@
+* lisp
+
+** 移动相符的括号
+
+https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parentheses.html
+
+(show-paren-mode 1)
+
+- ~C-M-f~  forward-sexp
+
+- ~C-M-b~  backward-sexp

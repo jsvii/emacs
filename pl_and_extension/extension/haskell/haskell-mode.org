@@ -1,0 +1,39 @@
+* haskell mode
+
+
+
+- emacs
+
+- haskell-mode
+
+- ghc
+
+** 其他
+
+tsoding/HyperNerd 也推荐
+
+- cabal haskell的包管理器
+
+- stack 更为庞大
+
+*** 一些时候不需要stack，直接ghc就行
+
+emacs 执行shell命令：
+
+#+BEGIN_SRC bash
+ghc --make Main.hs
+#+END_SRC
+
+
+
+
+** 常用键
+
+~C-c C-l~ invokes comint-dynamic-list-input-ring. Displays a list of recent inputs entered into the current buffer.
+
+
+** ref
+
+- My Haskell Setup 基本的haskell设置，比较全面，时长12分钟 https://www.youtube.com/watch?v=5p2Aq3bRuL0
+
+-

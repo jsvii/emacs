@@ -1,0 +1,17 @@
+* purcell/emacs.d.git
+
+** info
+https://github.com/purcell/emacs.d.git
+
+#+BEGIN_SRC text
+# lsp eclispe
+eclipse.jdt.ls/
+workspace/
+meghanada/
+gradle-wrapper.jar
+site-lisp/elpa-mirror/
+site-lisp/plantuml-mode/
+pyim/
+request/*
+projectile*
+#+END_SRC

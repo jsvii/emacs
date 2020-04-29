@@ -1,0 +1,9 @@
+* treemacs
+
+- d delete
+
+- g refresh
+
+- cf create file
+
+- yf yank file

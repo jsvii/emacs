@@ -1,0 +1,58 @@
+* 错误收集
+
+** Failed to verify signature archive-contents.sig
+
+在安装包时会出现这种错误，可以关闭签名验证
+
+#+BEGIN_SRC elisp
+(setq package-check-signature nil)
+#+END_SRC
+
+** Wrong type argument: listp, HTTP/1.1
+
+在 elpa/gnu/xx  或 elpa-26.1/gnu/xxx 文件中，没有真实数据，变成了HTTP/1.1的返回头
+
+#+BEGIN_SRC emacs-lisp
+(("gnu" . "https://elpa.gnu.org/packages/")
+Debugger entered--Lisp error: (wrong-type-argument listp HTTP/1\.1)
+  package--read-archive-file("archives/gnu/archive-contents")
+  package-read-archive-contents("gnu")
+  package-read-all-archive-contents()
+  package-initialize() risky if used as a file-local variable.
+  eval-buffer(#<buffer  *load*-979124> nil "/home/leo/.emacs.d/lisp/init-elpa.el" nil t)  ; Reading at buffer position 2612
+Doload-with-code-conversion("/home/leo/.emacs.d/lisp/init-elpa.el" "/home/leo/.emacs.d/lisp/init-elpa.el" nil t)
+An#<subr require>(init-elpa)
+Thapply(#<subr require> init-elpa nil)acs package repository.
+  (prog1 (apply orig feature args) (if (and (not already-loaded) (memq feature features)) (progn (let ((time (sanityinc/time-subtract-millis (cur$
+  (let* ((already-loaded (memq feature features)) (require-start-time (and (not already-loaded) (current-time)))) (prog1 (apply orig feature args$
+  sanityinc/require-times-wrapper(#<subr require> init-elpa)
+  apply(sanityinc/require-times-wrapper #<subr require> init-elpa)
+  require(init-elpa)
+  eval-buffer(#<buffer  *load*> nil "/home/leo/.emacs.d/init.el" nil t)  ; Reading at buffer position 1858
+  load("/home/leo/.emacs.d/init" t t)
+  #f(compiled-function () #<bytecode 0x231285>)()cal variable.
+  command-line()
+Donormal-top-level()
+#+END_SRC
+
+
+** 无法高亮
+
+  - transient-mark-mode
+
+  - xterm-256color 的term
+
+
+** url-copy-file github 404
+
+(url-copy-file  "https://raw.githubusercontent.com/Kapeli/feeds/master/React.xml" "/home/leo/test" t)
+
+也是这个出错
+(with-current-buffer (url-retrieve-synchronously "https://raw.githubusercontent.com/Kapeli/feeds/master/React.xml") (buffer-string))
+
+
+gnutls non-fatal error: Resource temporarily unavailable
+
+raw.github.com 无法给出数据
+
+临时解决方案： 把github.com上的数据下载到本地的Nginx，然后重新配置下载url

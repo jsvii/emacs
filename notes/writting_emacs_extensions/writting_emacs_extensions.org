@@ -1,0 +1,27 @@
+#+TITLE: Writting GNU Emacs Extension
+#+LANGUAGE: en
+#+OPTIONS: toc:nil h:4 html-postamble:nil html-preamble:t tex:t f:t
+#+OPTIONS: prop:("VERSION")
+#+HTML_DOCTYPE: <!DOCTYPE html>
+#+HTML_HEAD: <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="css/style.css" rel="stylesheet" type="text/css" />
+#+AUTHOR: Leo Zhang
+#+EMAIL: alionnamedroar@qq.com
+#+LINK: gh    https://github.com/
+#+LINK: thing https://github.com/thi-ng/
+#+LINK: w3    https://w3.org/TR/
+#+LINK: wiki  https://en.wikipedia.org/wiki/
+#+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: ctexartdoc
+#+LATEX_HEADER: \usepackage{lmodern}
+
+#+BEGIN_COMMENT
+
+emacs 学习书籍
+
+#+END_COMMENT
+
+#+BEGIN_COMMENT
+
+#+END_COMMENT
+#+INCLUDE: "./section/customizing_emacs.org" :minlevel 1

@@ -1,0 +1,17 @@
+* pdf
+
+** Server Prerequisites
+
+#+BEGIN_SRC bash
+$ sudo aptitude install libpng-dev zlib1g-dev
+$ sudo aptitude install libpoppler-glib-dev
+$ sudo aptitude install libpoppler-private-dev
+#+END_SRC
+
+#+BEGIN_SRC bash
+zypper in libpoppler-glib-devel
+
+#+END_SRC
+
+
+pdf-info-epdfinfo-program

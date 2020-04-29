@@ -1,0 +1,127 @@
+* Basic
+
+** emacs basic
+
+
+
+
+
+*** 如何执行
+
+- M-x load-file
+
+- C-x C-e  （eval-last-sexp）
+
+- M-: eval
+
+- C-j  eval-print-last-expr the buffer is in Lisp Interaction mode. In this mode, pressing C-j invokes eval-print-last-sexp, which is like eval-lastsexp except that the result of the evaluation is inserted into the buffer at the location of the cursor.
+
+*** apropos
+
+The answer is to use the apropos command, which allows you to search all known variables and functions for a pattern you specify.
+
+M-x apropos
+
+C-u M-x apropos 显示更多的bind key
+
+*** parameter vs argument
+
+What's the difference between a "parameter" and an "argument"? The terms are usually used interchangeably, but technically speaking, "parameter" refers to the variable in the fucntion definition, while "argument" is the value that gets passed in when the function is called. the value of the argument is assigned to the parameter.
+
+** functions
+
+
+** quote
+
+(quote x)
+
+'x
+
+** defvar
+
+它与 setq 所不同的是，如果变量在声明之前，这个变量已经有一个值的话，用 defvar 声明的变量值不会改变成声明的那个值。另一个区别是 defvar 可以为变量提供文档字符串，当变量是在文件中定义的话，C-h v 后能给出变量定义的位置。比如：
+
+*** TL;DR 小案例
+
+There are several ways to introduce variables.
+
+=DEFVAR= and =DEFPARAMETER= introduce =global dynamic= variables. =DEFVAR= optionally sets it to some value, unless it is already defined. DEFPARAMETER sets it always to the provided value. =SETQ= does not introduce a variable.
+
+#+BEGIN_SRC elisp
+(defparameter *number-of-processes* 10)
+(defvar *world* (make-world))     ; the world is made only once.
+#+END_SRC
+
+Notice that you likely never want to =DEFVAR= variables with names like =x=, =y=, =stream=, =limit=, ... Why? Because these variables then would be declared special and its difficult to undo that. The special declaration is global and all further uses of the variable would use dynamic binding.
+
+BAD:
+
+#+BEGIN_COMMENT
+为什么会出现这种情况？
+这里面有个dynamic scoping 机制，
+
+#+END_COMMENT
+
+
+#+BEGIN_SRC elisp
+(defvar x 10)     ; global special variable X, naming convention violated
+(defvar y 20)     ; global special variable Y, naming convention violated
+
+(defun foo ()
+  (+ x y))        ; refers to special variables X and y
+
+(defun bar (x y)  ; OOPS!! X and Y are special variables
+                  ; even though they are parameters of a function!
+  (+ (foo) x y))
+
+(bar 5 7)         ; ->   24
+#+END_SRC
+
+BETTER: Always mark special variables with * in their names!
+
+#+BEGIN_SRC elisp
+(defvar *x* 10)     ; global special variable *X*
+(defvar *y* 20)     ; global special variable *Y*
+
+(defun foo ()
+  (+ *x* *y*))      ; refers to special variables X and y
+
+(defun bar (x y)    ; Yep! X and Y are lexical variables
+  (+ (foo) x y))
+
+(bar 5 7)           ;  ->   42
+#+END_SRC
+
+Local variables are introduced with DEFUN, LAMBDA, LET, MULTIPLE-VALUE-BIND and many others.
+
+#+BEGIN_SRC elisp
+(defun foo (i-am-a-local-variable)
+   (print i-am-a-local-variable))
+(let ((i-am-also-a-local-variable 'hehe))
+  (print i-am-also-a-local-variable))
+#+END_SRC
+
+Now, by default the local variables in above two forms are lexical, unless they are declared SPECIAL. Then they would be dynamic variables.
+
+Next, there are also several forms to set a variable to new values. SET, SETQ, SETF and others. SETQ and SETF can set both lexical and special (dynamic) variables.
+
+It is required for portable code that one sets variables that are already declared. The exact effect of setting a not declared variable is undefined by the standard.
+
+So, if you know what your Common Lisp implementation does, you can use
+
+#+BEGIN_SRC elisp
+(setq world (make-new-world))
+#+END_SRC
+
+in the Read-Eval-Print-Loop at the toplevel. But don't use it in your code, since the effect is not portable. Typically SETQ will set the variable. But some implementation might also declare the variable SPECIAL when it doesn't know it (CMU Common Lisp does that by default). That's almost always not what one would want. Use it for casual use if you know what you do, but not for code.
+
+Same here:
+
+#+BEGIN_SRC elisp
+(defun make-shiny-new-world ()
+  (setq world (make-world 'shiny)))
+#+END_SRC
+
+First, such variables should be written as *world* (with the surrounding * characters), to make clear that it is a global special variable. Second, it should have been declared with DEFVAR or DEFPARAMETER before.
+
+A typical Lisp compiler will complain that above variable is undeclared. Since global lexical variables don't exist in Common Lisp, the compiler has to generate code for a dynamic lookup. Some compiler then say, okay, we assume that this is a dynamic lookup, let's declare it to be special - since that is what we assume anyway.

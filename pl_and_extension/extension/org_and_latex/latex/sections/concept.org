@@ -1,0 +1,8 @@
+* 核心概念
+
+
+** 术语
+
+*** documentclass
+
+文类(document class)是指一套预设的排版格式，常见的（英文文类）有 article，report，book 等等。它们之间有一些微妙的差别，比如 book 文类就为了适应书籍的装订，为奇数页和偶数页安排了不同的左右边距；report 和 article 非常相似，但 report 中可以使用更多的章节等级，article 则是几乎最简单的一种

@@ -1,0 +1,213 @@
+* define face
+
+http://ergoemacs.org/emacs/elisp_define_face.html
+
+** 什么是face
+
+图形显示的属性
+
+What's Face
+
+ A face is a collection of graphical attributes for displaying text: font, foreground color, background color, optional underlining, etc. Faces control how Emacs displays text in buffers, as well as other parts of the frame, such as the mode line.
+
+ [(info "(elisp) Faces")]
+
+It is the “face” that makes syntax coloring in emacs possible.
+
+In emacs major mode, typically you use higher-level font-lock-mode system to color your language words. Basically, just assign a list to the variable font-lock-defaults.
+
+For example:
+
+#+BEGIN_SRC emacs-lisp
+;; a simple major mode, mymath-mode
+(setq mymath-highlights
+      '(("Sin\\|Cos\\|Sum" . font-lock-function-name-face)
+        ("Pi\\|Infinity" . font-lock-constant-face)))
+
+(define-derived-mode mymath-mode prog-mode "mymath"
+  "major mode for editing mymath language code."
+  (setq font-lock-defaults '(mymath-highlights)))
+#+END_SRC
+
+The =font-lock-function-name-face= and =font-lock-constant-face= are predefined faces.
+
+Predefined Faces
+
+To list all loaded faces, Alt+x list-faces-display.
+
+
+emacs Alt+x list-faces-display
+
+_list-faces-display_ lists all loaded faces, including those in packages you installed.
+
+The following are faces predefined by font-lock-mode.
+
+* font-lock-builtin-face
+* font-lock-comment-delimiter-face
+* font-lock-comment-face
+* font-lock-constant-face
+* font-lock-doc-face
+* font-lock-function-name-face
+* font-lock-keyword-face
+* font-lock-negation-char-face
+* font-lock-preprocessor-face
+* font-lock-regexp-grouping-backslash
+* font-lock-regexp-grouping-construct
+* font-lock-string-face
+* font-lock-type-face
+* font-lock-variable-name-face
+* font-lock-warning-face
+
+(These are both face and variable.)
+
+If you are creating a programing language mode, use these face as much as possible, because that will create
+consistent style of coloring for programing languages in emacs.
+
+Here's pre-defined faces in emacs.
+
+* default
+* bold
+* italic
+* bold-italic
+* underline
+* fixed-pitch
+* variable-pitch
+* shadow
+* link
+* link-visited
+* highlight
+* match
+* isearch
+* lazy-highlight
+* error
+* warning
+* success
+
+Again, you should use pre-defined faces as much as possible. This makes highlight more consistent.
+
+* (info "(elisp) Basic Faces")
+* (info "(elisp) Faces for Font Lock")
+
+Define Face
+
+To define a face, use defface.
+
+;; examples of defining faces
+
+(defface my-lang-phi-word
+  '((t :foreground "black"
+       :background "aquamarine"
+       :weight bold
+       :underline t
+       ))
+  "Face for function parameters."
+  :group 'my-lang-mode )
+
+(defface my-lang-gamma-word
+  '((t :foreground "red"
+       :background "#f5f5f5"
+       ))
+  "Face for global variables."
+  :group 'my-lang-mode )
+
+You can use the above code as a template to define your faces.
+
+Alt+x list-colors-display to list named colors and their hexadecimal values.
+
+Emacs's face system supports terminal emulators that has limited colors. For example, you can define a face such that
+when user is in a terminal that only has 8 colors, the face will use a available color and still sensible.
+
+For example, here’s the definition of the standard face highlight:
+
+(defface highlight
+  '((((class color) (min-colors 88) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 88) (background dark))
+     :background "darkolivegreen")
+    (((class color) (min-colors 16) (background light))
+     :background "darkseagreen2")
+    (((class color) (min-colors 16) (background dark))
+     :background "darkolivegreen")
+    (((class color) (min-colors 8))
+     :background "green" :foreground "black")
+    (t :inverse-video t))
+  "Basic face for highlighting."
+  :group 'basic-faces)
+
+(info "(elisp) Defining Faces")
+
+Note: elisp manual says face name should not end in “-face” and reason being “redundant”.
+
+Face Attributes (styles)
+
+You can specify font, size, weight, text color, background color, underline, overline, border, slant (italic), etc.
+To see complete list of attributes, see: (info "(elisp) Face Attributes")
+
+Redefine Face
+
+When you are working on major mode, often you need to experiment on which color/face is best.
+
+defface won't set the face when a face name already has a face spec. (that is, when you change a face's spec and
+re-eval the buffer, your new spec has no effect.)
+
+Use face-spec-set to force set a face spec.
+
+(defface is like defvar, and face-spec-set is like setq.)
+
+(defface my-identifier-x
+  '((t :foreground "red"
+      :weight bold
+      ))
+  "face for user defined variables."
+  :group 'my-mode )
+
+(face-spec-set
+ 'my-identifier-x
+ '((t :foreground "blue"
+      :weight bold
+      ))
+ 'face-defface-spec
+ )
+
+Face Name vs Face Variable
+
+Note: A face name is not a variable. defface does not create a new variable. That is, defface does not set the
+symbol's value cell. (boundp 'face_name) returns nil.
+
+A named face (such as those created by defface) is specified by setting the face-defface-spec property name of the
+symbol's property list. (info "(elisp) Standard Properties")
+
+You could, use defvar to make a face_name symbol also a variable, but that is not necessary.
+
+Those faces predefined from font-lock-mode, such as font-lock-function-name-face, are variables, and also a face
+name.
+
+You can check if a symbol is a face by facep.
+
+You can check if a symbol is a variable by boundp.
+
+;; example of user defined face
+
+(defface my-great-face
+  '((t :foreground "red"))
+  "my face"
+  )
+
+;; check if a symbol is a variable. that is, value cell is not void
+(boundp 'my-great-face) ; nil
+
+;; check if a symbol is a face
+(facep 'my-great-face) ; non-nil
+
+;; get the value of 'face-defface-spec from symbol's plist
+(get 'my-great-face 'face-defface-spec ) ; ((t :foreground "red" :weight bold))
+
+;; now make it a variable. (you shouldn't do this)
+(defvar my-great-face nil "my face too")
+
+(boundp 'my-great-face) ; t
+
+See also: Elisp: Lisp Symbol
+
+* (info "(elisp) Symbol Components")
+* (info "(elisp) Standard Properties")

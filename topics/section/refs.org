@@ -1,0 +1,60 @@
+* info manual
+
+~info~ 命令会调出所有的manual ~c-h i~
+
+~info-emacs-manual~ 打开emacs manual ~c-h r~
+
+
+
+** emacs相关教程
+
+*** books
+
+- writing gnu emacs extension
+
+  https://github.com/manateelazycat/emacs-application-framework
+
+*** Tutorial
+
+**** Tutorial Videos
+
+- https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g　 youtube之中的教程，很基础
+
+- https://cestlaz.github.io/ 相当不错的视频
+
+- https://www.youtube.com/watch?v=WLkFAtgEWs8 lsp 设置
+
+- https://github.com/emacs-china/Spacemacs-rocks Emacs 中国的教程 [必看]
+
+- https://github.com/lujun9972/emacs-document.git 非常好的一个emacs翻译文档 [必看]
+
+- http://aandds.com/blog/tool-emacs.html 一篇概要性介绍
+
+- https://cestlaz.github.io/post/using-emacs-58-lsp-mode/
+
+- https://github.com/brandelune/nipel/blob/master/new_introduction_to_programming_in_emacs_lisp.org
+
+- https://www.reddit.com/r/emacs/comments/b5d1yc/setting_up_lsp_java_workspace/ejcymf9/
+
+- https://develop.spacemacs.org/layers/+lang/java/README.html
+
+- https://github.com/zamansky/dot-emacs
+
+- https://github.com/lujun9972/emacs-document.git github emacs 文章，比较好
+
+- https://sachachua.com/blog/category/geek/emacs/ 一个越南女孩收集的emacs信息
+
+**** Tutorial Blogs
+
+- https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org 一年内成为emacs高手
+
+- http://skybert.net/talks/2019-awesome-java/#1
+
+
+** ergoemacs 经典文章解析
+
+http://ergoemacs.org/emacs/elisp_library_system.html
+
+  1. http://ergoemacs.org/emacs/elisp_syntax_coloring.html  如何编写语法高亮的mode
+
+  1. http://ergoemacs.org/emacs/elisp_font_lock_mode.html font lock

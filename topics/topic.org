@@ -1,0 +1,42 @@
+* topic
+
+** intro
+
+本文档组织参考文档
+
+http://ergoemacs.org/emacs/emacs.html
+
+** Index
+
+
+*** elisp
+
+- advice.org
+
+- append_and_nconc.org
+
+- declare.org
+
+- defcustom.org
+
+- defgroup.org
+
+- defvar.org
+
+- garbage-collection.org
+
+- hook.org
+
+- interactive.org
+
+- macro.org
+
+*** Emacs Init 初始化设置相关
+
+
+*** Elisp
+
+
+*** operation
+
+- 如何用换行符来替换 insert-newline.org

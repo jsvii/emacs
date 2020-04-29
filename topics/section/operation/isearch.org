@@ -1,0 +1,15 @@
+* isearch
+
+** isearch 时直接复制正则表达式时，一些字符会被转义
+
+#+BEGIN_SRC bash
+^[[:alnum]]+
+#+END_SRC
+
+会变成
+
+#+BEGIN_SRC text
+\^\[\[:alnum]]\+
+#+END_SRC
+
+需要  ~M-e~ 后复制

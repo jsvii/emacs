@@ -1,0 +1,3 @@
+* shell-command
+
+~M-x shell-command~ 也可以通过 ~M-!~ 来执行

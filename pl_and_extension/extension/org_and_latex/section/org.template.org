@@ -1,0 +1,9 @@
+* org-mode 常见模板
+
+** 代码分析类
+
+- asset 官方拿到的，一般只读
+
+- section
+
+  - code 自己的代码

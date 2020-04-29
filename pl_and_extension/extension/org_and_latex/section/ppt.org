@@ -1,0 +1,3 @@
+* ppt
+
+https://orgmode.org/worg/org-tutorials/non-beamer-presentations.html

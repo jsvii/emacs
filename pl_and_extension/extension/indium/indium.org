@@ -1,0 +1,164 @@
+* Indium
+
+这个工具目前仅在emacs中使用，无需远程chrome
+
+能远程debug时，尽量使用chrome_devtools，方便简洁。
+
+
+
+** docs
+
+https://indium.readthedocs.io/en/latest/
+
+** Indium
+
+*** steps
+
+#+BEGIN_SRC bash
+npm install -g indium
+#+END_SRC
+
+#+BEGIN_SRC elisp
+M-x package-install [RET] indium [RET]
+#+END_SRC
+
+** nvm && node
+
+#+BEGIN_SRC elisp
+ '(indium-client-executable
+   "/home/leo/.nvm/versions/node/v12.6.0/lib/node_modules/indium/bin/indium")
+#+END_SRC
+
+
+*** nvm 安装 node.js执行indium 有问题
+
+原因：npm包中的bin文件头一行有 =!#/bin/usr/node=
+
+**** 解决方法
+
+  - 安装 https://github.com/purcell/exec-path-from-shell
+
+  - 粗暴方法，直接拷贝path环境变量
+
+#+BEGIN_SRC elisp
+(exec-path-from-shell-copy-env "PATH")
+#+END_SRC
+
+*** 什么是exec path 设置
+
+#+BEGIN_SRC elisp
+(setenv "PATH" (concat (getenv "PATH") ":/sw/bin"))
+(setq exec-path (append exec-path '("/sw/bin")))
+#+END_SRC
+
+
+*** docs
+
+  github repo: https://github.com/NicolasPetton/Indium
+
+  manual https://indium.readthedocs.io/
+
+
+*** 使用方法
+
+.indium.json 配置
+
+**** general config
+
+#+BEGIN_SRC json
+{
+  "configurations": [
+    {
+      "type": "chrome",   // node 或者js
+      "root": "src"       // 默认为.indium所在的目录，用root可以覆盖
+    }
+  ]
+}
+#+END_SRC
+
+**** chrome config
+
+#+BEGIN_SRC json
+{
+  "configurations": [
+    {
+      "type": "chrome",
+      "url": "http://localhost:3001/myproject/index.html"     // 打开的url
+      "host": "localhost"
+      "port": ""
+    }
+  ]
+}
+#+END_SRC
+
+**** node config
+
+#+BEGIN_SRC json
+{
+  "configurations": [
+    {
+      "name": "biwastudy",
+      "type": "node",
+      "program": "node",    // Nodejs program to start a new process. The --inspect flag will be added automatically
+      "args": "./main.js",
+      "inspect-brk": false,
+      "host": "localhost",  // default
+      "port": 9229         // default
+    }
+  ]
+}
+#+END_SRC
+
+  - indium-launch
+
+默认下
+
+***  启动Indium
+
+好像用launch就行了
+
+  - Connect模式:
+
+    M-x indium-connect Connect indium to a running runtime from one of the configurations in the .indium.json project file.
+
+  - Launch模式:
+
+    M-x indium-launch Start a JavaScript process (Chrome or NodeJS) as specified from the configurations in the .indium.json project file.
+
+*** 启动debug后
+
+最上方有一些命令揭示
+
+l
+
+
+*** FAQ
+
+**** Indium server process error: /usr/bin/env: ‘node’: No such file or directory
+
+#+BEGIN_SRC emacs-lisp
+;; 环境变量中找不到node
+(getenv "PATH")
+#+END_SRC
+
+/usr/bin/env 找不到 node
+
+最暴力的方法：
+
+  - =直接 =exec-path-from-shell-copy-env=
+
+  - 然后输入 PATH ，这样PATH 环境变量就被复制了。
+
+#+BEGIN_SRC emacs-lisp
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+You appear to be setting environment variables ("LC_CTYPE" "PATH" "MANPATH") in your .bashrc or .zshrc: those files are only read by interactive shells, so you should instead set environment variables in startup files like .profile, .bash_profile or .zshenv.  Refer to your shell’s man page for more info.  Customize ‘exec-path-from-shell-arguments’ to remove "-i" when done, or disable ‘exec-path-from-shell-check-startup-files’ to disable this message.
+#+END_SRC
+
+*** Indium server error: connect ECONNREFUSED 127.0.0.1:9229
+
+Indium server error: connect ECONNREFUSED 127.0.0.1:9229
+Indium server error: Not connected

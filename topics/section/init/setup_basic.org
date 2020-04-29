@@ -1,0 +1,29 @@
+* 基础设置
+
+**  variables
+
+*** user-emacs-directory
+
+~/.emacs.d/
+
+*** load-path
+
+(add-to-list 'load-path "~/dir/to/cloned/slime")
+
+
+*** custom-file
+
+custom file 指定了package-selected-pacakage所写的位置，如果不设置，会写入 init.el
+
+#+BEGIN_SRC emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+#+END_SRC
+
+
+
+** packages
+
+
+*** 变量package-activated-list
+
+用来显示哪些包被加载了，不能直接在它上面设置

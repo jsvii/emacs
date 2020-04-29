@@ -1,0 +1,86 @@
+* font lock mode
+
+http://ergoemacs.org/emacs/elisp_font_lock_mode.html
+
+Here's the essential things you need to know about font-lock-mode, for writing a major mode for syntax coloring.
+
+1 font-lock-mode is a buffer-local minor mode. (that is, it can be on or off for each buffer, independent of each
+ other.)
+
+2 font-lock-mode is on by default for all buffers since ~2007.
+
+3 font-lock-mode is a high-level “API” to syntax color buffer. (low level is to add text properties to regions of
+ text in buffer. Font lock mode does this for you. [see Elisp: Text Properties])
+
+4 font-lock-mode color text in two ways:
+
+  - by syntactic parsing based on the syntax table. This basically means, lookup the delimiter characters for string in syntax table, and color text between it in buffer. Same for comment.
+
+  - search by regular expressions. This is how keywords, function names, variable names, html title text, Markdown text, Org Mode text, etc, are colored.
+
+5 Syntactic fontification happens first. It finds comments and string and color them. Search-based fontification
+ happens second. Once a text is colored, it is not changed. For example, if a text is colored as string or comment,
+ subsequent search by regex for coloring will skip those parts.
+
+6 font-lock-mode need 2 things to do the coloring job.
+
+  1. Syntax table.
+
+  1. the value of font-lock-defaults. It uses those info to go thru buffer and do syntax coloring.
+
+7 Vast majority of programing language major modes do syntax color by: ① set up the proper syntax table. (in
+ particular, the characters for string and character for comment.) ② Set up proper value for font-lock-defaults.
+
+(info "(elisp) Font Lock Mode")
+
+[see Elisp: Syntax Table]
+
+** font-lock-defaults
+
+- font-lock-defaults is a buffer local variable. (buffer local variable means, each buffer has its own “copy”, may
+ have different values, independent of each other.) 它是一个buffer作用域的变量
+
+- font-lock-defaults variable is designed as a config for the purpose of syntax coloring. When font-lock-mode is on,
+ it will use the value of font-lock-defaults to color buffer. font-lock-defaults中定义了关键字
+
+- font-lock-defaults's value should be a list. If it's nil (nil is empty list), no coloring will happen, not even syntax table based one.  list类型
+
+- First element of the list should be a list of keywords (regexes) to color. This list, is a list of pairs. For each
+ pair, the first part is a regex, the second part is the face to apply.
+
+- Second element should be nil or t. nil means DO color by syntax table. Else, do not.
+
+(info "(elisp) Font Lock Basics")
+
+Basic Example of Syntax Coloring with Font Lock Mode
+
+Here's a basic example.
+
+Suppose you have a basic language like HTML.
+
+You want to color any string of the form <h1> and </h1>
+
+And you want to color text between the tags. (assume there's no linebreak, and does not contain greater/less
+characters.)
+
+Save the following in a file.
+
+;; a simple major mode, myhtml-mode
+
+(defvar myhtml-highlights nil "first element for `font-lock-defaults'")
+
+(setq myhtml-highlights
+      '(("<h1>\\|</h1>" . font-lock-function-name-face)
+        ("<h1>\\([^<]+?\\)</h1>" . (1 font-lock-constant-face))))
+
+(define-derived-mode myhtml-mode fundamental-mode "myhtml"
+  "major mode for editing myhtml language code."
+  (setq font-lock-defaults '(myhtml-highlights)))
+
+Now, copy and paste the above code into a buffer, then Alt+x eval-buffer.
+
+Now, type following code into a buffer:
+
+<h1>something</h1>
+
+Now, M-x myhtml-mode, you see words colored.

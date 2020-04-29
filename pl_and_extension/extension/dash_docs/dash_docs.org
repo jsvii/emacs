@@ -1,0 +1,37 @@
+* helm-dash & dash-doc
+
+
+** install
+
+*** 这一步可以忽略
+
+不一定可以正常安装Dash文档，url https://api.github.com/repos/Kapeli/feeds/contents/ 可能在特殊网络中无法访问，把git下载地址下来 ~https://github.com/Kapeli/feeds.git~ ，放入到nginx之中。
+
+github api 的用法如下： ~https://developer.github.com/v3/~ 这个是解析文件所用 ~dash-docs-official-docsets~ 方法返回一个list
+
+#+BEGIN_SRC emacs-lisp
+("AWS_JavaScript" "ActionScript" "Akka" "Android" "Angular.dart" "Angular" "AngularJS" "AngularTS" "Ansible" "Apache_HTTP_Server" "Appcelerator_Titanium" "AppleScript" ...)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun dash-docs-official-docsets ()
+  "Return a list of official docsets (http://kapeli.com/docset_links)."
+  (let ((docsets (dash-docs-read-json-from-url
+                  "https://api.github.com/repos/Kapeli/feeds/contents/")))
+    (delq nil (mapcar (lambda (docset)
+                        (let ((name (assoc-default 'name docset)))
+                          (if (and (equal (file-name-extension name) "xml")
+                                   (not
+                                    (member (file-name-sans-extension name) dash-docs-ignored-docsets)))
+                              (file-name-sans-extension name))))
+                      docsets))))
+#+END_SRC
+
+*** dash-docs-docsets-url比较重要
+
+
+#+BEGIN_SRC emacs-lisp
+;; nginx 下放入
+(setq dash-docs-docsets-url "http://localhost/feeds")
+(setq dash-docs-browser-func 'eww)
+#+END_SRC

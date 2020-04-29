@@ -1,0 +1,172 @@
+* Customizing Emacs
+
+本章主要介绍emacs的基本自定义方法。
+
+
+** lisp
+
+ - fully-parenthesized prefix notation
+
+ - list data type
+
+ - garbage collection
+
+  Emacs uses a mark-and-sweep garbage collection scheme, which is one of the easiest ways to implement garbage collection.
+
+  There are other approaches to implementing garbage collection that would not be so intrusive from the user's point of view; for instance, so-called "incremental" garbage collection can take place without bringing Emacs to a halt. Unfortunately, Emacs does not employ one of these more advanced approaches.
+
+*** lisp的垃圾回收(TODO)
+
+** Keys and Strings
+
+*** notation
+
+  - =META= 表示为 =\M-=
+
+  - =CONTROL-x=  表示为 =C- x= 或者 =\C-x= 或者 =\^x=
+
+***  binding keystrokes to commands
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key keysequence command)
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\M-?" 'help-command)
+#+END_SRC
+
+**** 什么时候用到quote
+
+书中引用了一个反例
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\M-?" help-command)
+#+END_SRC
+
+再来一次总结，什么时候使用到quote
+
+***** 简单的总结
+
+****** Short answer
+
+Bypass the default evaluation rules and do not evaluate the expression (symbol or s-exp), passing it along to the function exactly as typed.
+
+不需要求值时。因为这点与javascript非常不一样，所以
+
+#+BEGIN_SRC common-lisp
+(defun add1 (a b ) (+ a b))
+
+(add1 1 2)
+;;; common lisp 中可以使用describe的方式来查看add1的定义，但elisp中，只能通过
+;;; - find-function 或者
+;;; - C-h f来查看定义
+(describe #'add1)
+#+END_SRC
+
+****** Long Answer: The Default Evaluation Rule
+
+When a regular (I'll come to that later) function is invoked, all arguments passed to it are evaluated. This means you can write this:
+
+#+BEGIN_SRC common-lisp
+(* (+ a 2)
+   3)
+#+END_SRC
+
+Which in turn evaluates (+ a 2), by evaluating a and 2. The value of the symbol a is looked up in the current variable binding set, and then replaced. Say a is currently bound to the value 3:
+
+(let ((a 3))
+  (* (+ a 2)
+     3))
+We'd get  =(+ 3 2)= , + is then invoked on 3 and 2 yielding 5. Our original form is now =(* 5 3)= yielding 15.
+
+Explain =quote= Already!
+
+Alright. As seen above, all arguments to a function are evaluated, so if you would like to pass the symbol a and not its value, you don't want to evaluate it. Lisp symbols can double both as their values, and markers where you in other languages would have used strings, such as keys to hash tables.
+
+This is where quote comes in. Say you want to plot resource allocations from a Python application, but rather do the plotting in Lisp. Have your Python app do something like this:
+
+print "'("
+while allocating:
+    if random.random() > 0.5:
+        print "(allocate %d)" random.randint(0, 20)
+    else:
+        print "(free %d)" % random.randint(0, 20)
+    ...
+print ")"
+Giving you output looking like this (slightly prettyfied):
+
+'((allocate 3)
+  (allocate 7)
+  (free 14)
+  (allocate 19)
+  ...)
+Remember what I said about quote ("tick") causing the default rule not to apply? Good. What would otherwise happen is that the values of allocate and free are looked up, and we don't want that. In our Lisp, we wish to do:
+
+(dolist (entry allocation-log)
+  (case (first entry)
+    (allocate (plot-allocation (second entry)))
+    (free (plot-free (second entry)))))
+For the data given above, the following sequence of function calls would have been made:
+
+(plot-allocation 3)
+(plot-allocation 7)
+(plot-free 14)
+(plot-allocation 19)
+But What About list?
+
+Well, sometimes you do want to evaluate the arguments. Say you have a nifty function manipulating a number and a string and returning a list of the resulting ... things. Let's make a false start:
+
+(defun mess-with (number string)
+  '(value-of-number (1+ number) something-with-string (length string)))
+
+Lisp> (mess-with 20 "foo")
+(VALUE-OF-NUMBER (1+ NUMBER) SOMETHING-WITH-STRING (LENGTH STRING))
+Hey! That's not what we wanted. We want to selectively evaluate some arguments, and leave the others as symbols. Try #2!
+
+(defun mess-with (number string)
+  (list 'value-of-number (1+ number) 'something-with-string (length string)))
+
+Lisp> (mess-with 20 "foo")
+(VALUE-OF-NUMBER 21 SOMETHING-WITH-STRING 3)
+Not Just quote, But backquote
+
+Much better! Incidently, this pattern is so common in (mostly) macros, that there is special syntax for doing just that. The backquote:
+
+(defun mess-with (number string)
+  `(value-of-number ,(1+ number) something-with-string ,(length string)))
+It's like using quote, but with the option to explicitly evaluate some arguments by prefixing them with comma. The result is equivalent to using list, but if you're generating code from a macro you often only want to evaluate small parts of the code returned, so the backquote is more suited. For shorter lists, list can be more readable.
+
+Hey, You Forgot About quote!
+
+So, where does this leave us? Oh right, what does quote actually do? It simply returns its argument(s) unevaluated! Remember what I said in the beginning about regular functions? Turns out that some operators/functions need to not evaluate their arguments. Such as IF -- you wouldn't want the else branch to be evaluated if it wasn't taken, right? So-called special operators, together with macros, work like that. Special operators are also the "axiom" of the language -- minimal set of rules -- upon which you can implement the rest of Lisp by combining them together in different ways.
+
+Back to quote, though:
+
+Lisp> (quote spiffy-symbol)
+SPIFFY-SYMBOL
+
+Lisp> 'spiffy-symbol ; ' is just a shorthand ("reader macro"), as shown above
+SPIFFY-SYMBOL
+Compare to (on Steel-Bank Common Lisp):
+
+Lisp> spiffy-symbol
+debugger invoked on a UNBOUND-VARIABLE in thread #<THREAD "initial thread" RUNNING   {A69F6A9}>:
+  The variable SPIFFY-SYMBOL is unbound.
+
+Type HELP for debugger help, or (SB-EXT:QUIT) to exit from SBCL.
+
+restarts (invokable by number or by possibly-abbreviated name):
+  0: [ABORT] Exit debugger, returning to top level.
+
+(SB-INT:SIMPLE-EVAL-IN-LEXENV SPIFFY-SYMBOL #<NULL-LEXENV>)
+0]
+Because there is no spiffy-symbol in the current scope!
+
+Summing Up
+
+quote, backquote (with comma), and list are some of the tools you use to create lists, that are not only lists of values, but as you seen can be used as lightweight (no need to define a struct) data structures!
+
+If you wish to learn more, I recommend Peter Seibel's book Practical Common Lisp for a practical approach to learning Lisp, if you're already into programming at large. Eventually on your Lisp journey, you'll start using packages too. Ron Garret's The Idiot's Guide to Common Lisp Packages will give you good explanation of those.
+
+Happy hacking!

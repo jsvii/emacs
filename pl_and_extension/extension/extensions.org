@@ -1,0 +1,19 @@
+* modes
+
+** c-h m 查看当前mode的key
+
+** emacs enhance
+
+  - helm
+
+** dev tools
+
+  - magit
+
+  - dash   a morden list api for emacs
+
+  - zeal   api in linux
+
+** themes
+
+  - dracula-theme

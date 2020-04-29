@@ -1,0 +1,16 @@
+* eww
+
+** you-get & eww
+
+  - you-get视频下载： https://github.com/soimort/you-get
+
+  - 借助you-get在Emacs中看youku视频 http://blog.lujun9972.win/blog/2018/04/22/%E5%80%9F%E5%8A%A9you-get%E5%9C%A8emacs%E4%B8%AD%E7%9C%8Byouku%E8%A7%86%E9%A2%91/index.html
+
+
+** TODO  proxy
+
+
+   https://emacs-china.org/t/gnus-rss/2708
+
+
+   https://emacs-china.org/t/topic/2808/7

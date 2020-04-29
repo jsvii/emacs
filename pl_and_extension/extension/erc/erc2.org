@@ -1,0 +1,262 @@
+ERC
+=
+
+各种不同的 IRC 客户端除了一些使用区别，其他功能基本类似。Erc，Xchat，irssi 等基本操作也都建立在对于 IRC 使用方式的基础之上。可能不同的客户端提供不同的方式执行一些 IRC 命令，但是直接输入对应的 IRC 命令也可以。
+
+# 基本入门
+
+## 直接进入
+
+`M-x irc`直接连接到默认的服务器`irc.freenode.net`
+
+可能是我机器的问题,按照上面的方法,电脑总会卡死,可以用下面的方法
+
+`M-x erc-select`进行一系列的选择
+
+
+## 注册用户名
+
+如果你输入的用户名没有注册,那么就会提醒你进行注册的,你可以用下面的方法进行注册
+
+```
+/msg NickServ register <your-passwd> <your-email>
+```
+
+随后你会收到邮件,里面有一段下面这样的命令,写着你的用户名和验证码
+```
+/msg NickServ VERIFY REGISTER Vimalakirti naaddiibnic
+```
+
+## 特性
+
+`ERC` 有很多与`IRC` 不同的特性
+
+- 多个频道,多个servers
+每个频道都会被分配到独有的一个`buffer`之中,因而就同时可以连接多个服务器
+
+- 私人对话会分开
+私人之间的对话,会当作一个新的频道`channel`来对待,因而也会分成一个新的buffer
+
+- 高亮
+一些经常出现的关键字会被高亮,因而可以很方便地区分不同的对话场景
+
+- 通知
+`ERC`会通知你哪些用户已经在线
+
+- 频道轨迹
+
+- 昵称补全
+昵称可以很方便地用`TAB`键来进行补全,因而你可以很容易在对话中输入特定的用户
+
+- 历史记录
+你可以方便地查看历史记录,用`M-p` 和 `M-n`
+
+- 多语言
+每个不同的频道和服务器都能有不同的语言编码.
+
+除此之外,还可以将信息以不同的语言进行翻译, 如果你对翻译感兴趣,请联系`erc-discuss@gnu.org`
+
+- 自动重新连接
+如果你出去了一段时间,那么`Erc`还会尝试着去进行重新的连接
+
+# ERC下的热键
+
+`C-a` 或者 `<home>`
+`erc-bol` 到达每行的每一个字符,或者到达`prompt`标志的后面
+
+`<RET>`
+`erc-send-current-line`发送当前输入行
+
+`<TAB>`
+`erc-complete-word` 补全单词
+
+`C-c C-a`
+`erc-bol` 到达每行的每一个字符,或者到达`prompt`标志的后面
+
+`C-c C-b`
+`erc-iswitchb` Use `iswitchb-read-buffer` to prompt for a ERC buffer to switch to.切换到不同的对话频道
+
+`C-c C-c`
+`erc-toggle-interpret-controls` Toggle interpretation of control sequences in messages.
+这个是什么功能????
+
+`C-c C-d`
+`erc-input-action` Interactively input a user action and send it to IRC.
+
+
+`C-c C-e`
+`erc-toggle-ctcp-autoresponse` Toggle automatic CTCP replies (like VERSION and PING).
+
+`C-c C-f`
+`erc-toggle-flood-control` Toggle use of flood control on sent messages. `flood control`是默认是开着的,`flood`有洪流之意,如果你粘贴了一大段小说到终端,并发送了一下,那么这个连接会server中断,因为你在搞破坏,所以默认是开着的.
+
+`C-c TAB`
+`erc-invite-only-mode` Turn on the invite only mode (+i) for the current channel. 只有邀请了才会被加入到这个聊天室内,但前提是,你要是这个聊天室的操作员`operator`
+
+`C-c C-j`
+`erc-join-channel` Join channel. If point is at the beginning of a channel name, use that as default.加入一个频道
+
+`C-c C-k`
+`erc-go-to-log-matches-buffer`Interactively open an erc-log-matches buffer,这个命令不明白
+
+`C-c C-l`
+`erc-save-buffer-in-logs`Append buffer contents to the log file, if logging is enabled.
+
+`C-c C-n`
+`erc-channel-names` Run "/names #channel" in the current channel.重命名
+
+
+`C-c C-o`
+`erc-get-channel-mode-from-keypress`
+Read a key sequence and call the corresponding channel mode function.After doing C-c C-o, type in a channel mode letter.
+
+C-g means quit. RET lets you type more than one mode at a time. If l is pressed, erc-set-channel-limit gets called. If k is pressed, erc-set-channel-key gets called. Anything else will be sent to `erc-toggle-channel-mode`.
+
+`C-c C-p`
+`erc-part-from-channel` Part from the current channel and prompt for a reason.
+
+`C-c C-q`
+`erc-quit-server`
+    Disconnect from current server after prompting for reason.
+
+`C-c C-r`
+`erc-remove-text-properties-region` Clears the region (start,end) in object from all colors, etc.
+
+`C-c C-t`
+`erc-set-topic` Prompt for a topic for the current channel.
+
+`C-c C-u`
+`erc-kill-input` Kill current input line using `erc-bol' followed by `kill-line'.
+
+
+
+
+
+
+
+
+
+
+
+# 模板
+
+
+## 1.2 查看房间
+
+在`irc`终端输入`list`命令,查看所有的房间
+
+
+本文示例，默认连接的 IRC 服务器为 ： irc.freenode.net加入 channel （房间）
+
+当我们连接到一个 IRC 服务器后，就可以使用 "/join" 命令加入感兴趣的房间聊天。
+/join #ubuntu-cn/join #fedora-cn
+聊天
+
+使用 IRC 不聊天做什么？任何客户端下，只要连接到一个 IRC 服务器 （最用的是 irc.freenode.net），加入 channel （或者称呼为房间），就可以说话了。
+指定用户名发信息
+
+如果信息前想加入某个人的名字，这样能让别人注意到你的信息，却又要大家都能看见。可以先输入该用户名（用 Tab 键补全），再输入信息即可：
+ jianlee: 这是一条测试信息。
+私聊
+
+为了不打扰大家，私聊是一种礼貌。
+使用 "/msg 用户名"
+
+/msg nickname "信息"
+这样就可以和 nickname 私聊了。
+使用 "/query 用户名"
+
+如果要和 "Jian" 私聊，可以这样
+/query Jian
+设置自己的 nickname
+
+注册 nickname
+
+我们自己使用的 nickname 总是不希望别人用吧？注册一下 ！以链接irc.freenode.net 为例。无论是什么客户端，都会需要我们填写一个nickname，我开始用 "Jian" 登录上去后，系统显示：
+-NickServ- Jian is not a registered nickname.
+提示我 "Jian" 是一个未注册的 nickname。现在可以使用 "/msg NickServ" 命令注册我的 nickname。网上的一些帖子可能比较老，可以看看http://freenode.net/faq.shtml#nicksetup 。不过还是以你系统上 IRC 帮助为准，输入 "/msg NickServ help" 可以得到帮助。
+通过帮助我们能看到使用 "REGISTER" 命令可以注册 nickname，根据帮助我们还可以看到用 "/msg NickServ help REGISTER" 命令就能得到 "REGISTER" 的具体使用帮助。
+现在我们知道要注册当前使用的 nickname — "Jian" ，需要这样：
+/msg NickServ REGISTER 密码 邮箱
+这样就把 "Jian" 注册上了，还设置了密码和邮箱，这时候邮箱会收到一封确认邮件，照着邮件做就可以了。
+修改 nickname 的属性值
+
+我们已经注册好了 "Jian"，可是现在又想修改 "Jian" 的密码怎么办？可以使用"/msg NickServ help SET" 得到 "SET" 命令帮助，修改密码可以这样：
+/msg NickServ SET PASSWORD 新密码
+其他如修改 EMAIL，隐藏资料等都可以用 "SET" 命令。
+基本的IRC命令
+
+命令列表
+
+/msg nickserv help	注冊 nickname
+/nick 名字	改名字
+/names [频道]	查看当前[频道]所有用户
+/whois 名字	常看某人資料
+/whoami	自己
+/who ip	常看某IP登錄的所有用戶
+/Who channel	显示此频道的人
+/Who *	显示参加当前频道的人
+/join #房間名	加入這個房間，如果房間不存在，服務器可能會創建這個房間
+/part #房間名 原因	離開房間，并留下原因
+/quit 退出的原因	退出服務器，并留下原因
+/away 原因	暫時離開，并留下原因
+/invite 昵稱 #房間名	邀請某人到指定房間
+/kick #房間名 昵稱 原因	剔出某人，附上原因，需要權限
+/topic #房間名' 房間主題	如果你是房間主持人，可以改變房間的主題
+/me 您要作的動作	向当前聊天室中发送一个动作 (动作使用第三人称陈述，例如 /me jumps)
+/msg 昵稱(或#房間) 有要說的話	向某人發信息
+/query 昵稱 要說的話	私聊
+/notice 昵稱(或#房間名) 要說的話
+/list	查看服務器上所有房間及主題
+/list #ubuntu-cn	列出這個房間
+/list -MIN a -MAX b	查看人數大于a小于b的房間
+/list * abc *	所有行abc字符串的房間
+/flush	终止当前命令的输出操作
+/help	显示所有IRC命令
+/join	加入/建立聊天室
+/leave channel	离开某一频道
+/mode +(-)i	锁住聊天室
+/mode +(-)o	设定管理员权限
+/knock	要求进入私人聊天室
+/invite	邀请用户进入私人聊天室
+/privmsg	悄悄话
+/ignore	忽略
+/topic	更换聊天室主题
+/kick	把用户踢出聊天室
+/quit	退出聊天室
+常用命令详解
+
+所有的IRC命令都是由“/”引导。在不引起混淆的情况下，IRC命令允许简写。例如，/join 命令可以简写为/j，/jo或者/joi。
+/nick
+
+更改昵称的基本方法是："/n(ick) 新昵称"
+您的昵称可以包含英文字母，数字，汉字及下划线等。但是，昵称不能超过50个（每个字符和汉字都算一个字），而且不能包含$，+，！和空格。
+/join
+
+/join命令的格式是："/j(oin) 聊天室名"
+如果聊天室已经存在，您就进入该聊天室。此时，/join 命令等价于聊天室列表工具按钮中的“进入”。
+如果聊天室不存在，您就建立了一个新的聊天室并进入。此时，/join 命令等价于工具按钮中的“建聊天室”。
+聊天室的名字可以包含英文字母，数字，汉字及下划线等。但是，不能超过50个字（每个字符和汉字都算一个字），而且不能包含$，+，！和空格。
+/mode
+
+/mode +(-)i
+
+/mode +(-)i 命令可以用来锁住（解锁）用户自建的聊天室（私人聊天室）。其命令格式是: "/m(ode) +i 或 /m(ode) -i"
+只有用户自建的聊天室才能加锁。
+未经管理员邀请，其他用户不能进入私人聊天室。
+/mode +(-)o
+
+/mode +(-)o 命令可以让聊天室管理员赋予或者剥夺其他用户的管理员身份。其命令格式是："/m(ode) +o 昵称或 /m(ode) -o 昵称"
+只有聊天室管理员才能使用这个命令。
+/knock
+
+/knock 命令可以让您询问私人聊天室管理员是否可以进入该私人聊天室。其命令格式是："/k(nock) 房间名 [消息]"
+/invite
+
+/invite 命令可以让聊天室管理员邀请其他用户进入私人聊天室。其命令格式是: "/i(nvite) 昵称"
+只有私人聊天室的管理员才能使用这个命令。
+Erc 使用
+
+常用快捷键
+
+快捷键  || 对于 IRC 命令 || 含义C-c C-n | /names [#fedora-zh] | 列出频道里的用户C-c C-b | 无，emacs的特性 | 切换频道C-c C-j | /join #fedora-zh | 加入频道C-c C-p | /leave [#fedora-zh] | 退出频道

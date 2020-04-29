@@ -1,0 +1,61 @@
+* 一系列 plantuml的写法
+
+** 时序图
+
+*** 箭头
+
+ - 你可以用->来绘制参与者之间传递的消息， 而不必显式地声明参与者。
+ - 你也可以使用 --> 绘制一个虚线箭头。
+
+#+BEGIN_SRC plantuml :file demo1.jpg
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+#+END_SRC
+
+*** 声明参与者
+
+actor
+boundary
+control
+entity
+database
+
+#+BEGIN_SRC plantuml :file demo2.jpg
+actor Foo1
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+collections Foo6
+Foo1 -> Foo2 : To boundary
+Foo1 -> Foo3 : To control
+Foo1 -> Foo4 : To entity
+Foo1 -> Foo5 : To database
+Foo1 -> Foo6 : To collections
+#+END_SRC
+
+
+关键字 as 用于重命名参与者
+
+你可以使用RGB值或者颜色名修改 actor 或参与者的背景颜色。
+
+#+BEGIN_SRC plantuml :file demo2.jpg
+actor Bob #red
+' The only difference between actor
+'and participant is the drawing
+participant Alice
+participant "I have a really\nlong name" as L #99FF99
+/' You can also declare:
+   participant L as "I have a really\nlong name"  #99FF99
+  '/
+
+Alice->Bob: Authentication Request
+Bob->Alice: Authentication Response
+Bob->L: Log transaction
+#+END_SRC
+
+
+** 用例图

@@ -1,0 +1,9 @@
+* Garbage Collection
+
+
+gc-elapsed
+
+garbage-collection-messages 设置为 t 可以在 echoline 中显示GC过程
+this is new
+
+new info

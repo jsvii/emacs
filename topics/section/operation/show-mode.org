@@ -1,0 +1,3 @@
+* Show Modes
+
+~describle-mode:~ ~c-h m~

@@ -1,0 +1,237 @@
+* lsp-java 相关的
+
+
+** 主要步骤
+
+*** 依赖说明
+
+  - treemacs & lsp-treemacs
+
+  - lsp-ui
+
+  - lsp-java
+
+
+#+BEGIN_SRC emacs-lisp
+(require 'cc-mode)
+(use-package projectile :ensure t)
+(use-package yasnippet :ensure t)
+(use-package lsp-mode :ensure t)
+(use-package hydra :ensure t)
+(use-package company-lsp :ensure t)
+(use-package lsp-ui :ensure t)
+(use-package lsp-java :ensure t :after lsp
+  :config (add-hook 'java-mode-hook 'lsp))
+
+(use-package dap-mode
+  :ensure t :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
+
+(use-package dap-java :after (lsp-java))
+#+END_SRC
+
+
+** lsp-java-update-server 使用代理下载相关的资源
+
+  - 如何代理，把相关的文件下载下来
+
+    1. git资源 https://github.com/emacs-lsp/lsp-java
+
+    1. 依赖文件 https://github.com/emacs-lsp/lsp-java/releases/tag/2.2
+
+    1. 全部放入到lsp-java/release文件夹中
+
+    1. 修改lsp-java/pom.xml中的release地址
+
+(setq lsp-java-jdt-download-url "http://localhost:8000/jdt-language-server-latest.tar.gz")
+
+(setq lsp-java--download-root "http://localhost:8000/lsp-java/install/")
+
+    1. lsp-java-update-server 大文件就可以本地安装
+
+      - 这个不要随意安装，因为非常浪费时间
+
+
+
+*** eclipse
+
+**** .settings 文件
+
+#+BEGIN_SRC bash
+- .settings
+   org.eclipse.core.resources.prefs
+   org.eclipse.jdt.apt.core.prefs
+   org.eclipse.jdt.core.prefs
+   org.eclipse.m2e.core.prefs
+#+END_SRC
+
+*** configurations
+
+  - lsp-java-workspace-dir lsp eclispe 的workspace地址 Its value is "/home/leo/.emacs.d/workspace/"
+
+
+
+**** lsp-java update server
+
+#+BEGIN_SRC shell
+Evaluating...
+"http://localhost:8000/lsp-java/install/"
+Evaluating...
+"http://localhost:8000/jdt-language-server-latest.tar.gz"
+Evaluating...
+"http://localhost:8000/jdt-language-server-latest.tar.gz"
+Evaluating...
+"http://localhost:8000/lsp-java/install/"
+LSP :: Server update started...
+Using a proxy for http...
+Contacting host: localhost:8000
+Wrote /tmp/lsp-java-installV6t90V/pom.xml
+/home/leo/workspace/toolkit/apache-maven-3.6.3/bin/mvn -Djdt.js.server.root=/home/leo/.emacs.d/eclipse.jdt.ls/server/ -Djunit.runner.root=/home/leo/.emacs.d/eclipse.jdt.ls/test-runner/ -Djunit.runner.fileName=junit-platform-console-standalone.jar -Djava.debug.root=/home/leo/.emacs.d/eclipse.jdt.ls/server/bundles clean package -Djdt.download.url=http://localhost:8000/jdt-language-server-latest.tar.gz: finished.
+#+END_SRC bash
+
+#+BEGIN_SRC shell
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------------------< lsp-java:lsp-java >--------------------------
+[INFO] Building lsp-java 1.0.0-SNAPSHOT
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ lsp-java ---
+[INFO]
+[INFO] --- download-maven-plugin:1.3.0:wget (download-server) @ lsp-java ---
+Downloading: http://localhost:8000/jdt-language-server-latest.tar.gz
+42130K downloaded
+[INFO]
+[INFO] --- download-maven-plugin:1.3.0:wget (download-spring-boot) @ lsp-java ---
+[INFO] Got from cache: /home/leo/.m2/repository/.cache/download-maven-plugin/vscode-extension.zip_a23a68798d8e6428aefb9997997ec507
+[INFO]
+[INFO] --3- download-maven-plugin:1.3.0:wget (download-java-dependency) @ lsp-java ---
+[INFO] Got from cache: /home/leo/.m2/repository/.cache/download-maven-plugin/java-dependency.zip_32c5c6cf1264ce0977e0ad8869492c3d
+[INFO]
+[INFO] --- download-maven-plugin:1.3.0:wget (download-java-di) @ lsp-java ---
+[INFO] Got from cache: /home/leo/.m2/repository/.cache/download-maven-plugin/java-decompiler.zip_0f1a2f2e8ae9f6fea8f7f07fbfcd93fa
+[INFO]
+[INFO] --- download-maven-plugin:1.3.0:wget (download-java-test-dependency) @ lsp-java ---
+[INFO] Got from cache: /home/leo/.m2/repository/.cache/download-maven-plugin/vscode-java-test.zip_09e04985c02c06520cdbb7b9a43bda4e
+[INFO]
+[INFO] --- maven-antrun-plugin:1.6:run (prepare) @ lsp-java ---
+[WARNING] Parameter tasks is deprecated, use target instead
+[INFO] Executing tasks
+
+main:
+    [untar] Expanding: /tmp/lsp-java-installV6t90V/target/jdt-language-server-latest.tar.gz into /home/leo/.emacs.d/eclipse.jdt.ls/server
+    [unzip] Expanding: /tmp/lsp-java-installV6t90V/target/vscode-extension.zip into /tmp/lsp-java-installV6t90V/target/vscode-extension-extracted
+    [unzip] Expanding: /tmp/lsp-java-installV6t90V/target/java-dependency.zip into /tmp/lsp-java-installV6t90V/target/java-dependency
+    [unzip] Expanding: /tmp/lsp-java-installV6t90V/target/vscode-java-test.zip into /home/leo/.emacs.d/eclipse.jdt.ls/server/java-test
+    [unzip] Expanding: /tmp/lsp-java-installV6t90V/target/java-decompiler.zip into /home/leo/.emacs.d/eclipse.jdt.ls/server/java-decompiler
+[INFO] Executed tasks
+[INFO]
+[INFO] --- maven-dependency-plugin:3.1.1:copy (copy) @ lsp-java ---
+[INFO] Configured Artifact: com.microsoft.java:com.microsoft.java.debug.plugin:0.20.0:jar
+[INFO] Configured Artifact: org.junit.platform:junit-platform-console-standalone:1.3.0-M1:jar
+[INFO] com.microsoft.java:com.microsoft.java.debug.plugin:0.20.0:jar already exists in /home/leo/.emacs.d/eclipse.jdt.ls/server/bundles
+[INFO] Copying junit-platform-console-standalone-1.3.0-M1.jar to /home/leo/.emacs.d/eclipse.jdt.ls/test-runner/junit-platform-console-standalone.jar
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-boot-server) @ lsp-java ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-bundles) @ lsp-java ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 4 resources
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-decompiler) @ lsp-java ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 4 resources
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-test-bundle) @ lsp-java ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO]
+[INFO] --- maven-resources-plugin:3.1.0:copy-resources (copy-test-data) @ lsp-java ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.395 s
+[INFO] Finished at: 2019-12-19T09:54:59+08:00
+[INFO] ------------------------------------------------------------------------
+#+END_SRC
+
+
+ ~~/.emacs.d/eclipse.jdt.ls~ 文件夹中会有新文件
+
+配置java可执行文件的位置
+
+#+BEGIN_SRC emacs-lisp
+(setq lsp-java-java-path
+      "/usr/lib/jvm/java-9-openjdk-amd64/bin/java")
+#+END_SRC
+
+  - lsp-treemacs-symbols-list  Displays symbols information. 显示一个类的信息
+
+  - lsp-treemacs-errors-list 会在下面显示一个错误信息列表
+
+     [Treemacs] Error on highlight, this shouldn't happen: (wrong-type-argument overlayp nil) error current!!??
+
+     seems it is not a error
+
+      use TAB key
+
+
+treemacs--fringe-indicator-bitmap is a variable defined in ‘treemacs-customization.el’.
+Its value is ‘treemacs--fringe-indicator-bitmap’
+
+  - lsp-execute-code-action
+
+    1. get & set
+
+    1. constructor
+
+    1. refactor
+
+
+**** java-doc
+
+     lsp-ui-doc-mode
+
+**** eclipse error
+
+/leo/workspace/eclipse-workspace
+    spring-boot-maven-example-helloworld 1 ../
+      [Java] Java: Build path specifies execution environment JavaSE-1.7. There are no JREs installed in the workspace that are strictly compatible with this environment.  (0:0)
+
+edit .setting change 1.7 to 1.8
+
+**** treemacs
+
+ treemacs-create-workspace
+
+  treemacs-edit-workspace
+
+  treemacs-add-and-display-current-project !!!
+
+
+lsp-treemacs-references/lsp-treemacs-implementaions error can't open
+
+
+** ref
+
+  - github emacs-eclim repo https://github.com/emacs-eclim/emacs-eclim
+
+  - https://blog.jmibanez.com/2019/03/31/emacs-as-java-ide-revisited.html
+
+  - http://www.skybert.net/emacs/java/ 较好的文档
+
+  - https://zlearning.netlify.com/linux/emacs/emacs-eclim.html 使用Emacs作为Java IDE
+
+  - https://www.spacemacs.org/layers/+lang/java/README.html  spacemacs 中关于java的部分
+
+　- http://www.skybert.net/emacs/enterprise-java-development-in-emacs/
+
+  - http://www.goldsborough.me/emacs,/java/2016/02/24/22-54-16-setting_up_emacs_for_java_development/ 为emacs设置java开发环境
+
+  - http://www.skybert.net/emacs/java-in-emacs-using-eclim/

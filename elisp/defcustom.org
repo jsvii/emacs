@@ -1,0 +1,5 @@
+* defcustom
+
+defcustom 是一个宏，由它定义的变量，可以在emacs中进行编辑
+
+(defmacro defcustom (symbol standard doc &rest args)

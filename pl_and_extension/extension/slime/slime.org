@@ -1,0 +1,105 @@
+* slime
+
+** install
+
+Superior Lisp Interaction Mode for Emacs.
+
+
+#+BEGIN_SRC emacs-lisp
+(setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
+;; slime-contribs
+(setq slime-contribs '(slime-fancy))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(setq slime-lisp-implementations
+ '((cmucl ("cmucl" "-quiet"))
+  (sbcl ("/opt/sbcl/bin/sbcl") :coding-system utf-8-unix)))
+#+END_SRC
+
+*** slime-contribs
+
+SLIME comes with additional contributed packages or "contribs". Contribs can be selected via the slime-contribs list.
+
+The most-often used contrib is slime-fancy, which primarily installs a popular set of other contributed packages. It includes a better REPL, and many more nice features.
+
+
+** slime 名言
+
+slime-words-of-encouragement
+
+- "Let the hacking commence!"
+
+- "Hacks and glory await!"
+
+- "Hack and be merry!"
+
+- "Your hacking starts... NOW!"
+
+- "May the source be with you!"
+
+- "Take this REPL, brother, and may it serve you well."
+
+- "Lemonodor-fame is but a hack away!"
+
+- "Are we consing yet?"
+
+** FAQ
+
+*** helm使用时，看不到 ~slime~ 这个命令
+
+使用 helm-autoresize-mode ，还不太明白原因
+
+参考： https://emacs.stackexchange.com/questions/31633/helm-wont-let-me-select-available-emacs-commands
+
+
+*** slime 设置的 ~inferior-lisp-program~ 不起作用
+
+版本号 20200219.2239 installed
+
+(setq inferior-lisp-program "/usr/local/src/ccl/lx86cl64")
+
+- 尝试打开slime.el文件，重新生成slime这个函数
+
+- 再次执行可以成功
+
+原因分析：
+
+好像slime.elc的原因，sbcl已经成为默认的了，这个得想想怎么解决
+
+#+BEGIN_SRC emacs-lisp
+;; 一层层地找slime中的定义
+;;  command 是nil coding-system也是nil
+(defun slime (&optional command coding-system)
+  "Start an inferior^_superior Lisp and connect to its Swank server."
+  (interactive)
+  (slime-setup)
+  (let ((inferior-lisp-program (or command inferior-lisp-program))
+        (slime-net-coding-system (or coding-system slime-net-coding-system)))
+    (slime-start* (cond ((and command (symbolp command))
+                         (slime-lisp-options command))
+                        (t (slime-read-interactive-args))))))
+
+;; 找到这个时，发现了问题
+(slime-lisp-options nil)
+;; (:name ccl :program "ccl" :program-args nil :coding-system utf-8-unix)
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+(after-load 'slime
+  (when (executable-find "sbcl")
+    (add-to-list 'slime-lisp-implementations
+                 '(sbcl ("sbcl") :coding-system utf-8-unix)))
+  (when (executable-find "lisp")
+    (add-to-list 'slime-lisp-implementations
+                 '(cmucl ("lisp") :coding-system iso-latin-1-unix)))
+  (when (executable-find "ccl")
+    (add-to-list 'slime-lisp-implementations
+                 '(ccl ("ccl") :coding-system utf-8-unix))))
+#+END_SRC
+
+
+** docs
+
+- https://common-lisp.net/project/slime/doc/html/

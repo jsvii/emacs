@@ -1,0 +1,3 @@
+* macro
+
+elisp macro 不支持 ~`~ ，所以定义时充斥着大量的 ~list~ 拼接

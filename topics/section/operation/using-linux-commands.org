@@ -1,0 +1,6 @@
+* commands
+
+** touch file
+On linux/unix/bsd you can use =M-! touch /path/to/file.ext=. This invokes the OS touch utility via (shell-command).
+
+On any system you can use =C-x b buffer-name RET= followed by =C-x C-w /path/to/file.ext=. This creates a new buffer (assuming #<buffer buffer-name> doesn't exist) and writes its contents to the named file via (write-file).

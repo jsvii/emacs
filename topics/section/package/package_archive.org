@@ -1,0 +1,22 @@
+* Package Archive
+
+** Setup
+
+#+BEGIN_SRC elisp
+(when (>= emacs-major-version 24)
+     (require 'package)
+     (package-initialize)
+     (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+           ("melpa" . "http://elpa.emacs-china.org/melpa/"))))
+#+END_SRC
+
+package.el在emacs24版本中成为内置模块。
+
+  - package-refresh-contents 更新package中的包
+
+Recipes and build machinery for the biggest Emacs package repo
+
+
+** packages
+
+- MELPA (Milkypostman's Emacs Lisp Package Archive)

@@ -1,0 +1,76 @@
+* eclim
+
+  1.安装 jdk
+
+    1. orcale
+
+  1. eclim
+
+    1. 安装eclipse https://www.eclipse.org/downloads/packages/release/photon
+       实际地圵为： https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/photon/R/eclipse-jee-photon-R-linux-gtk-x86_64.tar.gz
+
+
+** eclipse history
+  - Eclipse IDE 2019-09 (4.13)
+
+  - Eclipse IDE 2019-06 (4.12)
+
+  - Eclipse IDE 2019-03 (4.11)
+
+  - Eclipse IDE 2018-12 (4.10)
+
+  - Eclipse IDE 2018-09 (4.9)
+
+  - Eclipse Photon (4.8)
+
+
+** eclime 安装步骤
+
+直接执行可执行文件
+#+BEGIN_SRC bash
+./eclim_2.8.0.bin --proxy my.proxy:8080
+#+END_SRC
+
+
+从源码编译
+
+#+BEGIN_SRC bash
+ant -Declipse.home=/your/eclipse/home/dir
+#+END_SRC
+
+
+** setup
+
+#+BEGIN_SRC emacs-lisp
+(setq eclim-executable "~/workspace/toolkit/eclipse/eclim"
+      eclim-eclipse-dirs "~/workspace/toolkit/eclipse"
+      eclimd-executable "~/workspace/toolkit/eclipse/eclimd"
+      eclimd-default-workspace "~/workspace/eclipse-workspace"
+      eclimd-wait-for-process nil)
+#+END_SRC
+
+  - eclim-executable  eclim 执行文件
+
+  - eclimd-executable  eclimd 执行文件
+
+  - eclim-eclipse-dirs  eclipse 安装文件夹
+
+  - eclimd-default-workspace 类似eclipse的workspace
+
+
+** maven usage
+
+
+  1. eclimd-start
+
+  1. 设置项目为maven & eclipse项目
+
+#+BEGIN_SRC bash
+$ mvn archetype:generate
+$ cd <project_dir>
+$ mvn eclipse:eclipse
+#+END_SRC
+
+  1. eclim-project-import 导入eclim项目
+
+  1. eclim-mvn-run

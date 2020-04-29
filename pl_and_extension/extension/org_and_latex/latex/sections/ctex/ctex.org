@@ -1,0 +1,100 @@
+* CTEX
+
+** 资源
+
+- 官网 http://www.ctex.org/HomePage
+
+- github https://github.com/CTeX-org/ctex-kit
+
+
+
+
+
+
+** CTEX 宏集的组成
+
+CTEX 宏集的主要功能分散在四个中文文档类和三个宏包当中。
+
+| type   | file           | desc                                              |
+|--------+----------------+------------------------------------------------------|
+| 文档类 | ctexart.cls    | 标准文档类article 的汉化版本，一般适用于短篇幅的文章 |
+|        | ctexrep.cls    | 标准文档类report 的汉化版本，一般适用于中篇幅的报告  |
+|        | ctexbook.cls   | 标准文档类book 的汉化版本，一般适用于长篇幅的书籍    |
+|        | ctexbeamer.cls | 文档类beamer 的汉化版本，适用于幻灯片演示            |
+| 宏包   | ctex.sty       | 提供全部功能，但默认不开启章节标题设置功能，需要使用heading 选项来开启 |
+|        | ctexsize.sty   | 定义和调整中文字号，在ctex 宏包或CTEX 中文文档类之外单独调用 |
+|        | ctexheading.sty | 提供章节标题设置功能（见7 节），在ctex 宏包或CTEX 中文文档类之外单独调用  |
+
+
+四个文档类分别对应latex的标准文档类 ~article~ 、 ~report~ 、 ~book~ 和 ~beamer~ 。使用它们的时候，需要将涉及到的所有源文件使用UTF-8 编码保存
+
+** 文档类
+
+#+BEGIN_SRC latex
+\documentclass[UTF8]{ctexart}
+\begin{document}
+中文文档类测试。你需要将所有源文件保存为UTF-8 编码。
+你可以使用XeLaTeX、LuaLaTeX 或upLaTeX 编译，也可以使用(pdf)LaTeX 编译。
+推荐使用XeLaTeX 或LuaLaTeX 编译。
+\end{document}
+#+END_SRC
+
+ctex beamer示例
+
+#+BEGIN_SRC latex
+\documentclass[UTF8]{ctexbeamer}
+\begin{document}
+\begin{frame}{中文演示文档}
+\begin{itemize}
+\item 你需要将所有源文件保存为UTF-8 编码
+\item 你可以使用XeLaTeX、LuaLaTeX 或upLaTeX 编译
+\item 也可以使用(pdf)LaTeX 编译
+\item 推荐使用XeLaTeX 或LuaLaTeX 编译
+\end{itemize}
+\end{frame}
+\end{document}
+#+END_SRC
+
+
+**  使用ctex 宏包
+
+用户在使用非标准文档类时，如果需要添加中文支持或中文版式支持，则可以使用ctex宏包。
+
+有些文档类是建立在LATEX 标准文档类之上开发的。这时，给ctex 宏包加上heading 选项，可以将章节标题设置为中文风格。
+
+#+BEGIN_SRC latex
+\documentclass{ltxdoc}
+\usepackage[UTF8, heading = true]{ctex}
+\begin{document}
+\section{简介}
+章节标题中文化的\LaTeX{} 手册。
+\end{document}
+#+END_SRC
+
+
+以往，为LATEX 文档配置中文支持是一件相当繁琐的事情。默认情况下，CTEX 宏集能自动检测用户使用的编译方式和操作系统，选择合适的底层支持和字库，从而简化配置过程。自动配置的情况参见表3。
+
+通常，由CTEX 宏集进行的自动配置已经足够使用，无需用户手工干预；但是CTEX 仍然提供了一系列选项，供在CTEX 的自动选择机制因为意外情况失效，或者在用户有特殊需求的情况下使用。除非必要，用户不应使用这些选项。
+
+
+CTEX 预定义了以下六种中文字库。
+
+- adobe 使用Adobe 公司的四款中文字体，不支持pdfLATEX。
+
+- fandol 使用Fandol 中文字体，不支持pdfLATEX。
+
+- founder 使用方正公司的中文字体。
+
+- mac 使用Mac OS X 系统下的字体，不支持(pdf)LATEX。
+
+- macnew 使用El Capitan 或之后的多字重宋体、苹方黑体。
+
+- macold 使用Yosemite 或之前的华文字库。
+
+- ubuntu 使用Ubuntu 系统下的文泉驿和文鼎字体。
+
+- windows 使用简体中文Windows 系统下的中文字体，自动判断Windows 系统版本，采用windowsnew或windowsold 的设置。
+
+- windowsnew 使用简体中文Windows Vista 或之后系统下的中易字体和微软雅黑字体。
+
+- windowsold 使用简体中文Windows XP 或之前系统下的中易字体。

@@ -1,0 +1,361 @@
+* 基本操作
+
+* 我喜欢用操作
+
+** 文件
+
+- ~c-x f~ open file
+
+- ~c-x d~ 当前directory
+
+
+** tutorial
+
+help-with-tutorail
+
+
+  - M-x describe-variable, 快捷键 C-h v, 查看变量的文档
+
+  - M-x describe-function, 快捷键 C-h f, 查看命令的文档
+
+  - M-x describe-key, 快捷键 C-h k, 查看快捷键的文档
+
+** keys
+
+        C-v	Move forward one screenful
+        M-v	Move backward one screenful
+        C-l	Clear screen and redisplay all the text,
+
+        C-f	Move forward a character
+        C-b	Move backward a character
+
+        M-f	Move forward a word
+        M-b	Move backward a word
+
+        C-n	Move to next line
+        C-p	Move to previous line
+
+        C-a	Move to beginning of line
+        C-e	Move to end of line
+
+        M-a	Move back to beginning of sentence
+        M-e	Move forward to end of sentence
+
+        M-<     move to the beginning of file.
+        M->     move to the end of the file.
+
+        C-u     and then the digits before you type the command
+
+        C-g     stop it safely by typing
+
+        <DEL>        Delete the character just before the cursor
+        C-d          Delete the next character after the cursor
+
+        M-<DEL>      Kill the word immediately before the cursor
+        M-d	     Kill the next word after the cursor
+
+        C-k	     Kill from the cursor position to end of line
+        M-k	     Kill to the end of the current sentence
+
+The difference between "killing" and "deleting" is that "killed" text
+can be reinserted (at any position), whereas "deleted" things cannot
+be reinserted in this way (you can, however, undo a deletion--see
+below).  Reinsertion of killed text is called "yanking".  (Think of it
+as yanking back, or pulling back, some text that was taken away.)
+
+The following key bindings used in the tutorial have been changed
+from the Emacs default:
+
+   Standard Key   Command                     In Your Emacs
+   C-c            mode-specific-command-prefix M-x mode-specific-command-prefix more info
+   RET            newline                     M-x newline      more info
+   C-x C-b        list-buffers                the ‘Buffers’ menu more info
+   C-x 1          delete-other-windows        the ‘File’ menu  more info
+   C-x 2          split-window-below          the ‘File’ menu  more info
+   C-x o          other-window                M-x other-window more info
+   C-y            yank                        M-x yank         more info
+   C-z            suspend-frame               C-x C-z          more info
+
+   C-y
+   M-y
+
+What do you do if you have some text you want to yank back, and then
+you kill something else?  C-y would yank the more recent kill.  But
+the previous text is not lost.  You can get back to it using the M-y
+command.  After you have done C-y to get the most recent kill, typing
+M-y replaces that yanked text with the previous kill.  Typing M-y
+again and again brings in earlier and earlier kills.  When you have
+reached the text you are looking for, you do not have to do anything to
+keep it.  Just go on with your editing, leaving the yanked text where
+it is.
+
+
+        C-x C-f		Find file
+        C-x C-s		Save file
+        C-x s		Save some buffers
+        C-x C-b		List buffers
+        C-x b		Switch buffer
+        C-x C-c		Quit Emacs
+        C-x 1		Delete all but one window
+        C-x u		Undo
+
+Recover
+
+If the computer crashes, you can recover your auto-saved editing by
+finding the file normally (the file you were editing, not the auto
+save file) and then typing M-x recover-this-file <Return>.  When it
+asks fo confirmation, type yes<Return> to go ahead and recover the
+auto-save data.
+
+
+        C-l C-l to bring this line to the top of screen.
+        C-h m, to see how Text mode differs from Fundamental mode.
+
+
+** 帮助相关
+
+*** 基本命令
+
+help-with-tutorail
+
+
+** 入口
+
+*** apropos
+
+
+
+#+BEGIN_SRC elisp
+M-x apropos RET <keyword> RET
+#+END_SRC
+
+
+** enter emacs
+
+Important Text-Changing Commands
+
+
+C-h t ;; c-h是help
+
+
+‘C-h a TOPICS <RET>’
+     This searches for commands whose names match the argument TOPICS.
+     The argument can be a keyword, a list of keywords, or a regular
+     expression (*note Regexps::).  *Note Apropos::.
+
+‘C-h i d m emacs <RET> i TOPIC <RET>’
+     This searches for TOPIC in the indices of the Emacs Info manual,
+     displaying the first match found.  Press ‘,’ to see subsequent
+     matches.  You can use a regular expression as TOPIC.
+
+‘C-h i d m emacs <RET> s TOPIC <RET>’
+     Similar, but searches the _text_ of the manual rather than the
+     indices.
+
+‘C-h C-f’
+     This displays the Emacs FAQ, using Info.
+
+‘C-h p’
+     This displays the available Emacs packages based on keywords.
+     *Note Package Keywords::.
+
+
+mark
+
+‘C-<SPC>’
+     Set the mark at point, and activate it (‘set-mark-command’).
+‘C-@’
+     The same.
+‘C-x C-x’  返回到mark的开始处，非常有用
+     Set the mark at point, and activate it; then move point where the
+     mark used to be (‘exchange-point-and-mark’).
+‘Drag-mouse-1’
+     Set point and the mark around the text you drag across.
+‘mouse-3’
+     Set the mark at point, then move point to where you click
+     (‘mouse-save-then-kill’).
+‘‘Shifted cursor motion keys’’
+     Set the mark at point if the mark is inactive, then move point.
+     *Note Shift Selection::.
+
+
+11.2 Commands to Mark Textual Objects
+
+‘M-@’
+     Set mark after end of next word (‘mark-word’).  This does not move
+     point.
+‘C-M-@’
+     Set mark after end of following balanced expression (‘mark-sexp’).
+     This does not move point.
+‘M-h’
+     Move point to the beginning of the current paragraph, and set mark
+     at the end (‘mark-paragraph’).
+‘C-M-h’
+     Move point to the beginning of the current defun, and set mark at
+     the end (‘mark-defun’).
+‘C-x C-p’
+     Move point to the beginning of the current page, and set mark at
+     the end (‘mark-page’).
+‘C-x h’
+     Move point to the beginning of the buffer, and set mark at the end
+     (‘mark-whole-buffer’).
+
+11.3 Operating on the Region
+
+
+
+   • Kill it with ‘C-w’ (*note Killing::).
+   • Copy it to the kill ring with ‘M-w’ (*note Yanking::).
+   • Convert case with ‘C-x C-l’ or ‘C-x C-u’ (*note Case::).
+   • Undo changes within it using ‘C-u C-/’ (*note Undo::).
+   • Replace text within it using ‘M-%’ (*note Query Replace::).
+   • Indent it with ‘C-x <TAB>’ or ‘C-M-\’ (*note Indentation::).
+   • Fill it as text with ‘M-x fill-region’ (*note Filling::).
+   • Check the spelling of words within it with ‘M-$’ (*note
+     Spelling::).
+   • Evaluate it as Lisp code with ‘M-x eval-region’ (*note Lisp
+     Eval::).
+   • Save it in a register with ‘C-x r s’ (*note Registers::).
+   • Save it in a buffer or a file (*note Accumulating Text::)
+
+
+11.5 The Global Mark Ring?? 存疑
+
+
+11.6 Shift Selection : hold住shift健的操作才会被放入选区, 让选择区域的操作更为细腻了
+
+
+If you hold down the shift key while typing a cursor motion command,
+this sets the mark before moving point, so that the region extends from
+the original position of point to its new position.  This feature is
+referred to as “shift-selection”.  It is similar to the way text is
+selected in other editors.
+
+   The mark set via shift-selection behaves a little differently from
+what we have described above.  Firstly, in addition to the usual ways of
+deactivating the mark (such as changing the buffer text or typing
+‘C-g’), the mark is deactivated by any _unshifted_ cursor motion
+command.  Secondly, any subsequent _shifted_ cursor motion command
+avoids setting the mark anew.  Therefore, a series of shifted cursor
+motion commands will continuously adjust the region.
+
+   Shift-selection only works if the shifted cursor motion key is not
+already bound to a separate command (*note Customization::).  For
+example, if you bind ‘S-C-f’ to another command, typing ‘S-C-f’ runs
+that command instead of performing a shift-selected version of ‘C-f’
+(‘forward-char’).
+
+   A mark set via mouse commands behaves the same as a mark set via
+shift-selection (*note Setting Mark::).  For example, if you specify a
+region by dragging the mouse, you can continue to extend the region
+using shifted cursor motion commands.  In either case, any unshifted
+cursor motion command deactivates the mark.
+
+   To turn off shift-selection, set ‘shift-select-mode’ to ‘nil’.  Doing
+so does not disable setting the mark via mouse commands.
+
+11.7 Disabling Transient Mark Mode 如果关闭，选区内不会高亮的
+
+
+
+12.1 Deletion and Killing
+
+12.1.1 Deletion
+
+
+Deletion means erasing text and not saving it in the kill ring.  For the
+most part, the Emacs commands that delete text are those that erase just
+one character or only whitespace.
+
+‘<DEL>’
+‘<BACKSPACE>’
+     Delete the previous character, or the text in the region if it is
+     active (‘delete-backward-char’).
+
+‘<Delete>’
+     Delete the next character, or the text in the region if it is
+     active (‘delete-forward-char’).
+
+‘C-d’
+     Delete the next character (‘delete-char’).
+
+‘M-\’
+     Delete spaces and tabs around point (‘delete-horizontal-space’).
+‘M-<SPC>’
+     Delete spaces and tabs around point, leaving one space
+     (‘just-one-space’).
+‘C-x C-o’
+     Delete blank lines around the current line (‘delete-blank-lines’).
+‘M-^’
+     Join two lines by deleting the intervening newline, along with any
+     indentation following it (‘delete-indentation’).
+
+
+12.2 Yanking
+
+“Yanking” means reinserting text previously killed.  The usual way to
+move or copy text is to kill it and then yank it elsewhere.
+
+‘C-y’
+     Yank the last kill into the buffer, at point (‘yank’).
+‘M-y’
+     Replace the text just yanked with an earlier batch of killed text
+     (‘yank-pop’).  *Note Earlier Kills::.
+‘C-M-w’
+     Cause the following command, if it is a kill command, to append to
+     the previous kill (‘append-next-kill’).  *Note Appending Kills::.
+
+
+
+abcdefg,hijklmn,opq rst,uvw xyz
+
+‘C-M-w’
+
+
+
+‘C-/’ (‘undo’)
+** C & C++ ide
+
+
+cd /path/to/my/project
+find . -type f -iname "*.[ch]" | etags -
+
+
+
+
+Modeline, Echo Area, and Minibuffer
+
+The Point and Mark
+
+** Font Locking
+
+Font Locking is the correct term for syntax high- lighting in Emacs, and in turn is made up of faces of properties (color, font, text size, and so on) that the font locking engines use to pretty-print the text.
+
+** TRAMP
+
+
+Emacs’s TRAMP seamlessly lets you edit remote files using a variety of network protocols, including , , rsync, and more, as though the files were local.
+
+
+M-x: Execute Extended Command
+
+M-- M-d kills the previous word before point
+
+
+** Info
+
+
+1
+
+
+
+
+** emacs lisp
+
+
+
+
+* fonts
+
+(set-face-attribute 'default nil :height 100)
+The value is in 1/10pt, so 100 will give you 10pt, etc.
