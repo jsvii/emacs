@@ -4,6 +4,23 @@
 #+OPTIONS: prop:("VERSION")
 #+AUTHOR: Leo Zhang
 
+* 目录说明
 
-- docs
+- docs 所有文档
+
+  - basic
+
+  - modes
+
+    - elisp
+
+    - modes 特定mode记录
+
+    - pl 语言设置
+
+  - notes_of_books 读书笔记
+
+  - ref 参考文档
+
+
 
