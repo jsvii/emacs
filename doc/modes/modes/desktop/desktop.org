@@ -1,0 +1,7 @@
+* desktop
+
+** modes
+
+- desktop-save-mode
+
+  设置为nil，则无桌面保存，因为自己工作中要多个emacs 实例。
