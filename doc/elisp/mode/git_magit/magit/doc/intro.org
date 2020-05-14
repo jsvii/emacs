@@ -1,0 +1,8 @@
+* Intro
+
+** Buffers
+
+- ~Status buffer~ 是一个 overview buffer，通过这个buffer，用户可以调用 git 命令，或者创建、浏览其他buffer。
+
+
+The status window will give you an overview of your repository, including: staged/unstaged changes; unpulled/unpushed commits; stashes; and a header containing: local and optional remote, the latest tag, if any; and HEAD.

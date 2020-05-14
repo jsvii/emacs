@@ -1,5 +1,0 @@
-* Intro
-
-** Buffers
-
-- ~Status buffer~ 是一个 overview buffer，通过这个buffer，用户可以调用 git 命令，或者创建、浏览其他buffer。
