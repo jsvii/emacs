@@ -1,0 +1,48 @@
+* reset
+
+The purpose of the ~git reset~ command is to move the current HEAD to the commit specified
+
+git reset 的主旨是将 HEAD 置于某个历史commit
+
+** command
+
+*** --hard
+
+To hard reset files to HEAD on Git, use the ~git reset~ command with the ~–-hard~ option and specify the HEAD.
+
+
+The ~–-hard~ option is used in order to reset the files of the index (or the staging area) and of the working directory.
+
+#+BEGIN_SRC bash
+# going back to HEAD
+$ git reset --hard HEAD
+
+# going back to the commit before HEAD
+$ git reset --hard HEAD^
+
+# going back two commits before HEAD
+$ git reset --hard HEAD~2
+#+END_SRC
+
+- 直接回到某一个版本， ~Working Directory~ 和 ~staging~ 中均无数据。
+
+- ~--hard~ 不可以有用于某一个path
+
+
+*** --soft
+
+
+contrary to the hard reset, the soft reset won’t alter the working directory and the index.
+
+
+*** -mixed
+
+默认是 ~--mixed~ 行为
+
+
+
+
+
+** ref
+
+https://devconnected.com/how-to-git-reset-to-head/
