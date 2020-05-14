@@ -1,0 +1,24 @@
+* git clean
+
+git clean 将会为working tree删除那些没有被版本控制追踪过的文件,它是递归地进行的. 一般情况下,只有git 不知道的文件会被删除. 但如果有了 `-x` 那么一些git ignore的文件也会被删除
+
+
+- 尝试删除, `-n`是 `dry clean`的意思,就是说它只是象征性地告诉你,哪些文件会被删除,这样对于你来说,是非常安全的
+
+#+BEGIN_SRC bash
+git clean -n
+#+END_SRC
+
+- 进行交互地删除,你用命令行,就不必这么搞了
+
+#+BEGIN_SRC bash
+git clean -i
+#+BEGIN_SRC bash
+- `-x` 会忽略那些`.gitignore`,`$/GIT_DIF/info/exclude`下制定的规则,也将忽略的文件删除了,那么,你如果制定过`exclude`规则, 并且配置过很多规则,用于本地的一些测试,那么就很糟了.除非你知道你在做什么,否则不推荐使用
+
+#+BEGIN_SRC bash
+git clean -x
+#+END_SRC
+
+
+- `-f`, `--force`

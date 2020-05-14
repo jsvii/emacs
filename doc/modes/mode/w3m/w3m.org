@@ -1,21 +1,23 @@
-W3M
-===
+* W3M
 
-# 基本的命令
+** 基本的命令
 
-* w3m-goto-url
-`U` url输入后，然后跳转至那个页面
+*** w3m-goto-url
 
-* w3m-previous-buffer
-`C-c C-p`
+~U~ url输入后，然后跳转至那个页面
 
-* w3m-next-buffer
-`C-c C-n`
+*** w3m-previous-buffer
 
-* w3m-goto-url-new-session
+~C-c C-p~
 
-* w3m-bookmark-view-new-session
+*** w3m-next-buffer
 
-* w3m-bookmark-view
+~C-c C-n~
 
-* w3m-bookmark-edit
+*** w3m-goto-url-new-session
+
+*** w3m-bookmark-view-new-session
+
+*** w3m-bookmark-view
+
+*** w3m-bookmark-edit

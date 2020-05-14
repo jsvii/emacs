@@ -1,0 +1,21 @@
+* git-config
+
+- 编辑git repository配置文件
+
+#+BEGIN_SRC bash
+git config -e
+#+END_SRC
+
+- 配置email 与 name
+
+#+BEGIN_SRC bash
+git config --global user.name "Your name"
+git config --global user.email "Your email"
+#+END_SRC
+
+- unset
+
+#+BEGIN_SRC bash
+git config --unset --global user.name
+git config --unset --global user.email
+#+END_SRC

@@ -1,0 +1,21 @@
+* reset
+
+** command
+
+#+BEGIN_SRC bash
+git reset HEAD
+
+git reset HEAD   xxx file
+#+END_SRC
+
+*** -mixed
+
+
+*** --hard
+
+直接退到某个版本，staging区无缓存
+
+
+** ref
+
+https://devconnected.com/how-to-git-reset-to-head/

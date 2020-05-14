@@ -1,12 +1,22 @@
 * modes
 
-** c-h m 查看当前mode的key
+** basic
 
-** emacs enhance
+*** c-h m 查看当前mode的key
+
+*** modes
+
+- major mode
+
+- minor mode
+
+- global minor mode
+
+*** emacs enhance
 
   - helm
 
-** dev tools
+*** dev tools
 
   - magit
 
@@ -14,6 +24,14 @@
 
   - zeal   api in linux
 
-** themes
+*** themes
 
   - dracula-theme
+
+
+** modes index
+
+
+- isearch
+
+- vlf  view large file 查看大文件

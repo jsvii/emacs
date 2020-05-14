@@ -1,0 +1,13 @@
+#+TITLE: Magit User Manual笔记
+
+* Introduction
+
+（略）
+
+* Installation
+
+介绍了通过 ~Melpa~ ， ~Git Repo~ 安装的方法
+
+* Getting Started
+
+*

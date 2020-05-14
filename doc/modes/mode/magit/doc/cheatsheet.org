@@ -1,0 +1,317 @@
+* magit cheatsheett
+
+** 快速命令
+
+*** magit-status
+
+1. ~magit-status~ 会出现一个 magit-mode的buffer，在其中进行 <section movement> 的操作
+
+1. 按 ~?~ 或者 ~h~ 可以出现操作提示
+
+- Untracked files (5)
+
+- Unstaged changes (50)
+
+- Recent commits
+
+
+** Buffer
+
+*** 在 ~Status/Diff/Log Buffer~ 下的操作
+
+~SPC~ update commit/diff buffer or scroll up
+
+~DEL~ update commit/diff buffer or scroll down
+
+- ~h~ show dispatch popup
+
+- ~g~ refresh  更新当前buffer（本质上 ~应该~ 是命令再重复一次）
+
+- ~G~ refresh all  更新
+
+- ~q~ bury current buffer ~(magit-mode-bury-buffer)~  删除当前buffer
+
+- ~L~ toggle margin
+
+- ~x~ soft reset (hard when argument is given)
+
+- ~y~ show references (tags and branches)
+
+- ~Y~ cherry
+
+- ~C-c C-b~ move backward in buffer’s history
+
+- ~C-c C-f~ move forward in buffer’s history
+
+** Section Visibility
+
+~TAB~   toggle body of current section
+
+C-TAB cycle visibility of section and children
+
+M-TAB cycle visibility of diff-related sections
+
+S-TAB cycle visibility of all sections in buffer
+
+| ~C-<tab>~            | cycle visibility of current section and its children              |
+| ~M-<tab>~            | cycle visibility of all diff sections                             |
+| ~s-<tab>~            | cycle visibility of all sections                                  |
+| ~1~, ~2~, ~3~, ~4~         | show surrounding sections up to level N, hide deeper levels       |
+| ~M-1~, ~M-2~, ~M-3~, ~M-4~ | globally show sections up to level N, hide deeper levels          |
+| ~^~                  | goto parent section                                               |
+| ~p~                  | goto beginning of section, from there to previous section         |
+| ~n~                  | goto next section                                                 |
+| ~M-p~                | goto beginning of section, from there to previous sibling section |
+| ~M-n~                | goto next sibling section                                         |
+
+
+
+
+** Section Movement
+
+p previous section
+n next section
+P previous sibling section
+N next sibling section
+ˆ parent section
+
+
+
+
+** Staging
+
+s stage change at point
+u unstage change at point
+S stage all changes in worktree
+U reset index to some commit
+M-x magit-unstage-all remove all changes
+M-x magit-stage-file stage current file
+M-x magit-unstage-file unstage current file
+
+
+
+
+View Git Output
+$ display process buffer for current repository
+k kill process represented by section at point
+
+
+Popups
+! running git
+b branching
+B bisecting
+c committing
+d diffing
+E ediff
+f fetching
+F pulling
+l logging
+m merging
+M remoting
+P pushing
+o submoduling
+r rebasing
+w apply patches
+W format patches
+t tagging
+z stashing
+
+
+Status/Diff/Log Buffer
+e ediff DWIM
+i gitignore
+I gitignore locally
+
+
+References Buffer
+y compare references with HEAD
+c compare references with current branch
+o compare references with other branch
+
+
+Diff Buffer
+RET visit file (or blob) at appropriate position
+C-RET visit file at appropriate position
+− decrease context of diff hunks
++ increase context of diff hunks
+0 reset context of diff hunks to default height
+j jump to diff stat ↔ diff section
+
+
+Blaming
+M-x magit-blame display edit history of file
+RET show the commit at point
+SPC update commit/diff buffer or scroll up
+DEL update commit/diff buffer or scroll down
+n move to the next chunk
+N move to the next chunk (same commit)
+p move to the previous chunk
+P move to the previous chunk (same commit)
+q turn off magit blame mode
+t show or hide blame chunk headings
+
+
+Log Buffer
++ show more history
+C-c C-c select commit at point and act on it
+C-c C-k abort selecting commit
+
+
+Repository Setup
+M-x magit-init initialize a Git repository
+M-x magit-clone clone a repository
+
+
+
+** Section commands
+
+These commands are for navigation and to change the visibility of sections.
+
+
+** Buffer commands
+
+| Key   | Description                                                                     |
+|-------+---------------------------------------------------------------------------------|
+| ~g~     | refresh current buffer and status buffer, possibly revert file-visiting buffers |
+| ~G~     | refresh all Magit buffers and revert all file-visiting buffers in repository    |
+| ~q~     | bury the current Magit buffer, restoring previous window configuration          |
+| ~C-u q~ | kill the current Magit buffer, restoring previous window configuration          |
+
+** Various common commands
+
+| Key | Description                                   |
+|-----+-----------------------------------------------|
+| ~SPC~ | scroll up (1)                                 |
+| ~DEL~ | scroll down (1)                               |
+| ~RET~ | show the thing at point in another buffer (2) |
+| ~j~   | jump somewhere (3)                            |
+| ~$~   | show output of recent calls to git            |
+
+- (1) In most Magit buffers this scrolls the current buffer.
+  In log buffers this instead scrolls the diff buffer shown
+  in another window.
+- (2) What is being shown depends on the context.
+- (3) Where this jumps to depends on the context.
+
+** Various assorted commands
+
+| Key   | Description                   |
+|-------+-------------------------------|
+| ~i~     | add a gitignore rule globally |
+| ~I~     | add a gitignore rule locally  |
+| ~x~     | reset using ~--mixed~           |
+| ~C-u x~ | reset using ~--hard~            |
+
+** Prefix commands
+
+You can use these when you're in the ~magit-status~ buffer. The list below can also be accessed by pressing ~h~, so there's no need to memorize this wiki page. Commands will open popup buffers listing infix arguments and suffix commands.
+
+| Key   | Description          |
+|-------+----------------------|
+| ~A~     | cherry-pick          |
+| ~b~     | branch               |
+| ~B~     | bisect               |
+| ~c~     | commit               |
+| ~d~     | diff                 |
+| ~E~     | ediff                |
+| ~f~     | fetch                |
+| ~F~     | pull                 |
+| ~h~, ~?~  | show popup of popups |
+| ~l~     | log                  |
+| ~m~     | merge                |
+| ~M~     | remote               |
+| ~o~     | submodule            |
+| ~P~     | push                 |
+| ~r~     | rebase               |
+| ~t~     | tag                  |
+| ~T~     | note                 |
+| ~V~     | revert               |
+| ~w~     | apply patches        |
+| ~C-u y~ | list refs (1)        |
+| ~z~     | stash                |
+| ~!~     | run git or gui tool  |
+
+- (1) Actually ~y~ is bound to a popup/prefix command, but it is one of
+  the few popups which default to a suffix command and therefore has to
+  be called with a prefix argument to actually show the popup buffer.
+
+** Applying changes
+
+| Key | Description                    |
+|-----+--------------------------------|
+| ~a~   | apply the change at point      |
+| ~k~   | discard the change at point    |
+| ~s~   | stage the change at point      |
+| ~S~   | stage all unstaged changes     |
+| ~u~   | unstage the change at point    |
+| ~U~   | unstage all staged changes (1) |
+| ~v~   | reverse the change at point    |
+
+- (1) Actually this asks for a commit to reset the index too.  If you
+  just press ~RET~, then what this equivalent to unstaging everything.
+  If that is too confusing then just bind this key to ~magit-unstage-all~.
+
+** Diffing
+
+These commands show diffs or manipulate the diff arguments used to
+generate the diffs in the current buffer.
+
+| Key   | Description                                   |
+|-------+-----------------------------------------------|
+| ~RET~ | (on commit) show commit                       |
+| ~RET~ | (on stash) show stash                         |
+| ~d~   | show diffing popup                            |
+| ~D~   | show popup for changing diff arguments        |
+| ~e~   | use ediff to stage, compare, or stage (dwim)  |
+| ~E~   | show ediffing popup (for when dwimming fails) |
+| ~+~   | show more context lines                       |
+| ~-~   | show less context lines                       |
+| ~0~   | show default amount of context lines (three)  |
+
+** Rebasing
+
+The following commands can be used from the ~magit-rebase-popup~ which is activated using ~r~
+
+| Key   | Description                                   |
+|-------+-----------------------------------------------|
+| ~i~   | Start an interactive rebase sequence.         |
+| ~f~   | Combine squash and fixup commits with their intended targets. |
+| ~m~   | Edit a single older commit using rebase.      |
+| ~w~   | Reword a single older commit using rebase.    |
+| ~k~   | Remove a single older commit using rebase.    |
+
+Whilst performing a rebase the following editing sequences are available.
+
+| Key   | Description                                   |
+|-------+-----------------------------------------------|
+| ~C-c C-c~ | Finish the current editing session by returning with exit code 0. Git then uses the rebase instructions it finds in the file. |
+| ~C-c C-k~ |Cancel the current editing session by returning with exit code 1. Git then forgoes starting the rebase sequence. |
+| ~RET~   | Show the commit on the current line in another buffer and select that buffer. |
+| ~SPC~   | Show the commit on the current line in another buffer without selecting that buffer. If the revision buffer is already visible in another window of the current frame, then instead scroll that window up. |
+| ~DEL~   | Show the commit on the current line in another buffer without selecting that buffer. If the revision buffer is already visible in another window of the current frame, then instead scroll that window down. |
+| ~p~     | Move to previous line.                      |
+| ~n~     | Move to next line.                          |
+| ~M-p~   | Move the current commit (or command) up.    |
+| ~M-n~   | Move the current commit (or command) down.  |
+| ~r~     | Edit message of commit on current line.     |
+| ~e~     | Stop at the commit on the current line.     |
+| ~s~     | Meld commit on current line into previous commit, and edit message. |
+| ~f~     | Meld commit on current line into previous commit, discarding the current commit’s message. |
+| ~k~     | Kill the current action line.               |
+| ~c~     | Use commit on current line.                 |
+| ~x~     | Insert a shell command to be run after the proceeding commit. |
+| ~y~     | Read an arbitrary commit and insert it below current line. |
+| ~C-x u~ | Undo some previous changes. Like undo but works in read-only buffers. |
+
+If a rebase is already in progress then ~magit-rebase-popup~ offers the following commands.
+
+| Key   | Description                                   |
+|-------+-----------------------------------------------|
+| ~r~   | Restart the current rebasing operation.       |
+| ~s~   | Skip the current commit and restart the current rebase operation. |
+| ~e~   | Edit the todo list of the current rebase operation. |
+| ~a~   | Abort the current rebase operation, restoring the original branch. |
+
+** operators
+
+  - https://magit.vc/manual/

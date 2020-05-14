@@ -1,0 +1,71 @@
+* Meta & Super & Hyper
+
+关于meta健的介绍
+
+** ref
+
+- https://askubuntu.com/questions/19558/what-are-the-meta-super-and-hyper-keys
+
+**  Meta & Super & Hyper  介绍
+
+Meta, Super and Hyper are modifier keys that modify the key's function. They are specific to the Symbolics Space Cadet Keyboard used on Lisp machines back in the day. Their function is sometimes emulated using other keys.
+
+Space Cadet Keyboard  [[./Space-cadet.jpg]]
+
+*** Meta
+
+The Meta key is not found on modern keyboards. Its use is sometimes emulated with ~AltGr~ (on some international layouts) or the right ~Alt~ key on the others. In addition:
+
+   1. Sun keyboards have a meta key (◆) as well
+
+   1. Emacs calls Esc the Meta key
+
+*** Super
+
+The Super key is equivalent to the Windows logo key or the ~⌘~ (command) key. In Ubuntu, it's just another name for the Windows logo key.
+
+*** Hyper
+
+Hyper is the fourth (counting Ctrl) and last modifier on the Space cadet keyboard. In Ubuntu, its function is undefined (I think), but it can be mapped, as in the screen shot above, to the windows logo key, should it be needed.
+
+** linux 桌面的实现
+
+
+Note that GNOME and X.org implement many modifiers.
+
+Meta, Super and Hyper are not Linux's way of dealing with any modifier keys, but merely three of them specific to the ~Space Cadet keyboard~. There is also Menu, Compose, AltGr, Greek, Front, X and others.
+
+However, by convention the Windows logo key is called Super, and it is not implemented as yet another modifier by X.org.
+
+Furthermore, the definition of modifier keys depends on:
+
+- The keyboard itself
+
+- The keyboard layout
+
+- The driver
+
+- The operating system's implementation
+
+It's therefore almost impossible to generalise this information. I've tried to be somewhat specific to Gnome/X.org using a Windows-style keyboard with one of the more popular layouts. To test your keyboard, you can run xev - its terminal output will tell you what modifiers have been detected for your keyboard.
+
+Macintosh keyboard keys
+The Macintosh keyboard has a completely different set of modifiers
+
+*** Some additional information:
+
+- The Windows key is also sometimes called Meta. E.g. in KDE.
+
+- The Alt key is sometimes called Option, as this is its equivalent on ~Macintosh keyboards~
+
+- The ~Compose~ key (not a modifier, but ~a dead key~), also called ~Multi~, is often mapped to the Menu key or the right Windows key.
+
+The AltGr key I've mentioned is also called a third-level modifier. Each key on the keyboard has, potentially, four characters on it. The first level is the lowercase, then it goes uppercase, Alt + something, and Alt + Shift + something. For example, the four glyphs on my A key are a, A, æ and Æ.
+
+It's all a mess :-)
+
+As they've been addressed in the comments:
+
+The Fn is not really comparable. It's a hardware key that's not directly interfaceable by the operating systems. Pressing Fn and another key causes an entirely different code to be sent to the operating system. Examples for this include XF86AudioMute, XF86Eject and so on. The Operating system can't detect whether fn is pressed or not.
+
+The SysRq key is traditionally a label on the Print Screen key indicating its function if used with the modifier Alt. It is sometimes, especially on newer notebooks, mapped to Fn+Alt+Print. In Linux, it provides a few Magic shortcuts.

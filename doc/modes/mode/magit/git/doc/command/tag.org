@@ -1,0 +1,22 @@
+* tag
+
+push tags
+#+BEGIN_SRC bash
+git push origin --tags
+#+END_SRC
+
+
+#+BEGIN_SRC bash
+git pull --tags
+#+END_SRC
+
+show all
+
+#+BEGIN_SRC bash
+git show-ref --tags
+
+#+END_SRC
+
+#+BEGIN_SRC bash
+git tag -a v1.4 -m "my version 1.4"
+#+END_SRC

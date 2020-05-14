@@ -1,0 +1,86 @@
+* git ignore
+
+** 小技巧
+
+*** 所有没有扩展名的文件
+
+一般情况下为编译器生成的执行文件
+
+#+BEGIN_SRC text
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+#+END_SRC
+
+*** 忽略
+
+# Unignore all dirs
+!*/
+# Ignore files with extension `.class` & `.sm`
+*.class
+*.sm
+
+# Ignore `bin` dir
+bin/
+# or
+*/bin/*
+
+# Unignore all `.jar` in `bin` dir
+!*/bin/*.jar
+
+# Ignore all `library.jar` in `bin` dir
+*/bin/library.jar
+
+# Ignore a file with extension
+relative/path/to/dir/filename.extension
+
+# Ignore a file without extension
+relative/path/to/dir/anotherfile
+#+END_SRC
+
+
+** sample
+
+#+BEGIN_SRC text
+####################################
+# os x & emacs files
+.DS_Store
+\#*
+\#.*
+
+####################################
+# emacs org export 中间文件
+# tex middle files
+*.aux
+*.log
+*.out
+*.toc
+*.tex
+*.bbl
+*.dvi
+
+####################################
+#  汇编 & C语言文件 C & C++ files
+*.out
+*.o
+
+####################################
+# comporess files
+# zip files
+*.tar.gz
+*.bz2
+*.zip
+
+####################################
+# IntellJ Idea
+*.class
+*.sm
+
+
+####################################
+# 自己的文件约定
+# download
+**/download/**
+temp/
+#+END_SRC

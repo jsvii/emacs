@@ -1,0 +1,38 @@
+* git-rev-parse
+
+- 显示分支
+
+#+BEGIN_SRC bash
+git rev-parse --symbolic --branches
+#+END_SRC
+
+- 显示里程碑
+
+#+BEGIN_SRC bash
+git rev-parse --symbolic --tags
+#+END_SRC
+
+- 显示HEAD所对应的hash值
+
+#+BEGIN_SRC bash
+git rev-parse HEAD
+#+END_SRC
+
+- 显示.git的文件的位置
+
+
+#+BEGIN_SRC bash
+git rev-parse --git-dir
+#+END_SRC
+
+- 显示当前git repository 的根目录
+
+#+BEGIN_SRC bash
+git rev-parse --show-prefix
+#+END_SRC
+
+- 显示当前目录相对于根目录的位置
+
+#+BEGIN_SRC bash
+git rev-parse --show-cdup
+#+END_SRC

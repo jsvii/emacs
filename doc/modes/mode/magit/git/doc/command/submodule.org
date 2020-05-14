@@ -1,0 +1,9 @@
+* submodule
+
+git submodule add http://xxx.git assets
+
+查看
+
+git submodule
+
+git submodule update
