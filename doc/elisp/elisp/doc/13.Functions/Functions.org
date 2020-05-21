@@ -1,0 +1,15 @@
+* Functions
+
+
+** Lambda Expression
+
+
+*** Other Features of Argument Lists
+
+The complete syntax for an argument list is as follows:
+
+#+BEGIN_SRC elisp
+(required-vars...
+ [&optional optional-vars...]
+ [&rest rest-var])
+#+END_SRC

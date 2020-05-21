@@ -1,0 +1,44 @@
+* Simple New Commands
+
+
+** Traversing Windows
+
+
+*** Defining other-window-backward
+
+*** Parameterizing other-window-backward
+
+*** Making the Argument Optional
+
+** Line-at-a-Time Scrolling
+
+** Other Cursor and Text Motion Commands
+
+** Clobbering Symbolic Links
+
+*** Hooks
+
+Hook 是什么：一个函数组成的数组。
+
+A hook is an ordinary Lisp variable whose value is a list of functions that get executed under specific conditions.
+
+There are many more hooks, some of which we'll be looking at later in the book. To discover what hooks are available, try ~M-x apropos RET hook RET~
+
+#+BEGIN_SRC elisp
+(defun read-only-if-symlink ()
+  (if (file-symlink-p buffer-file-name)
+      (progn
+        (setq buffer-read-only t)
+        (message "File is a symlink"))))
+
+(add-hook 'find-file-hooks 'read-only-if-symlink)
+#+END_SRC
+
+** Advised Buffer Switching
+
+** Addendum Raw Prefix Argument
+
+Return position at which display currently starts in WINDOW.
+WINDOW must be a live window and defaults to the selected one.
+This is updated by redisplay or by calling ‘set-window-start’.
+This function does not change global state, including the match data.

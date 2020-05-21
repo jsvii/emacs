@@ -1,54 +1,11 @@
-* Customizing Emacs
+* 什么时候用到quote
 
-本章主要介绍emacs的基本自定义方法。
+https://stackoverflow.com/questions/134887/when-to-use-or-quote-in-lisp
 
-
-** lisp
-
- - fully-parenthesized prefix notation
-
- - list data type
-
- - garbage collection
-
-  Emacs uses a mark-and-sweep garbage collection scheme, which is one of the easiest ways to implement garbage collection.
-
-  There are other approaches to implementing garbage collection that would not be so intrusive from the user's point of view; for instance, so-called "incremental" garbage collection can take place without bringing Emacs to a halt. Unfortunately, Emacs does not employ one of these more advanced approaches.
-
-*** lisp的垃圾回收(TODO)
-
-** Keys and Strings
-
-*** notation
-
-  - =META= 表示为 =\M-=
-
-  - =CONTROL-x=  表示为 =C- x= 或者 =\C-x= 或者 =\^x=
-
-***  binding keystrokes to commands
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key keysequence command)
-#+END_SRC
-
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key "\M-?" 'help-command)
-#+END_SRC
-
-**** 什么时候用到quote
-
-书中引用了一个反例
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key "\M-?" help-command)
-#+END_SRC
 
 再来一次总结，什么时候使用到quote
 
-***** 简单的总结
-
-****** Short answer
+** 简单的总结 Short answer
 
 Bypass the default evaluation rules and do not evaluate the expression (symbol or s-exp), passing it along to the function exactly as typed.
 
@@ -64,7 +21,7 @@ Bypass the default evaluation rules and do not evaluate the expression (symbol o
 (describe #'add1)
 #+END_SRC
 
-****** Long Answer: The Default Evaluation Rule
+** Long Answer: The Default Evaluation Rule
 
 When a regular (I'll come to that later) function is invoked, all arguments passed to it are evaluated. This means you can write this:
 

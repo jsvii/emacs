@@ -1,47 +1,8 @@
-* Basic
-
-** emacs basic
-
-
-
-
-
-*** 如何执行
-
-- M-x load-file
-
-- C-x C-e  （eval-last-sexp）
-
-- M-: eval
-
-- C-j  eval-print-last-expr the buffer is in Lisp Interaction mode. In this mode, pressing C-j invokes eval-print-last-sexp, which is like eval-lastsexp except that the result of the evaluation is inserted into the buffer at the location of the cursor.
-
-*** apropos
-
-The answer is to use the apropos command, which allows you to search all known variables and functions for a pattern you specify.
-
-M-x apropos
-
-C-u M-x apropos 显示更多的bind key
-
-*** parameter vs argument
-
-What's the difference between a "parameter" and an "argument"? The terms are usually used interchangeably, but technically speaking, "parameter" refers to the variable in the fucntion definition, while "argument" is the value that gets passed in when the function is called. the value of the argument is assigned to the parameter.
-
-** functions
-
-
-** quote
-
-(quote x)
-
-'x
-
-** defvar
+* defvar
 
 它与 setq 所不同的是，如果变量在声明之前，这个变量已经有一个值的话，用 defvar 声明的变量值不会改变成声明的那个值。另一个区别是 defvar 可以为变量提供文档字符串，当变量是在文件中定义的话，C-h v 后能给出变量定义的位置。比如：
 
-*** TL;DR 小案例
+** TL;DR 小案例
 
 There are several ways to introduce variables.
 

@@ -1,0 +1,54 @@
+* Customizing Emacs
+
+本节介绍emacs的基本配置，并介绍一些Emacs lisp的概念。
+
+** Backspace and Delete
+
+** lisp 介绍
+
+ - fully-parenthesized prefix notation
+
+ - list data type
+
+ - garbage collection
+
+  Emacs uses a mark-and-sweep garbage collection scheme, which is one of the easiest ways to implement garbage collection.
+
+  There are other approaches to implementing garbage collection that would not be so intrusive from the user's point of view; for instance, so-called "incremental" garbage collection can take place without bringing Emacs to a halt. Unfortunately, Emacs does not employ one of these more advanced approaches.
+
+*** lisp的垃圾回收(TODO)
+
+** Keys and Strings
+
+*** notation
+
+- =META= 表示为 =\M-=
+
+- =CONTROL-x=  表示为 =C- x= 或者 =\C-x= 或者 =\^x=
+
+***  binding keystrokes to commands
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key keysequence command)
+#+END_SRC
+
+** To What Is C-h Bound
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\M-?" 'help-command)
+#+END_SRC
+
+** To What Should C-h be bound
+
+~C-h b~ 会显示当前绑定的key
+
+
+** Evaluating Lisp Expressions
+
+1. ~M-x load-file RET rebind.el RET~
+
+1. ~eval-last-sexp~ ~C-x C-e~
+
+1. ~eval-print-last-sexp~ 或者 C-j
+
+1. ~eval-expression~ 或者 ~M-:~
