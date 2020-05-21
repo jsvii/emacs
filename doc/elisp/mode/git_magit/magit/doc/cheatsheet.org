@@ -2,19 +2,6 @@
 
 ** 快速命令
 
-*** magit-status
-
-~magit-status~ 会出现一个 magit-mode的buffer，在其中进行 <section movement> 的操作。按 ~?~ 或者 ~h~ 可以出现操作提示
-
-会出现下面一个列表：
-
-#+BEGIN_SRC bash
-Untracked files (5)    未被跟踪的文件
-Unstaged changes (50)  工作区改变的文件
-Staged changes (50)    Staging 的文件
-Recent commits　　　　 Commits 列表
-#+END_SRC
-
 
 ** Buffer
 

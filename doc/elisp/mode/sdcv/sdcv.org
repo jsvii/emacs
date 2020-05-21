@@ -1,0 +1,44 @@
+* sdcv
+
+
+sdcv mode defined in ‘sdcv.el’:
+Major mode to look up word through sdcv.
+key             binding
+---             -------
+
+SPC             scroll-up
+?               describe-mode
+A               hide-body
+I               sdcv-search-input+
+J               sdcv-scroll-up-one-line
+K               sdcv-scroll-down-one-line
+M               Prefix Command
+P               sdcv-search-pointer+
+R               isearch-backward-regexp
+S               isearch-forward-regexp
+V               hide-entry
+a               show-all
+e               scroll-down
+h               backward-char
+i               sdcv-search-input
+j               sdcv-next-line
+k               sdcv-prev-line
+l               forward-char
+p               sdcv-search-pointer
+q               sdcv-quit
+r               isearch-backward
+s               isearch-forward
+v               show-entry
+
+M -             Prefix Command
+
+M - g           Prefix Command
+
+M - g SPC       Prefix Command
+
+M - g SPC M     Prefix Command
+
+M - g SPC M -   Prefix Command
+
+M - g SPC M - n                 sdcv-next-dictionary
+M - g SPC M - p                 sdcv-previous-dictionary

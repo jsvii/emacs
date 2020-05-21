@@ -1,8 +1,29 @@
 * Intro
 
-** Buffers
+** status buffer
 
-- ~Status buffer~ 是一个 overview buffer，通过这个buffer，用户可以调用 git 命令，或者创建、浏览其他buffer。
+~Status buffer~ 是一个 overview buffer，通过这个buffer，用户可以调用 git 命令，或者创建、浏览其他buffer。
+
+*** magit-status
+
+~magit-status~ 会出现一个 magit-mode的buffer，。按 ~?~ 或者 ~h~ 可以出现操作提示
+
+会出现下面一个列表：
+
+#+BEGIN_SRC bash
+HEADER  master         HEAD
+Untracked files (5)    未被跟踪的文件
+Unstaged changes (50)  工作区改变的文件
+Staged changes (50)    Staging 的文件
+Recent commits　　　　 Commits 列表
+#+END_SRC
+
+~[TODO]~ The status window will give you an overview of your repository, including: staged/unstaged changes; unpulled/unpushed commits; stashes; and a header containing: local and optional remote, the latest tag, if any; and HEAD.
 
 
-The status window will give you an overview of your repository, including: staged/unstaged changes; unpulled/unpushed commits; stashes; and a header containing: local and optional remote, the latest tag, if any; and HEAD.
+** section movement
+
+section movement是指在各类 buffer 下的操作
+
+
+在其中进行 <section movement> 的操作

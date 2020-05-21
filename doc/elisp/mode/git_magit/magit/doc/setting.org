@@ -1,0 +1,11 @@
+* setting 自定义选项
+
+** magit-repository-directories
+
+#+BEGIN_SRC elisp
+(setq magit-repository-directories
+  `(("~/workspace/bamboo/" . 1)
+    ("~/workspace/bitbucket/" . 1)
+    ("~/workspace/gitlab/" . 2)
+    (,user-emacs-directory . 1)))
+#+END_SRC
