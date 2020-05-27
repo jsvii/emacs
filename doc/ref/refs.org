@@ -18,9 +18,9 @@
 
 **** Tutorial Videos
 
-- https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g　 youtube之中的教程，很基础
+- https://cestlaz.github.io/ C'EST LA Z 的一系列emacs视频
 
-- https://cestlaz.github.io/ 相当不错的视频
+- https://www.youtube.com/channel/UCDEtZ7AKmwS0_GNJog01D2g　 youtube之中的教程，很基础
 
 - https://www.youtube.com/watch?v=WLkFAtgEWs8 lsp 设置
 
