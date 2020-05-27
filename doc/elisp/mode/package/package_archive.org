@@ -20,3 +20,10 @@ Recipes and build machinery for the biggest Emacs package repo
 ** packages
 
 - MELPA (Milkypostman's Emacs Lisp Package Archive)
+
+
+* FAQ
+
+** 无法安装
+
+~pacakge-list-packages~ 似乎与git有关，改变了gitconfig中的代理，就可以正常

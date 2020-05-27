@@ -1,6 +1,10 @@
 * defvar
 
-它与 setq 所不同的是，如果变量在声明之前，这个变量已经有一个值的话，用 defvar 声明的变量值不会改变成声明的那个值。另一个区别是 defvar 可以为变量提供文档字符串，当变量是在文件中定义的话，C-h v 后能给出变量定义的位置。比如：
+它与 setq 所不同的是：
+
+1. Emacs tells you that defvar allows attaching a doc string, and that if the variable already has a value then it does nothing.如果变量在声明之前，这个变量已经有一个值的话，用 defvar 声明的变量值不会改变成声明的那个值。
+
+1. 另一个区别是 defvar 可以为变量提供文档字符串，当变量是在文件中定义的话，C-h v 后能给出变量定义的位置。
 
 ** TL;DR 小案例
 
@@ -20,7 +24,6 @@ BAD:
 #+BEGIN_COMMENT
 为什么会出现这种情况？
 这里面有个dynamic scoping 机制，
-
 #+END_COMMENT
 
 
@@ -58,6 +61,7 @@ Local variables are introduced with DEFUN, LAMBDA, LET, MULTIPLE-VALUE-BIND and 
 #+BEGIN_SRC elisp
 (defun foo (i-am-a-local-variable)
    (print i-am-a-local-variable))
+
 (let ((i-am-also-a-local-variable 'hehe))
   (print i-am-also-a-local-variable))
 #+END_SRC
