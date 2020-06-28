@@ -1,0 +1,11 @@
+* replace
+
+
+
+**  M-x replace-regexp invokes the function to replace with regular expressions.
+
+  For Replace regexp enter: \(file\)_\([0-9]+\)
+
+  This will create two groups, one that matches the 'file' part, and one that matches the number. The braces \( ... \) are necessary to make the match available later in the replacement string.
+
+  For Replace with enter: \2_\1

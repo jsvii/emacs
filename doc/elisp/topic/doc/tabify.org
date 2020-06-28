@@ -1,0 +1,7 @@
+* tab
+
+To replace tabs with the appropriate number of spaces, use ~M-x untabify~.
+
+To do the reverse and convert multiple spaces to tabs, you can use ~M-x tabify~.
+
+Both commands work on a region. To run on the whole buffer use a prefix argument (i.e. C-u M-x untabify).

@@ -8,10 +8,14 @@ https://www.emacswiki.org/emacs/EmacsTags
 
 #+BEGIN_SRC bash
 etags ./lib/*.lisp ./level-0/*.lisp  ./level-1/*.lisp
-#+END_SRC
 
-#+BEGIN_SRC bash
 find . -regex ".*\.[cChH]\(pp\)?" -print | etags -
+
+etags `find . -name "*.[chS]"`
+# 用这条也行
+find . -name "*.[chS]" | xargs etags
+
+find . -name "*.[chS]" -o -name "*.cc" | xargs etags
 #+END_SRC
 
 *** ctags vs etags

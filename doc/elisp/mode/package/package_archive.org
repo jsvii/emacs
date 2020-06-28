@@ -22,6 +22,43 @@ Recipes and build machinery for the biggest Emacs package repo
 - MELPA (Milkypostman's Emacs Lisp Package Archive)
 
 
+*** package-archives
+
+~package-archives~ is a variable defined in ‘package.el’.
+
+An alist of archives from which to fetch. The default value points to the GNU Emacs package repository.
+
+Its value is
+#+BEGIN_SRC elisp
+(("gnu" . "https://elpa.gnu.org/packages/")
+ ("melpa" . "https://melpa.org/packages/"))
+#+END_SRC
+
+
+
+** package-initialize
+
+package-initialize is an interactive autoloaded compiled Lisp function
+
+*** 自动生成 ~<package-name>-autoloads.el~ 文件
+
+~<package-name>-autoloads.el~ 文件由package.el自动生成
+
+https://stackoverflow.com/questions/26348561/how-to-generate-autoloads-for-elpa-packages
+
+~TL;DR~: You likely need to add ~(package-initialize)~ to your init file.
+
+You do not need to generate autoloads for your packages. The package manager does that automatically upon installation. You'll find the corresponding -autoloads.el files in the package directories of your ~/.emacs.d/elpa/ directory.
+
+You also do not need to require every package. Like every other Emacs Lisp file, however, the autoload files of installed packages need to be loaded (confusing, I know) before the autoload declarations contained therein are available.
+
+The Emacs package manager automatically loads the autoloads file of a package, when it “activates” a package. Emacs also automatically initializes the package manager and activates all installed packages, but only after your init.el was processed.
+
+Hence, packages (and this their autoloads as well) are not available while your init.el is loaded, so you can't use packages in your init.el.
+
+To address this, you can either postpone all your setup to after-init-hook, or force Emacs to initialize the package manager by adding (package-initialize) at the top of your init file.
+
+
 * FAQ
 
 ** 无法安装

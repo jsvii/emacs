@@ -1,0 +1,12 @@
+* replace
+
+** 基本操作
+
+1. replace-string
+
+1. replace-regexp (可以先用 ~isearch-forward-regexp~ 来进行验证正则)
+
+
+*** 替换捕获
+
+~\(file\)_\([0-9]+\)~ 用捕获的对象进行替换:  ~\2_\1~

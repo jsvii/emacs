@@ -1,27 +1,20 @@
 * ansi term
 
-  2019-12-21 结论：感觉不太好用
+2019-12-21 结论：感觉不太好用
 
 AnsiTerm
 
-This is a terminal emulator written in EmacsLisp. Now you can run vi (or mutt! (see MuttInEmacs) (or Emacs!
-😊)) in an Emacs buffer!
+This is a terminal emulator written in EmacsLisp. Now you can run vi (or mutt! (see MuttInEmacs) (or Emacs! 😊)) in an Emacs buffer!
 
-** Start ansi-term with ‘M-x ansi-term’.
+** Start ansi-term with ~M-x ansi-term~.
 
+Historically,  ~M-x ansi-term~ differed from ~M-x term~ in that _the latter couldn't render colors_ . These days (ref) the latter has caught up, so the main practical difference is now that _ansi-term uses ~C-x~ for a prefix key_, while _term_sticks with only the older ~C-c~ binding_ . They also use slightly different buffer names.
 
-Historically,  ~M-x ansi-term~ differed from ~M-x term~ in that _the latter couldn’t render colors_ . These
-days (ref) the latter has caught up, so the main practical difference is now that _ansi-term uses ~C-x~ for
-a prefix key_, while _term_sticks with only the older ~C-c~ binding_ . They also use slightly different buffer
-names.
-
-In Emacs 22, try prefixing actions that aren’t recognized by their standard key commands with ‘C-x’. For
-example, ‘M-x’ becomes ‘C-x M-x’.
+In Emacs 22, try prefixing actions that aren't recognized by their standard key commands with ~C-x~. For example, ~M-x~ becomes ~C-x M-x~.
 
 For more configuration options see AnsiTermHints
 
-NB: While ‘ansi-term’ and ‘term’ are closely related to each other, they shouldn’t be confused with the
-entirely separate (and obsolete as of 24.4) terminal.el package which provides ‘M-x terminal-emulator’.
+NB: While ~ansi-term~ and ~term~ are closely related to each other, they shouldn't be confused with the entirely separate (and obsolete as of 24.4) terminal.el package which provides ~M-x terminal-emulator~.
 
 ** 怎样scroll查看
 

@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "biwastudy",
+      "type": "node",
+      "program": "node",
+      "args": "./main.js",
+      "inspect-brk": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+* shell
+
+
+Three excellent shell choices, all with their own advantages and disadvantages.
+
+- If you’re looking for a faithful emulator, then ~ansi-term~ is the choice for you;
+
+- if you are more interested in a dumb terminal that behaves like an Emacs buffer then use ~shell~;
+
+- if you want something fancier that you can tweak and customize like Emacs itself, ~eshell~ may be the right shell for you.
+
+Whatever the case, the shells above should eliminate almost all external terminal emulators for all but the most complex interactive programs out there.
