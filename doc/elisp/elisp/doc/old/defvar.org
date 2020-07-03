@@ -1,5 +1,0 @@
-* defvar
-
-defvar is a ~special form~ in ‘C source code’.
-
-这是最基本的变量定义
