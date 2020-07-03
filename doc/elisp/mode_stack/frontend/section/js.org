@@ -1,0 +1,47 @@
+* js
+
+** main
+
+- js2-mode
+
+- rjsx-mode major mode real jsx mode
+
+- Indium  A JavaScript development environment for Emacs. javascript Debug工具
+
+- prettierjs
+
+
+** rjsx-mode
+
+js2-mode的扩展
+
+
+** flow
+
+https://github.com/Fuco1/flow-js2-mode
+
+** debug
+
+*** Indium
+
+**** steps
+
+#+BEGIN_SRC bash
+npm install -g indium
+#+END_SRC
+
+#+BEGIN_SRC elisp
+M-x package-install [RET] indium [RET]
+#+END_SRC
+
+更多内容，请参见 ~Extension/indium~
+
+
+**** docs
+
+- github repo: https://github.com/NicolasPetton/Indium
+
+- manual https://indium.readthedocs.io/
+
+
+*** tide
