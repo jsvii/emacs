@@ -1,3 +1,0 @@
-* downloads
-
-- https://github.com/alphapapa/emacs-package-dev-handbook

@@ -1,0 +1,15 @@
+[submodule "assets/racer"]
+	path = assets/racer
+	url = https://github.com/racer-rust/racer.git
+[submodule "assets/emacs-racer"]
+	path = assets/emacs-racer
+	url = https://github.com/racer-rust/emacs-racer.git
+[submodule "assets/emacs-package-dev-handbook"]
+	path = assets/emacs-package-dev-handbook
+	url = https://github.com/alphapapa/emacs-package-dev-handbook.git
+[submodule "assets/cargo"]
+	path = assets/cargo
+	url = https://github.com/kwrooijen/cargo.el.git
+[submodule "assets/js2-mode"]
+	path = assets/js2-mode
+	url = https://github.com/mooz/js2-mode.git

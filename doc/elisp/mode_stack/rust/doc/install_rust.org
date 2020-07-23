@@ -1,0 +1,76 @@
+* rust
+
+
+
+
+
+rustup toolchain add nightly
+
+cargo +nightly install racer
+
+rustup component add rust-src
+
+
+
+
+默认它会把Rust装到你的~/.rustup 里，依赖库下载到~/.cargo 里。需要修改的话，设置环境变量RUSTUP_HOME 和 CARGO_HOME 分别修改这两个值;
+
+配置代理#1：国内有些地区访问Rustup的服务器不太顺畅，可以配置中科大的Rustup镜像：设置环境变量
+
+#+BEGIN_SRC bash
+export RUSTUP_DIST_SERVER=http://mirrors.ustc.edu.cn/rust-static
+export RUSTUP_UPDATE_ROOT=http://mirrors.ustc.edu.cn/rust-static/rustup
+#+END_SRC
+
+
+假设你是Windows环境，打算编译64位程序，你应该用的是：
+x86_64-pc-windows-msvc 或 x86_64-pc-windows-gnu。
+这两个各有优缺点：
+第一个是基于微软的链接器的，稳定性比较好，缺点是依赖的第三方库比较难弄，而且安装时你还需要再装一个微软的Visual C++ Build Tools(也要安装其中的Windows SDK；如果你机器上有Visual Studio就不用装Build Tools了)；到这里去下载 http://landinghub.visualstudio.com/visual-cpp-build-tools ，装2015或者2017的。
+第二个是基于gnu开发工具的windows移植版本的，潜在的bug会多一些，但是第三方库反而容易弄(MSYS2的问题回头再说)
+如果需要的话，可以两个都装的，这里你选一个版本就好
+
+
+
+设置环境变量：请把你的CARGO_HOME目录下的.bin目录(默认是~/.cargo/bin)加到你的PATH环境变量里（有人说现在的rustup能自行执行此步了，你可以先重新开一个shell，用下面的验证方法验证一下，如果已经好了，就不需要了）
+举例：Windows： PATH=C:\Users\@@@\.cargo\bin;<旧的PATH的值，用分号隔开>
+举例：Mac & Linux： export PATH=~/.cargo/bin:$PATH
+验证：在命令行里输入 rustc +stable --version，显示类似 rustc 1.18.0 (03fc9d622 2017-06-06) 这样的结果
+配置代理#2：国内有些地方连访问github都不太顺畅，那么你编译软件下载依赖的时候会卡住。这个时候可以设置cargo用的镜像：在你的CARGO_HOME目录下(默认是~/.cargo)建立一个名叫config没有扩展名【切记，没有扩展名！】的文件，内容如下：
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = 'ustc'
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+（有人的网络环境受限，没有办法以git协议访问外网，请把上一行里的git://换成https://或者http://）
+验证：在命令行中运行 cargo install cargo-release，会成功安装一个小程序
+第一次下载的时候会很慢，因为有大约四百兆的初始索引数据要下载。
+【时间关系，后面的事务先列个提纲，后面再扩写】
+
+安装Rustfmt、Clippy、RLS
+请确保你的rustup 版本 >= 1.16【对2018年之前就开始使用Rust的用户重要】
+如果之前在低于1.16的rustup版本升级了从小于1.31的rustc升级到了大于等于1.31的rustc，请删除toolchain 重新安装。
+如果你在VSCode下写Rust，装好了rustup的话直接去VSCode里装插件，它可以帮你搞定它需要的部分【2018年1月注】
+rustup component add rust-src
+rustup component add rustfmt
+rustup component add clippy
+rustup component add rust-analysis
+rustup component add rls
+每个toolchain都有自己的一套以上工具，如果要给非默认toolchain安装，加上--toolchain 参数，比如--toolchain nightly 或者 --toolchain stable-msvc。
+现在的RLS已经可以自己给自己设置RUST_SRC_PATH了。以下环境变量一般不用添加。设置的话，其中的nightly注意根据你使用的toolchain更换。
+RUST_SRC_PATH=C:\Users\CrLF0710\.rustup\toolchains\nightly-x86_64-pc-windows-gnu\src
+配置 IDE 环境
+基于RLS的环境 - VSCode
+安装Rust插件(Rust (rls) - Visual Studio Marketplace)
+安装调试插件(Native Debug - Visual Studio Marketplace)
+安装GDB（用于gnu版）/WinDBG（用于msvc版）
+配置调试插件
+基于RLS的环境 - Visual Studio 2017 15.8+
+安装(Rust - Visual Studio Marketplace)
+基于Intellij-idea的环境（JetBrains的所有产品，但是只有CLion支持调试）
+安装Rust插件（https://github.com/intellij-rust/intellij-rust）
+旧的基于Racer的补全已不推荐使用。
+
+
+
+https://wiki.jikexueyuan.com/project/rust-primer/

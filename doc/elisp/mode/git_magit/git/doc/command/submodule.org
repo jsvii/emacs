@@ -7,3 +7,9 @@ git submodule add http://xxx.git assets
 git submodule
 
 git submodule update
+
+
+#+BEGIN_SRC bash
+# 更新所有的
+git submodule update --init --recursive
+#+END_SRC
