@@ -1,0 +1,5 @@
+* packages
+
+use-package 与 require的区别
+
+~(use-package foo)~ is a macro call that expands to ~(require 'foo)~ plus some house-keeping like reporting long load times.

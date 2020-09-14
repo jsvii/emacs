@@ -1,5 +1,10 @@
 * load vs require
 
+load每次都执行
+
+
+require 只执行一次
+
 
 if you load a library repeatedly, that file will be read and its code evaluated repeatedly (each and every time you load it).
 

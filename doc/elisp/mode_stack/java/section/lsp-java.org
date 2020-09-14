@@ -1,16 +1,14 @@
 * lsp-java 相关的
 
-
 ** 主要步骤
 
 *** 依赖说明
 
-  - treemacs & lsp-treemacs
+- treemacs & lsp-treemacs
 
-  - lsp-ui
+- lsp-ui
 
-  - lsp-java
-
+- lsp-java
 
 #+BEGIN_SRC emacs-lisp
 (require 'cc-mode)
