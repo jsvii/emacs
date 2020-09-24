@@ -1,0 +1,64 @@
+* flycheck
+
+** 介绍
+
+
+1. Flycheck runs the external program as an asynchronous process using ~start-process~. While this process runs, Flycheck simply accumulates its output.
+
+1. When the process exits, Flycheck parses its output in order to collect the errors. The raw output is turned into a list of *flycheck-error* objects containing, among others, the filename, line, column, message and severity of the error.
+
+1. Flycheck then filters the collected errors to keep only the relevant ones. For instance, errors directed at other files than the one you are editing are discarded. The exact sementics of which errors are relevant is defined in flycheck-relevant-error-p.
+
+1. Relevant errors are highlighted by Flycheck in the buffer, according to user preference. By default, each error adds a mark in the fringe at the line it occurs, and underlines the symbol at the position of the error using overlays.
+
+1. Finally, Flycheck rebuilds the error list buffer.
+
+** commanders
+
+*** 手动修改checker
+
+- flycheck-select-checker
+
+其他相关的command
+
+- flycheck-describe-checker
+
+
+**** 建议使用 add-dir-local-variable 来定义lint
+
+We recommend to set flycheck-checker via directory local variables to enforce a specific syntax checker for a project.
+
+For instance, Flycheck usually prefers javascript-eslint for Javascript buffers, but if your project uses javascript-jshint instead you can tell Flycheck to use javascript-jshint for all Javascript buffers of your project with the following command in the top-level directory of your project:
+
+#+BEGIN_SRC bash
+M-x add-dir-local-variable RET js-mode RET flycheck-checker RET javascript-jshint.
+#+END_SRC
+
+文件 ~dir-locals.el~
+
+#+BEGIN_SRC emacs-lisp
+((typescript-mode
+  (flycheck-checkers . javascript-eslint)))
+#+END_SRC
+
+A new buffer pops up that shows the newly created entry in the directory variables. Save this buffer and kill it. From now on Flycheck will check all Javascript files of this project with JSHint.
+
+
+*** 禁用 checker
+
+使用命令：
+
+- flycheck-disable-checker
+
+自定义不作检查的mode
+
+#+BEGIN_SRC emacs-lisp
+(setq-default flycheck-disabled-checkers '(c/c++-clang))
+#+END_SRC
+
+
+*** 修改执行文件
+
+一般很难用到
+
+- flycheck-set-checker-executable

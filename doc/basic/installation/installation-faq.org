@@ -1,0 +1,7 @@
+* 编译相关问题
+
+** 如何查看编译选项
+
+- system-configuration-features  String listing some of the main features this Emacs was compiled with.
+
+- system-configuration-options

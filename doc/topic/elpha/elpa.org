@@ -1,0 +1,19 @@
+#+TITLE: ELPA -- GNU Emacs Lisp Package Archive
+
+* ELPA
+
+** mirrors
+
+- GNU ELPA Milkypostman’s Emacs Lisp Package Archive 最大的emacs仓库 http://elpa.emacs-china.org/gnu/
+
+- MELPA http://elpa.emacs-china.org/melpa/
+
+- MELPA Stable http://elpa.emacs-china.org/melpa-stable/
+
+- Marmalade http://elpa.emacs-china.org/marmalade/
+
+- Org http://elpa.emacs-china.org/org/
+
+- Sunrise Commander ELPA http://elpa.emacs-china.org/sunrise-commander/
+
+- user42 ELPA http://elpa.emacs-china.org/user42/

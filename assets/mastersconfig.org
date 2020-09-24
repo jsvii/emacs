@@ -1,0 +1,11 @@
+#+TITLE: 大师的emacs配置
+
+* configs
+
+- https://github.com/purcell/emacs.d
+
+- https://github.com/bbatsov/prelude.git
+
+- https://github.com/eschulte/emacs24-starter-kit.git
+
+- https://github.com/syl20bnr/spacemacs.git

@@ -1,0 +1,7 @@
+#+TITLE: basic
+
+本文只记录emacs基本的操作，不涉及以下内容：
+
+- installation 安装相关
+
+- operation 一系列的操作

@@ -1,4 +1,12 @@
-* topic
+* Emacs 相关主题
+
+- eclip 代码库系统
+
+- emacs设置为一种服务 emacs-as-service.org
+
+- load 与require 的区别 load_require.org
+
+- 基本的函数与变量 function.org variable.org
 
 ** intro
 

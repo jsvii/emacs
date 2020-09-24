@@ -18,7 +18,7 @@ zypper in autoconf gcc make
 
 zypper in  gnutls libgnutls-devel ncurses-devel
 # 纯命令行
-./configure --with-x=no --without-xpm --without-jpeg --without-tiff --without-png --without-rsvg --with-x-toolkit=no --without-sound --with-gnutls --with-mailutils
+./configure --with-x=no --without-xpm --without-jpeg --without-tiff --without-png --without-rsvg --with-x-toolkit=no --without-sound --with-gnutls --with-mailutils --with-modules
 
 # install
 make
@@ -33,7 +33,7 @@ zypper in autoconf gcc make
 # X development libraries
 zypper in ncurses-devel giflib-devel libjpeg62 libjpeg62-devel libtiff-devel  gtk2-devel libXpm-devel gnutls libgnutls-devel libxml2-devel
 
-./configure --with-gnutls --with-mailutils --with-imagemagick
+./configure --with-gnutls --with-mailutils --with-imagemagick  --with-modules
 
 # install
 make
