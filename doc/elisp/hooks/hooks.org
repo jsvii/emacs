@@ -1,0 +1,797 @@
+* hooks
+
+Here's a complete list of emacs hook variables, as of GNU Emacs 27.1 , 2020-08-11.
+
+Note: your list may be shorter or longer, depending on what packages you've loaded.
+
+You can list them in your copy of emacs by:
+
+~Alt+x apropos-variable~ then type ~-hook~ .
+
+- Buffer-menu-mode-hook
+
+- Custom-mode-hook
+
+- Info-mode-hook
+
+- Info-selection-hook
+
+- abbrev-mode-hook
+
+- activate-mark-hook
+
+- after-change-major-mode-hook
+
+- after-init-hook
+
+- after-revert-hook
+
+- after-save-hook
+
+- after-set-visited-file-name-hook
+
+- after-setting-font-hook
+
+- apropos-mode-hook
+
+- authinfo-mode-hook
+
+- auto-composition-mode-hook
+
+- auto-compression-mode-hook
+
+- auto-encryption-mode-hook
+
+- auto-fill-mode-hook
+
+- auto-lower-mode-hook
+
+- auto-raise-mode-hook
+
+- auto-revert-load-hook
+
+- auto-revert-mode-hook
+
+- auto-revert-tail-mode-hook
+
+- auto-save-hook
+
+- auto-save-mode-hook
+
+- auto-save-visited-mode-hook
+
+- awk-mode-hook
+
+- before-hack-local-variables-hook
+
+- before-init-hook
+
+- before-make-frame-hook
+
+- before-revert-hook
+
+- before-save-hook
+
+- binary-overwrite-mode-hook
+
+- blink-cursor-mode-hook
+
+- bookmark-after-jump-hook
+
+- bookmark-bmenu-mode-hook
+
+- bookmark-edit-annotation-mode-hook
+
+- bookmark-exit-hook
+
+- bookmark-load-hook
+
+- browse-url-of-file-hook
+
+- buffer-list-update-hook
+
+- c++-mode-hook
+
+- c--unsafe-post-self-insert-hook-functions
+
+- c-initialization-hook
+
+- c-mode-common-hook
+
+- c-mode-hook
+
+- c-special-indent-hook
+
+- change-major-mode-after-body-hook
+
+- change-major-mode-hook
+
+- cl-old-struct-compat-mode-hook
+
+- clone-buffer-hook
+
+- clone-indirect-buffer-hook
+
+- column-number-mode-hook
+
+- comint-exec-hook
+
+- comint-mode-hook
+
+- compilation-filter-hook
+
+- compilation-minor-mode-hook
+
+- compilation-mode-hook
+
+- compilation-shell-minor-mode-hook
+
+- compilation-start-hook
+
+- completion-in-region-mode-hook
+
+- completion-list-mode-hook
+
+- completion-setup-hook
+
+- css-mode-hook
+
+- cursor-intangible-mode-hook
+
+- cursor-sensor-mode-hook
+
+- custom-define-hook
+
+- cvs-dired-use-hook
+
+- deactivate-mark-hook
+
+- delay-mode-hooks
+
+- delayed-after-hook-functions
+
+- delayed-mode-hooks
+
+- delayed-warnings-hook
+
+- delete-selection-mode-hook
+
+- desktop-after-read-hook
+
+- desktop-delay-hook
+
+- desktop-no-desktop-file-hook
+
+- desktop-not-loaded-hook
+
+- desktop-save-hook
+
+- desktop-save-mode-hook
+
+- dframe-after-select-attached-frame-hook
+
+- dframe-setup-hook
+
+- diff-auto-refine-mode-hook
+
+- diff-minor-mode-hook
+
+- diff-mode-hook
+
+- dired-after-readin-hook
+
+- dired-before-readin-hook
+
+- dired-hide-details-mode-hook
+
+- dired-initial-position-hook
+
+- dired-isearch-filenames-mode-hook
+
+- dired-load-hook
+
+- dired-mode-hook
+
+- dired-omit-mode-hook
+
+- display-line-numbers-mode-hook
+
+- echo-area-clear-hook
+
+- edit-abbrevs-mode-hook
+
+- eieio-hook
+
+- eldoc-mode-hook
+
+- electric-help-mode-hook
+
+- electric-indent-local-mode-hook
+
+- electric-indent-mode-hook
+
+- electric-layout-local-mode-hook
+
+- electric-layout-mode-hook
+
+- electric-pair-local-mode-hook
+
+- electric-pair-mode-hook
+
+- electric-quote-local-mode-hook
+
+- electric-quote-mode-hook
+
+- elisp-byte-code-mode-hook
+
+- emacs-lisp-compilation-mode-hook
+
+- emacs-lisp-mode-hook
+
+- emacs-startup-hook
+
+- eshell-after-prompt-hook
+
+- eshell-alias-load-hook
+
+- eshell-alternate-command-hook
+
+- eshell-arg-load-hook
+
+- eshell-banner-load-hook
+
+- eshell-before-prompt-hook
+
+- eshell-cmd-load-hook
+
+- eshell-cmpl-load-hook
+
+- eshell-directory-change-hook
+
+- eshell-dirs-load-hook
+
+- eshell-exec-hook
+
+- eshell-exit-hook
+
+- eshell-ext-load-hook
+
+- eshell-first-time-mode-hook
+
+- eshell-glob-load-hook
+
+- eshell-hist-load-hook
+
+- eshell-hist-unload-hook
+
+- eshell-io-load-hook
+
+- eshell-kill-hook
+
+- eshell-load-hook
+
+- eshell-mode-hook
+
+- eshell-mode-unload-hook
+
+- eshell-module-unload-hook
+
+- eshell-named-command-hook
+
+- eshell-parse-argument-hook
+
+- eshell-post-command-hook
+
+- eshell-post-rewrite-command-hook
+
+- eshell-pre-command-hook
+
+- eshell-pre-rewrite-command-hook
+
+- eshell-pred-load-hook
+
+- eshell-prepare-command-hook
+
+- eshell-proc-load-hook
+
+- eshell-prompt-load-hook
+
+- eshell-rewrite-command-hook
+
+- eshell-script-load-hook
+
+- eshell-term-load-hook
+
+- eshell-unix-load-hook
+
+- eshell-unload-hook
+
+- eshell-var-load-hook
+
+- eval-expression-minibuffer-setup-hook
+
+- eww-after-render-hook
+
+- eww-bookmark-mode-hook
+
+- eww-buffers-mode-hook
+
+- eww-history-mode-hook
+
+- eww-mode-hook
+
+- exit-language-environment-hook
+
+- ff-file-created-hook
+
+- ff-not-found-hook
+
+- ff-post-load-hook
+
+- ff-pre-find-hook
+
+- ff-pre-load-hook
+
+- fido-mode-hook
+
+- file-name-shadow-mode-hook
+
+- find-file-hook
+
+- find-function-after-hook
+
+- find-tag-hook
+
+- first-change-hook
+
+- focus-in-hook
+
+- focus-out-hook
+
+- font-lock-mode-hook
+
+- global-auto-composition-mode-hook
+
+- global-auto-revert-mode-hook
+
+- global-display-line-numbers-mode-hook
+
+- global-eldoc-mode-hook
+
+- global-font-lock-mode-hook
+
+- global-prettify-symbols-mode-hook
+
+- global-visual-line-mode-hook
+
+- global-xah-math-input-mode-hook
+
+- gnus-apply-kill-hook
+
+- gnus-load-hook
+
+- gnus-mode-hook
+
+- gnus-summary-prepare-exit-hook
+
+- go-mode-hook
+
+- godoc-mode-hook
+
+- grep-setup-hook
+
+- hack-local-variables-hook
+
+- help-mode-hook
+
+- horizontal-scroll-bar-mode-hook
+
+- html-autoview-mode-hook
+
+- html-mode-hook
+
+- htmlize-after-hook
+
+- htmlize-before-hook
+
+- htmlize-file-hook
+
+- ibuffer-auto-mode-hook
+
+- ibuffer-hook
+
+- ibuffer-load-hook
+
+- ibuffer-mode-hook
+
+- icomplete-minibuffer-setup-hook
+
+- icomplete-mode-hook
+
+- idl-mode-hook
+
+- ido-everywhere-hook
+
+- ido-make-buffer-list-hook
+
+- ido-make-dir-list-hook
+
+- ido-make-file-list-hook
+
+- ido-minibuffer-setup-hook
+
+- ido-setup-hook
+
+- image-minor-mode-hook
+
+- imenu-after-jump-hook
+
+- inferior-python-mode-hook
+
+- inhibit-modification-hooks
+
+- inhibit-point-motion-hooks
+
+- inhibit-startup-hooks
+
+- input-method-activate-hook
+
+- input-method-after-insert-chunk-hook
+
+- input-method-deactivate-hook
+
+- isearch-mode-end-hook
+
+- isearch-mode-end-hook-quit
+
+- isearch-mode-hook
+
+- isearch-update-post-hook
+
+- ispell-change-dictionary-hook
+
+- ispell-initialize-spellchecker-hook
+
+- ispell-minor-mode-hook
+
+- ispell-update-post-hook
+
+- java-mode-hook
+
+- jit-lock-debug-mode-hook
+
+- js-jsx-mode-hook
+
+- js-mode-hook
+
+- kbd-macro-termination-hook
+
+- keyfreq-autosave-mode-hook
+
+- keyfreq-mode-hook
+
+- kill-buffer-hook
+
+- kill-emacs-hook
+
+- line-number-mode-hook
+
+- lisp-interaction-mode-hook
+
+- lisp-mode-hook
+
+- mail-citation-hook
+
+- mail-setup-hook
+
+- menu-bar-mode-hook
+
+- menu-bar-update-hook
+
+- messages-buffer-mode-hook
+
+- mhtml-mode-hook
+
+- minibuffer-exit-hook
+
+- minibuffer-inactive-mode-hook
+
+- minibuffer-setup-hook
+
+- mouse-leave-buffer-hook
+
+- mouse-wheel-mode-hook
+
+- next-error-follow-minor-mode-hook
+
+- next-error-hook
+
+- normal-erase-is-backspace-mode-hook
+
+- ns-sent-selection-hooks
+
+- nxml-completion-hook
+
+- nxml-in-mixed-content-hook
+
+- nxml-mode-hook
+
+- objc-mode-hook
+
+- occur-edit-mode-hook
+
+- occur-hook
+
+- occur-mode-find-occurrence-hook
+
+- occur-mode-hook
+
+- overwrite-mode-hook
+
+- package--post-download-archives-hook
+
+- package-menu-mode-hook
+
+- paragraph-indent-minor-mode-hook
+
+- paragraph-indent-text-mode-hook
+
+- pcomplete-try-first-hook
+
+- pike-mode-hook
+
+- post-command-hook
+
+- post-gc-hook
+
+- post-self-insert-hook
+
+- pre-abbrev-expand-hook
+
+- pre-command-hook
+
+- prefix-command-preserve-state-hook
+
+- prettify-symbols-mode-hook
+
+- process-menu-mode-hook
+
+- prog-mode-hook
+
+- python-mode-hook
+
+- python-shell-first-prompt-hook
+
+- quickurl-reread-hook-postfix
+
+- quit-window-hook
+
+- read-only-mode-hook
+
+- recentf-dialog-mode-hook
+
+- recentf-load-hook
+
+- recentf-mode-hook
+
+- recentf-used-hooks
+
+- replace-update-post-hook
+
+- rfn-eshadow-setup-minibuffer-hook
+
+- rfn-eshadow-update-overlay-hook
+
+- rmail-delete-message-hook
+
+- rmail-get-new-mail-hook
+
+- rmail-mode-hook
+
+- rmail-quit-hook
+
+- rmail-show-message-hook
+
+- rng-schema-change-hook
+
+- rng-validate-mode-hook
+
+- ruby-mode-hook
+
+- save-place-local-mode-hook
+
+- save-place-mode-hook
+
+- savehist-mode-hook
+
+- savehist-save-hook
+
+- scroll-bar-mode-hook
+
+- scss-mode-hook
+
+- select-tags-table-mode-hook
+
+- set-language-environment-hook
+
+- sgml-electric-tag-pair-mode-hook
+
+- sgml-mode-hook
+
+- sh-electric-here-document-mode-hook
+
+- sh-learned-buffer-hook
+
+- sh-mode-hook
+
+- sh-set-shell-hook
+
+- shell-dirtrack-mode-hook
+
+- shell-mode-hook
+
+- show-paren-mode-hook
+
+- signal-hook-function
+
+- size-indication-mode-hook
+
+- special-mode-hook
+
+- speedbar-after-create-hook
+
+- speedbar-before-delete-hook
+
+- speedbar-before-popup-hook
+
+- speedbar-before-visiting-file-hook
+
+- speedbar-before-visiting-tag-hook
+
+- speedbar-load-hook
+
+- speedbar-mode-hook
+
+- speedbar-reconfigure-keymaps-hook
+
+- speedbar-scanner-reset-hook
+
+- speedbar-timer-hook
+
+- speedbar-vc-directory-enable-hook
+
+- speedbar-vc-in-control-hook
+
+- speedbar-visiting-file-hook
+
+- speedbar-visiting-tag-hook
+
+- suspend-hook
+
+- suspend-resume-hook
+
+- tab-bar-history-mode-hook
+
+- tab-bar-mode-hook
+
+- tab-switcher-mode-hook
+
+- tabulated-list-mode-hook
+
+- tabulated-list-revert-hook
+
+- tags-table-mode-hook
+
+- temp-buffer-resize-mode-hook
+
+- temp-buffer-setup-hook
+
+- temp-buffer-show-hook
+
+- temp-buffer-window-setup-hook
+
+- temp-buffer-window-show-hook
+
+- term-exec-hook
+
+- term-load-hook
+
+- term-mode-hook
+
+- term-setup-hook
+
+- text-mode-hook
+
+- tool-bar-mode-hook
+
+- tooltip-mode-hook
+
+- tramp--startup-hook
+
+- tramp-cleanup-all-connections-hook
+
+- tramp-cleanup-connection-hook
+
+- tramp-handle-file-local-copy-hook
+
+- tramp-handle-write-region-hook
+
+- transient-mark-mode-hook
+
+- tty-setup-hook
+
+- unify-8859-on-decoding-mode-hook
+
+- unify-8859-on-encoding-mode-hook
+
+- url-cookie-mode-hook
+
+- url-handler-mode-hook
+
+- url-load-hook
+
+- use-hard-newlines-hook
+
+- vc-before-checkin-hook
+
+- vc-checkin-hook
+
+- vc-checkout-hook
+
+- vc-git-log-edit-mode-hook
+
+- vc-git-log-view-mode-hook
+
+- vc-git-region-history-mode-hook
+
+- visible-mode-hook
+
+- visual-line-mode-hook
+
+- wdired-mode-hook
+
+- window-configuration-change-hook
+
+- window-divider-mode-hook
+
+- window-setup-hook
+
+- window-state-change-hook
+
+- xah-clojure-mode-hook
+
+- xah-css-mode-hook
+
+- xah-elisp-mode-hook
+
+- xah-find-output-mode-hook
+
+- xah-fly-command-mode-activate-hook
+
+- xah-fly-insert-mode-activate-hook
+
+- xah-fly-keys-hook
+
+- xah-html-mode-hook
+
+- xah-js-mode-hook
+
+- xah-math-input-mode-hook
+
+- xah-run-current-file-after-hook
+
+- xah-run-current-file-before-hook
+
+- xah-text-mode-hook
+
+- xah-ts-mode-hook
+
+- xref--transient-buffer-mode-hook
+
+- xref--xref-buffer-mode-hook
+
+- xref-after-jump-hook
+
+- xref-after-return-hook
+
+- xref-etags-mode-hook

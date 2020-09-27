@@ -1,0 +1,93 @@
+* dolist
+
+** demos
+
+#+BEGIN_SRC emacs-lisp
+(defmacro dolist (spec &rest body))
+#+END_SRC
+
+一个变量递归某个列表，spec的长度为2或者3.为3时，最后一个值是返回值
+
+#+BEGIN_SRC emacs-lisp
+(dolist (x '("a" "b" "c" "d" "e" "f" "g"))
+  (message "current x is %s" x))
+
+;; current x is a
+;; current x is b
+;; current x is c
+;; current x is d
+;; current x is e
+;; current x is f
+;; current x is g
+;; nil
+
+(dolist (x '("a" "b" "c" "d" "e" "f" "g") 10)
+  (message "current x is %s" x))
+;; current x is a
+;; current x is b
+;; current x is c
+;; current x is d
+;; current x is e
+;; current x is f
+;; current x is g
+;; 10 (#o12, #xa, ?\C-j)
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+(setq animals '(gazelle giraffe lion tiger))
+
+(defun reverse-list-with-dolist (list)
+  "Using dolist, reverse the order of LIST."
+    (let (value)  ; make sure list starts empty
+      (dolist (element list value)
+        (setq value (cons element value)))))
+
+(reverse-list-with-dolist animals)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defmacro dolist (spec &rest body)
+  "Loop over a list.
+Evaluate BODY with VAR bound to each car from LIST, in turn.
+Then evaluate RESULT to get return value, default nil.
+(fn (VAR LIST [RESULT]) BODY...)"
+
+  (declare (indent 1) (debug ((symbolp form &optional form) body)))
+  (unless (consp spec)
+    (signal 'wrong-type-argument (list 'consp spec)))
+  (unless (<= 2 (length spec) 3)
+    (signal 'wrong-number-of-arguments (list '(2 . 3) (length spec))))
+  ;; It would be cleaner to create an uninterned symbol,
+  ;; but that uses a lot more space when many functions in many files
+  ;; use dolist.
+  ;; FIXME: This cost disappears in byte-compiled lexical-binding files.
+  (let ((temp '--dolist-tail--))
+    ;; This test does not matter much because both semantics are acceptable,
+    ;; but one is slightly faster with dynamic scoping and the other is
+    ;; slightly faster (and has cleaner semantics) with lexical scoping.
+    (if lexical-binding
+        `(let ((,temp ,(nth 1 spec)))
+           (while ,temp
+             (let ((,(car spec) (car ,temp)))
+               ,@body
+               (setq ,temp (cdr ,temp))))
+           ,@(cdr (cdr spec)))
+      `(let ((,temp ,(nth 1 spec))
+             ,(car spec))
+         (while ,temp
+           (setq ,(car spec) (car ,temp))
+           ,@body
+           (setq ,temp (cdr ,temp)))
+         ,@(if (cdr (cdr spec))
+               `((setq ,(car spec) nil) ,@(cdr (cdr spec))))))))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+        `(let ((,temp ,(nth 1 spec)))  ;; temp 是内部绑定的，现在为spac中第1个，一般是列表了
+           (while ,temp    ;; 如果temp存在
+             (let ((,(car spec) (car ,temp))) ;; 变量名
+               ,@body
+               (setq ,temp (cdr ,temp))))
+           ,@(cdr (cdr spec)))
+#+END_SRC

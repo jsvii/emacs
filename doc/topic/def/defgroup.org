@@ -1,5 +1,44 @@
 * defgroup
 
+** 什么是group
+
+*** stackoverflow 上关于“为什么需要有group”的回答
+
+When and why do you use any grouping? To be able to act on the group as a whole or on its individual members - only its members. That's the answer here also.
+
+There are commands and other functions that act on a given group or set of groups. ~customize-group~ is one that acts on a given group. ~customize-apropos-groups~ is one that acts on a set of groups.
+
+一些命令和函数是作用于一个group上的， ~customize-group~ 是在这个group上的操作
+
+When you use ~customize-group~ you see links that let you customize subgroups (if any) and individual members (options and faces) of that group.
+
+In addition, a group typically has a prefix, and you can use that for pattern-matching against function, face, etc. names when you interact with Emacs. This is another way of limiting actions to a given set (customization group) of things.
+
+A group can also provide quick access to the online doc, source code, bug reporting, etc. for a package. Here, for instance, is the definition of group ~Icicles-Key-Completion~ (with some code elided).
+
+#+BEGIN_SRC emacs-lisp
+(defgroup Icicles-Key-Completion nil
+  "Icicles preferences related to key completion (`icicle-complete-keys')."
+  :prefix "icicle-" :group 'Icicles
+  :link `(url-link :tag "Send Bug Report" ...)
+  :link '(url-link :tag "Other Libraries by Drew" ...)
+  :link '(url-link :tag "Download" ...)
+  :link '(url-link :tag "Description" ...)
+  :link '(emacs-commentary-link :tag "Doc-Part2" "icicles-doc2")
+  :link '(emacs-commentary-link :tag "Doc-Part1" "icicles-doc1"))
+#+END_SRC
+
+This group is itself a subgroup of group Icicles (see ~:group~). It provides links in the Customize buffer for sending a bug report, downloading, and accessing the doc in the source code or on the Web.
+
+
+#+BEGIN_SRC emacs-lisp
+(defgroup magit-status nil
+  "Inspect and manipulate Git repositories."
+  :link '(info-link "(magit)Status Buffer")
+  :group 'magit-modes)
+#+END_SRC
+
+*** 定义
 
 defgroup是个宏，参数分别为
 
@@ -7,9 +46,17 @@ defgroup是个宏，参数分别为
 
 1. members
 
-1. 文档
+1. 文档 :link
 
 1. 其他参数
+
+~group~ 是全局和buffer之外的另一种作用域，也就是，group中定义的变量若与前两者重名则以group优先，但低于let中的优先级。
+
+~customize-group~ 时，也只对当前的session有效。
+
+:group是其重要的关键字，以便指定其所属的父group，最上层应该是xxx-mode。
+
+:link 提供了文档的链接
 
 
 #+BEGIN_SRC elisp

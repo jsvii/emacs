@@ -1,0 +1,8 @@
+* Company
+
+Complete Anything.
+
+The CAPF back-end provides a bridge to the standard completion-at-point-functions facility, and thus works with any major mode that defines a proper completion function.
+
+
+http://company-mode.github.io/
