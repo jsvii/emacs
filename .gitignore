@@ -20,5 +20,3 @@ node_modules
 *.pdf
 # files
 *.epub
-assets/download
-assets/gurus
