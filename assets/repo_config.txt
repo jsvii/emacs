@@ -1,0 +1,11 @@
+https://github.com/hlissner/doom-emacs
+https://github.com/eschulte/emacs24-starter-kit/
+https://github.com/overtone/emacs-live
+https://github.com/thefrontside/frontmacs
+https://github.com/rdallasgray/graphene
+https://github.com/bodil/ohai-emacs
+https://github.com/bbatsov/prelude
+https://github.com/purcell/emacs.d
+https://github.com/jkitchin/scimax
+https://github.com/seagle0128/.emacs.d.git
+https://github.com/syl20bnr/spacemacs.git

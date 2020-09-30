@@ -1,1 +1,4 @@
-repo*
+repo_book/*
+repo_mode/*
+repo_config/*
+*.back
