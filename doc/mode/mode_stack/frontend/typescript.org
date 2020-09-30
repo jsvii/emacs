@@ -1,0 +1,9 @@
+* typescript
+
+** 建议使用typescript 的 lsp-mode
+
+https://www.reddit.com/r/emacs/comments/ekx4zb/using_lsp_tide_together_for_typescript/
+
+*** lsp参考demo
+
+https://github.com/ianpan870102/.personal-emacs.d

@@ -1,0 +1,8 @@
+*  purcell的设置
+
+
+** 为什么不使用 ~use-package~
+
+包本身非常好，但屏蔽了太多细节，而这些细节是学习emacs的用户应当知道的.
+
+https://github.com/purcell/emacs.d/issues/590
