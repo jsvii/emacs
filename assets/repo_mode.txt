@@ -16,7 +16,6 @@ https://github.com/joelagnel/lisp.git
 https://github.com/emacs-lsp/lsp-java.git
 https://github.com/emacs-lsp/lsp-mode.git
 https://github.com/magit/magit.git
-https://github.com/ryanoasis/nerd-fonts.git
 https://github.com/fniessen/org-html-themes.git
 https://github.com/yjwen/org-reveal.git
 https://github.com/bbatsov/projectile.git
