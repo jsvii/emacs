@@ -1,4 +1,5 @@
 repo_book/*
 repo_mode/*
 repo_config/*
+repo_lsp/*
 *.back

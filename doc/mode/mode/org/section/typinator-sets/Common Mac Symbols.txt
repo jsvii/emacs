@@ -1,9 +1,0 @@
-        shift	⇧
-command	⌘
-option	⌥
-return	⏎
-control	⌃
-delete	⌦
-backspace	⌫
-eject	⏏
-gear	⚙

@@ -1,7 +1,0 @@
-* FAQ
-
-** org文件全部折叠
-
-- outline-hide-sublevels  全部折叠
-
-- outline-show-all 展开全部

@@ -1,0 +1,79 @@
+* org-mode todolist
+
+** todolist 快捷键说明
+
+  - 隐藏掉 =DONE= 项
+
+  - TODO切换状态，在TODO的文字上 =c-c c-t=
+
+*** 添加schedule
+
+TODO 添加 scheduled, 在todo item上，快捷键 =c-c c-s= 执行 =org-scheduled= 同时输入时间
+
+*** deadline
+
+TODO 添加 deadline, 在todo item另起一行，快捷键 =c-c c-d= 快捷键 =org-deadline= 命令
+
+** org-agenda
+
+org-agenda-files
+
+*** =org-agenda= options
+
+  - a  显示全部，可以通过 =w= 和 =d= 来进行切换
+
+*** 设置 org-agenda-files
+
+Just naming the directory should be enough. For example this works for me very well:
+
+#+BEGIN_SRC elisp
+(setq org-agenda-files '("~/org"))
+#+END_SRC
+
+Also take a look at org-agenda-text-search-extra-files; it lets you add extra files included only in text searches. A typical value might be,
+
+#+BEGIN_SRC elisp
+(setq org-agenda-text-search-extra-files
+      '(agenda-archives
+        "~/org/subdir/textfile1.txt"
+        "~/org/subdir/textfile1.txt"))
+#+END_SRC
+
+To include all files with a certain extension in the extra files list you can try the following function I wrote sometime back (a more recent version might be available here).
+
+#+BEGIN_SRC elisp
+;; recursively find .org files in provided directory
+;; modified from an Emacs Lisp Intro example
+(defun sa-find-org-file-recursively (&optional directory filext)
+  "Return .org and .org_archive files recursively from DIRECTORY.
+If FILEXT is provided, return files with extension FILEXT instead."
+  (interactive "DDirectory: ")
+  (let* (org-file-list
+         (case-fold-search t)         ; filesystems are case sensitive
+         (file-name-regex "^[^.#].*") ; exclude dot, autosave, and backupfiles
+         (filext (or filext "org$\\\|org_archive"))
+         (fileregex (format "%s\\.\\(%s$\\)" file-name-regex filext))
+         (cur-dir-list (directory-files directory t file-name-regex)))
+    ;; loop over directory listing
+    (dolist (file-or-dir cur-dir-list org-file-list) ; returns org-file-list
+      (cond
+       ((file-regular-p file-or-dir)             ; regular files
+        (if (string-match fileregex file-or-dir) ; org files
+            (add-to-list 'org-file-list file-or-dir)))
+       ((file-directory-p file-or-dir)
+        (dolist (org-file (sa-find-org-file-recursively file-or-dir filext)
+                          org-file-list) ; add files found to result
+          (add-to-list 'org-file-list org-file)))))))
+#+END_SRC
+
+You can use it like this:
+
+#+BEGIN_SRC elisp
+(setq org-agenda-text-search-extra-files
+      (append (sa-find-org-file-recursively "~/org/dir1/" "txt")
+              (sa-find-org-file-recursively "~/org/dir2/" "tex")))
+#+END_SRC
+
+Edit: (2019) As mentioned in the answer by @mingwei-zhang and the comment by @xiaobing, find-lisp-find-files from find-lisp and directory-files-recursively also provides this functionality. However, please note in these cases the file name argument is a (greedy) regex. So something like (directory-files-recursively "~/my-dir" "org") will give you all Org files including backup files (*.org~). To include only *.org files, you may use (directory-files-recursively "~/my-dir" "org$").
+
+Caveat: If you add a file to the directory after you have started Emacs, it will not be included

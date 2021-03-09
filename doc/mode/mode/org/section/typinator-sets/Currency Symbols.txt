@@ -1,5 +1,0 @@
-pound	£
-cent	¢
-currency	¤
-yen	¥
-euro	€

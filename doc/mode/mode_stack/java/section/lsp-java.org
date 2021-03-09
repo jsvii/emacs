@@ -1,34 +1,12 @@
 * lsp-java 相关的
 
-** 主要步骤
+** lsp-java 注意点
 
-*** 依赖说明
+lsp-java仅用于一些代码查看，实际过程中非常不方便
 
-- treemacs & lsp-treemacs
+1. xml 不友好，java强大之处都在于xml之上，跳转查看dtd，元素查看等
 
-- lsp-ui
-
-- lsp-java
-
-#+BEGIN_SRC emacs-lisp
-(require 'cc-mode)
-(use-package projectile :ensure t)
-(use-package yasnippet :ensure t)
-(use-package lsp-mode :ensure t)
-(use-package hydra :ensure t)
-(use-package company-lsp :ensure t)
-(use-package lsp-ui :ensure t)
-(use-package lsp-java :ensure t :after lsp
-  :config (add-hook 'java-mode-hook 'lsp))
-
-(use-package dap-mode
-  :ensure t :after lsp-mode
-  :config
-  (dap-mode t)
-  (dap-ui-mode t))
-
-(use-package dap-java :after (lsp-java))
-#+END_SRC
+1. debug功能弱，不利于断点调试
 
 
 ** lsp-java-update-server 使用代理下载相关的资源
@@ -37,21 +15,26 @@
 
     1. git资源 https://github.com/emacs-lsp/lsp-java
 
-    1. 依赖文件 https://github.com/emacs-lsp/lsp-java/releases/tag/2.2
+    1. 查看 , 全部放入到lsp-java/release文件夹中
 
-    1. 全部放入到lsp-java/release文件夹中
+#+BEGIN_SRC xml
+<url>http://api.doc/lsp-java/releases/download/2.2/Pivotal.vscode-spring-boot-1.6.0.vsix</url>
+<url>http://api.doc/lsp-java/releases/download/2.2/vscjava.vscode-java-dependency-0.5.1.vsix</url>
+<url>http://api.doc/lsp-java/releases/download/2.2/dgileadi.java-decompiler-0.0.2.vsix</url>
+<url>http://api.doc/lsp-java/releases/download/3.1/vscjava.vscode-java-test-0.24.1.vsix</url>
+#+END_SRC
 
-    1. 修改lsp-java/pom.xml中的release地址
+    1. 修改lsp-java/pom.xml中的release地址 （即其中要求 https://github.com/emacs-lsp/lsp-java/releases/tag/2.2 的地址）
 
+#+BEGIN_SRC lisp
 (setq lsp-java-jdt-download-url "http://localhost:8000/jdt-language-server-latest.tar.gz")
 
 (setq lsp-java--download-root "http://localhost:8000/lsp-java/install/")
+#+END_SRC
 
     1. lsp-java-update-server 大文件就可以本地安装
 
       - 这个不要随意安装，因为非常浪费时间
-
-
 
 *** eclipse
 
@@ -69,9 +52,11 @@
 
   - lsp-java-workspace-dir lsp eclispe 的workspace地址 Its value is "/home/leo/.emacs.d/workspace/"
 
+**** lsp-install-server jdtls
 
+***** 什么是jdtls
 
-**** lsp-java update server
+The Eclipse JDT Language Server is a Java language specific implementation of the language server protocol. It implements the language server protocol and may implement extensions when it is deemed necessary. It also provides project translation from build systems such as Maven --through the use of M2E project-- to JDT project structure.
 
 #+BEGIN_SRC shell
 Evaluating...
@@ -218,18 +203,30 @@ lsp-treemacs-references/lsp-treemacs-implementaions error can't open
 
 ** ref
 
-  - github emacs-eclim repo https://github.com/emacs-eclim/emacs-eclim
-
   - https://blog.jmibanez.com/2019/03/31/emacs-as-java-ide-revisited.html
-
-  - http://www.skybert.net/emacs/java/ 较好的文档
-
-  - https://zlearning.netlify.com/linux/emacs/emacs-eclim.html 使用Emacs作为Java IDE
 
   - https://www.spacemacs.org/layers/+lang/java/README.html  spacemacs 中关于java的部分
 
 　- http://www.skybert.net/emacs/enterprise-java-development-in-emacs/
 
+*** eclim
+
+  - github emacs-eclim repo https://github.com/emacs-eclim/emacs-eclim
+
+  - http://www.skybert.net/emacs/java/ 较好的文档
+
+  - https://zlearning.netlify.com/linux/emacs/emacs-eclim.html 使用Emacs作为Java IDE
+
   - http://www.goldsborough.me/emacs,/java/2016/02/24/22-54-16-setting_up_emacs_for_java_development/ 为emacs设置java开发环境
 
   - http://www.skybert.net/emacs/java-in-emacs-using-eclim/
+
+
+
+** 常见问题
+
+1. 无法正常跳转
+
+有多个版本的java，ide与项目用的不是同一个，要注意
+
+1. lsp-java 必须使用的java版本 >=  11

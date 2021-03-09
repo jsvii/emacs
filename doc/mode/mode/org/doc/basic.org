@@ -1,0 +1,131 @@
+* org-mode
+
+TODO: org2ctex
+
+** 安装
+
+直接从melpa中下载最新的org-mode，内置的有一些问题
+
+** latex 相关
+
+
+*** BEGIN_LATEX
+
+以 =BEGIN_LATEX= 和 =END_LATEX= 会出错，直接写latex代码
+
+*** LATEX_HEADER 必须一个接一个地写，否则不生效
+
+#+BEGIN_SRC txt
+#+LATEX_HEADER: \usepackage{multirow}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+END_SRC
+
+*** LATEX_CLASS为自己定义的
+
+在下面有介绍
+
+
+*** docuument class
+
+
+** table 相关
+
+
+https://orgmode.org/manual/Tables-in-LaTeX-export.html
+
+个人发现 table.el包只能用来做多行，多列为单元格时比较方便
+
+  - 无法导出latex符号，太麻烦
+
+http://ergoemacs.org/emacs/emacs_table.html
+
+
+** stackexchange上一个关于table的回答
+
+https://emacs.stackexchange.com/questions/38135/wrap-cell-content-in-an-org-mode-table/47152
+#+BEGIN_SRC txt
+org-mode has 2 table formats, the default org-table and the other is table.el.
+
+Cell wrapping is available for tables in table.el format.
+
+Try this
+
+1 Remove the extra row with <10> so your table will look similar to the example below:
+
+| Verse No | Verse             |
+|        1 | Line1 Line1 Line1 |
+|        2 | Line2 Line2 Line2 |
+
+ Tip: Add a blank line above and below the table. The blank lines should prevent a bug when converting the table with C-c ~. Thanks to
+ @ComproPrasad for troubleshooting and providing the workaround.
+
+2 Place your cursor, a.k.a the point, inside updated table then type C-c ~ and answer y. The updated table should look similar to example
+ below:
+
+使用 C-c ~ 更新table
+
++----------+-------------------+
+| Verse No | Verse             |
++----------+-------------------+
+|        1 | Line1 Line1 Line1 |
++----------+-------------------+
+|        2 | Line2 Line2 Line2 |
++----------+-------------------+
+
+
+3 Place your cursor inside updated table then type C-c ' and a new window or frame will appear.
+
+使用 C-c ' 开启新窗口来编辑
+
+4 Type M-x t-r-t and each table cell should be highlighted.
+
+5 Place your cursor inside second column and type C-c C-c < until the column is the desired width.
+
+ Tip: Use the universal argument key binding C-u to quickly repeat this step. For example, If your cell is 500 characters and you want to
+ adjust the width to 10 characters do C-u 490 C-c C-c < which will repeat C-c C-c < command 490 times.
+
+6 Type C-c ' to finish editing table. These steps should leave you with a similar to the example below:
+
++----------+------+
+| Verse No | Verse|
++----------+------+
+|        1 |Line1 |
+|          |Line1 |
+|          |Line1 |
++----------+------+
+|        2 |Line2 |
+|          |Line2 |
+|          |Line2 |
++----------+------+
+#+END_SRC
+
+
+
+
+** 常用写法大全
+
+*** 引用
+
+#+BEGIN_VERSE
+ Great clouds overhead
+ Tiny black birds rise and fall
+ Snow covers Emacs
+
+    ---AlexSchroeder
+#+END_VERSE
+
+
+** FAQ
+
+*** 只能在前言(preamble)中使用
+
+#+BEGIN_SRC text
+l.29 \usepackage
+                [margin=2.5in]{geometry}
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...
+#+END_SRC

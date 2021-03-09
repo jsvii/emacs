@@ -1,0 +1,14 @@
+** introduction-docs
+
+https://github.com/zhcosin/introduction-docs.git 一些值得研究的使用方法 中文版
+
+https://code.orgmode.org/bzg/org-mode.git
+
+
+http://eschulte.github.io/org-scraps/
+
+
+http://doc.norang.ca/org-mode.html
+
+
+http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html

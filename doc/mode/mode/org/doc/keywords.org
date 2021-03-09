@@ -1,0 +1,9 @@
+* keywords
+
+支持的元数据
+
+#+BEGIN_SRC
+#+TODO: TODO | DONE
+#+TODO: REPORT BUG KNOWNCAUSE | FIXED
+#+TODO: | CANCELED
+#+END_SRC
