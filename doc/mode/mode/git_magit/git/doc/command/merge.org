@@ -1,0 +1,9 @@
+* merge
+
+** squash
+
+本地文件内容与不使用该选项的合并结果相同，但是不提交、不移动HEAD，因此需要一条额外的commit命令
+
+#+BEGIN_SRC bash
+git merge --squash branchname
+#+END_SRC

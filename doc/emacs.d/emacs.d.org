@@ -1,0 +1,10 @@
+* emacs.d
+
+
+** packages
+
+  - https://github.com/jwiegley/use-package.git
+
+** repos
+
+  - https://github.com/seagle0128/.emacs.d

@@ -1,0 +1,26 @@
+[user]
+        name = Leo Victor
+        email = leo-victor@outlook.com
+[color]
+        diff= auto
+        status= auto
+        branch= auto
+        interactive= auto
+        ui= true
+        pager= true
+[core]
+        filemode= false
+        autocrlf = true
+        editor=vim
+        eol = lf
+        whitespace = cr-at-eol
+[http "https://bitbucket.com"]
+        #proxy = socks5h://192.168.1.80:1080
+        sslVerify= false
+[http]
+        sslVerify= false
+[credential]
+        helper= cache --timeout=360000
+        helper= store --file ~/.git-credentials
+[pull]
+        rebase = true

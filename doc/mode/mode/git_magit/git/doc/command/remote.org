@@ -1,0 +1,4 @@
+用远程的分支更新本地
+
+
+git remote update origin --prune
