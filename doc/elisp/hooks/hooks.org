@@ -1,5 +1,46 @@
 * hooks
 
+  hook 本质上就是一个变量
+
+#+BEGIN_SRC elisp
+;; 定义一个 hook
+  (defcustom find-file-hook nil
+    "List of functions to be called after a buffer is loaded from a file.
+  The buffer's local variables (if any) will have been processed before the
+  functions are called.  This includes directory-local variables, if any,
+  for the file's directory."
+    :group 'find-file
+    :type 'hook
+    :options '(auto-insert)
+    :version "22.1")
+#+END_SRC
+
+
+示例
+
+
+#+BEGIN_SRC elisp
+I worked it out (should have tried before posting):
+
+;; add my custom hook
+(defvar bw-after-custom-load-hook nil
+  "Hook called after the custom file is loaded")
+then in another file:
+
+;; but load it after custom has loaded, so it's marked safe
+(add-hook 'bw-after-custom-load-hook
+      (lambda ()
+        (load-theme 'solarized-dark)))
+then we load custom and call the hook:
+
+;; Load custom file last
+(setq custom-file (concat dotfiles-dir "custom.el"))
+(load custom-file 'noerror)
+
+;; load my custom hooks
+(run-hooks 'bw-after-custom-load-hook)
+#+END_SRC
+
 Here's a complete list of emacs hook variables, as of GNU Emacs 27.1 , 2020-08-11.
 
 Note: your list may be shorter or longer, depending on what packages you've loaded.

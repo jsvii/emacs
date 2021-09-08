@@ -1,0 +1,24 @@
+* tide
+
+
+https://github.com/Microsoft/TypeScript/wiki/Standalone-Server-%28tsserver%29
+
+#+BEGIN_SRC bash
+/home/leo/.nvm/versions/node/v12.22.5/bin/node home/leo/workspace/jci/cnb-emobile-app-salary/node_modules/typescript/lib/tsserver.js
+16:leo      22828  0.0  0.4 595640 62844 ?        Sl   14:43   0:00 /home/leo/.nvm/versions/node/v12.22.5/bin/node /home/leo/workspace/jci/cnb-emobile-app-salary/node_modules/typescript/lib/typingsInstaller.js --globalTypingsCacheLocation /home/leo/.cache/typescript/4.1 --typesMapLocation /home/leo/workspace/jci/cnb-emobile-app-salary/node_modules/typescript/lib/typesMap.json
+#+END_SRC
+
+#+BEGIN_SRC elisp
+;; tide-command:definition 得到location 这个值
+(:file "/home/leo/workspace/jci/cnb-emobile-app-salary/src/main.ts" :line 6 :offset 1)
+
+
+(:seq 0 :type "response" :command "definition" :request_seq "73" :success t :body ((:file "/home/leo/workspace/jci/cnb-emobile-app-salary/nod..." :start (:line 31 :offset 22) :end (:line 31 :offset 31) :contextStart (:line 31 :offset 1) :contextEnd (:line 31 :offset 60))))
+#+END_SRC
+
+#+BEGIN_SRC elisp
+;;(:file "/home/leo/workspace/jci/cnb-emobile-app-salary/src/main.ts" :line 6 :offset 1)
+(process-send-string (tide-current-server) payload)
+#+END_SRC
+
+(puthash request-id (cons (current-buffer) callback) tide-response-callbacks)
