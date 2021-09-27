@@ -128,7 +128,7 @@ M-x package-install [RET] indium [RET]
 
 最上方有一些命令揭示
 
-l
+
 
 
 *** FAQ
