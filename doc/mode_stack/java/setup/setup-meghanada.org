@@ -1,0 +1,7 @@
+* meghanada
+
+** 手动安装
+
+   直接将 meghanada-setup.jar， meghanada-server放在 ~.emacs.d/meghanada~ 之下即可
+
+https://github.com/mopemope/meghanada-server

@@ -1,0 +1,35 @@
+* setup java
+
+** ~/.mavenrc 文件
+
+   设置代理
+
+#+BEGIN_SRC bash
+MAVEN_OPTS="-Dhttp.proxyHost=localhost -Dhttp.proxyPort=3128 -Dhttps.proxyHost=localhost -Dhttps.proxyPort=3128 -Dhttp.proxyUser=proxy_user -Dhttp.proxyPassword=secret -Djdk.http.auth.tunneling.disabledSchemes="
+#+END_SRC
+
+
+** eclipse.jdt.ls
+
+   https://projects.eclipse.org/projects/eclipse.jdt.ls/downloads
+
+   下载后安装至 ~.emacs.d/.cache/lsp/eclipse.jdt.ls~ 即变量 ~lsp-server-install-dir~
+
+此时不需要lsp-install-server了，只要有代理，它就无法编译，因为maven底层有些地方不支持代理
+
+
+** 设置lsp-java的执行环境，必须要java11以上的
+
+#+BEGIN_SRC elisp
+(setq lsp-java-java-path "/home/leo/.bin/jdk-12.0.2/bin/java")
+(setq lsp-java-import-gradle-java-home  "/home/leo/.bin/jdk-12.0.2/bin/java")
+(setq lsp-java-maven-download-sources t)
+#+END_SRC
+
+** 不支持android开发
+
+https://github.com/eclipse/eclipse.jdt.ls/issues/923
+
+what a pity! 所以推荐使用meghanada
+
+** lsp log
