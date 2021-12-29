@@ -1,0 +1,15 @@
+* rime
+
+  https://github.com/DogLooksGood/emacs-rime
+
+
+#+BEGIN_SRC bash
+  sudo pacman -S librime
+
+  # mac
+  brew install --cask squirrel
+#+END_SRC
+
+#+BEGIN_SRC elisp
+;; 安装rime包
+#+END_SRC
