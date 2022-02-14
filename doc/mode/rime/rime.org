@@ -3,13 +3,31 @@
   https://github.com/DogLooksGood/emacs-rime
 
 
+
+** linux设置
+
 #+BEGIN_SRC bash
   sudo pacman -S librime
-
-  # mac
-  brew install --cask squirrel
 #+END_SRC
 
 #+BEGIN_SRC elisp
 ;; 安装rime包
+#+END_SRC
+
+
+** mac os
+
+#+BEGIN_SRC bash
+  brew install --cask squirrel # 不能解决问题，还得编译
+#+END_SRC
+
+   https://github.com/rime/librime/blob/master/README-mac.md
+
+
+
+
+** appendix 相关的命令
+
+#+BEGIN_SRC lisp
+set-input-method
 #+END_SRC
