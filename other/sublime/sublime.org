@@ -1,0 +1,14 @@
+* sublime
+
+** package-control
+
+  https://packagecontrol.io/installation
+
+  1. Open the command palette Win/Linux: ~ctrl+shift+p~ , Mac: ~cmd+shift+p~
+
+  1. Type Install Package Control, press enter
+
+
+** 插件
+
+   - JSON Pretty
