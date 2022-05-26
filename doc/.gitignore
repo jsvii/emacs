@@ -9,7 +9,7 @@
 .settings/*
 target/*
 # my git rules
-download/*
+download/repo/*
 */*/download/*
 # node
 node_modules
