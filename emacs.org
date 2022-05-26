@@ -8,16 +8,10 @@
 
 - docs 所有文档
 
-  - basic
+- other 其他与emacs相关的文件，如tmux， vsconde, sublime
 
-  - modes
+* ZEN
 
-    - elisp
+- 简单
 
-    - modes 特定mode记录
-
-    - pl 语言设置
-
-  - notes_of_books 读书笔记
-
-  - ref 参考文档
+  1. 直观，易用，不需要作记忆

@@ -1,0 +1,10 @@
+* m4
+
+https://www.gnu.org/software/m4/manual/m4.html#Preliminaries
+
+m4是一个宏处理器，是有很少的受众，只有一些commit知道它的存在
+
+m4是一个通用的宏处理器，宏处理器（或预处理器）一般用作文本替换工具。最终用户经常会用它来处理要反复使用的文本模板，典型的是用于编程工具，还会用于文本编辑和文字处理工具。m4是POSIX标准中的一部分，所有版本的UNIX下都可用。虽然这种语言可以单独使用，但大多数人需要m4仅仅是因为GNU autoconf中的“configure”脚本依赖它。
+
+
+https://www.codeleading.com/article/42255683961/

@@ -1,0 +1,5 @@
+* LEIM
+
+LEIM stands for Libraries of Emacs Input Methods.
+
+emacs的输入法

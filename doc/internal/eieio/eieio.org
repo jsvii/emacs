@@ -1,0 +1,3 @@
+* eieio-object
+
+EIEIO (“Enhanced Implementation of Emacs Interpreted Objects”) provides an Object Oriented layer for Emacs Lisp, following the basic concepts of the Common Lisp Object System (CLOS). It provides a framework for writing object-oriented applications in Emacs.
