@@ -49,23 +49,11 @@ windows:
      layout: main-vertical
      panes:
        - emacs
-  - app-weex:
+  - app-jci:
      layout: main-vertical
      panes:
        - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-weex/
-  - app-vue:
+  - leo:
      layout: main-vertical
      panes:
-       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-vue/
-  - app-salary:
-     layout: main-vertical
-     panes:
-       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-salary
-  - app-openaccount:
-     layout: main-vertical
-     panes:
-       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-openaccount/
-  - app-android-code:
-     layout: main-vertical
-     panes:
-       - cd /home/leo/workspace/jci/cnb/cnb-android-code
+       - cd /home/leo/workspace/leo/

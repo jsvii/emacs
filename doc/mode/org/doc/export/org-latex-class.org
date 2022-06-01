@@ -1,7 +1,3 @@
-* 导出相关
-
-默认根据 org-latex-default-class 来进行导出
-
 ** org-latex-classes
 
 ~ox-latex.el~ 中定义了 =org-latex-classes= 默认设置了 ~article~ ， ~report~ ， ~book~ 三个

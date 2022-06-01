@@ -1,0 +1,7 @@
+* key
+
+  - Ctrl  C-
+
+  - Super S- superkey 一般下可以是shift
+
+  - meta Metakey

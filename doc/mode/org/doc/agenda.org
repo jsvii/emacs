@@ -1,0 +1,14 @@
+* org-agenda
+
+
+整合appt与org-agenda
+  http://blog.lujun9972.win/blog/2020/02/18/%E6%95%B4%E5%90%88appt%E4%B8%8Eorg-agenda/index.html
+
+
+  https://www.gtrun.org/custom/my-agenda.html
+
+
+  https://protesilaos.com/codelog/2021-12-09-emacs-org-block-agenda/
+
+
+  https://rgb-24bit.github.io/blog/2017/org-gtd.html

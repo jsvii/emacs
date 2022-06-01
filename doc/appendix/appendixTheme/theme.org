@@ -1,0 +1,11 @@
+* themes
+
+** 网站
+
+  https://emacsthemes.com/popular/index.html
+
+** 命令
+
+#+BEGIN_SRC emacs-lisp
+(load-theme)
+#+END_SRC
