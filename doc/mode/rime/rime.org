@@ -14,7 +14,6 @@
 ;; 安装rime包
 #+END_SRC
 
-
 ** mac os
 
 #+BEGIN_SRC bash
@@ -23,11 +22,12 @@
 
    https://github.com/rime/librime/blob/master/README-mac.md
 
-
-
-
 ** appendix 相关的命令
 
 #+BEGIN_SRC lisp
 set-input-method
 #+END_SRC
+
+** dir
+
+/usr/local/share
