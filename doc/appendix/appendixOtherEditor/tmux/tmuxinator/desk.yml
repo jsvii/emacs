@@ -53,6 +53,18 @@ windows:
      layout: main-vertical
      panes:
        - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-weex/
+       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-vue/
+       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-user/
+  - app-jci-npm:
+     layout: main-vertical
+     panes:
+       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-npm-foundation/
+       - cd /home/leo/workspace/jci/cnb/cnb-emobile-app-npm-modules-connect/
+  - app-native:
+     layout: main-vertical
+     panes:
+       - cd /home/leo/workspace/jci/cnb/cnb-android-code/
+       - cd /home/leo/workspace/jci/cnb/cnb-ios-code/
   - leo:
      layout: main-vertical
      panes:
