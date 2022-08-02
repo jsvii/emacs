@@ -1,0 +1,9 @@
+* font
+
+https://q3yi.me/post/5_set_different_font_family_for_sc_in_emacs/
+
+https://emacs-china.org/t/emacs/15676/10
+
+
+/usr/share/fonts
+/usr/local/share/fonts
