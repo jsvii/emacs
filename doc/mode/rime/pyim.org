@@ -1,4 +1,4 @@
-* pyim
+*  @deprecated pyim
 
 ** 五笔输入法配置
 

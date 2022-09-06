@@ -30,4 +30,13 @@ set-input-method
 
 ** dir
 
-/usr/local/share
+~/usr/share/rime-data~
+
+
+#+BEGIN_SRC yaml
+patch:
+  schema_list:
+      - schema: wubi_pinyin
+      - schema: pinyin_simp
+  menu/page_size: 7 # 每页显示7个候选字词。
+#+END_SRC
