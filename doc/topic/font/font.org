@@ -4,6 +4,21 @@ https://q3yi.me/post/5_set_different_font_family_for_sc_in_emacs/
 
 https://emacs-china.org/t/emacs/15676/10
 
+** 字体存放位置
 
 /usr/share/fonts
 /usr/local/share/fonts
+
+远程ssh 家中的linux
+
+** Iosevka 字体
+
+使用 Iosevka 字体： https://github.com/be5invis/Iosevka
+
+https://github.com/be5invis/Sarasa-Gothic
+
+https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Iosevka/LatestRelease/
+
+下载Sarasa-Gothic字体
+
+https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/
