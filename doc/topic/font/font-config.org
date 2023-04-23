@@ -1,0 +1,21 @@
+* fontset
+
+就是font集合，是指哪个区间的文字属性。
+
+fontset是能够确定某个font能表示哪些character。它使用<CHARSET or CHAR RANGE> - <FONT NAME>的二元组的表来实现这一点。
+fontset可以被修改，因而如果想使用某种特殊的font来绘制某些字符，使用标准fontset并修改它是最好的选择。
+
+M-x describe-fontset <RET> <RET>可以查询到当前fontset的详细信息（运行比较慢），
+
+
+* 参考文档
+
+
+
+https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+
+https://blog.csdn.net/weixin_30901729/article/details/96267501
+
+http://baohaojun.github.io/perfect-emacs-chinese-font.html
+
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=1785 必须进行emacs的重启，否则看不到效果
