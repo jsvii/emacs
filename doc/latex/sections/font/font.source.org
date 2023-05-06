@@ -1,0 +1,9 @@
+https://github.com/adobe-fonts/source-han-sans
+
+https://github.com/adobe-fonts/source-han-serif
+
+
+pamac build adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts noto-fonts-cjk
+
+
+Serif 衬线

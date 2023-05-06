@@ -1,0 +1,8 @@
+* cls
+
+https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te/1167#1167
+
+https://www.reddit.com/r/emacs/comments/qncmmr/using_a_custom_latex_class_for_org_export/
+
+
+kpsewhich - Karl's Path SEarch Library WHICH

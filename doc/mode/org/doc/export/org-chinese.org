@@ -1,3 +1,5 @@
+* org 中文导出相关的问题
+
 ** org-latex-classes
 
 ~ox-latex.el~ 中定义了 =org-latex-classes= 默认设置了 ~article~ ， ~report~ ， ~book~ 三个
@@ -58,9 +60,6 @@
 
 - ~\pagenumbering{gobble}~ 取消页码
 
-
-
-
 更多请参见：LaTeX导出设置 https://orgmode.org/manual/LaTeX-specific-export-settings.html
 
 
@@ -104,12 +103,9 @@ https://orgmode.org/manual/LaTeX-export.html
 
 *** 导出pdf时中文处理
 
-  - 定义新的 =org-latex-class=
+- 定义新的 =org-latex-class=
 
-
-
-
-  - 在文档中使用 xelatex作为引擎
+- 在文档中使用 xelatex作为引擎
 
 #+BEGIN_SRC emacs-lisp
 
@@ -130,3 +126,6 @@ documentclass[landscape,twocolumn]
 *** freemind
 
 =org-freemind-export-to-freemind= 用来导出freemind文件
+
+
+** 部分字体无法显示

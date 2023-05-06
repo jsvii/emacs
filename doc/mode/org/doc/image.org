@@ -1,0 +1,8 @@
+* image
+
+brew install imagemagick
+
+pacman install imagemagick
+
+
+org-toggle-inline-image
