@@ -1,0 +1,3 @@
+* section
+
+https://tex.stackexchange.com/questions/9497/start-new-page-with-each-section

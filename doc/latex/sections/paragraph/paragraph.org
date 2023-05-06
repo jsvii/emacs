@@ -1,0 +1,20 @@
+* p
+
+#+BEGIN_SRC latex
+\usepackage{parskip}
+#+END_SRC
+
+LaTeX默认的第一段不是首行缩进的, 这不符合我们的中文习惯.要实现首行缩进也很简单。
+
+在导言区使用宏包:
+
+
+
+#+BEGIN_SRC latex
+  \usepackage{indentfirst}
+
+
+  \setlength{\parindent}{2em}
+#+END_SRC
+
+2em代表行2个字符的缩进

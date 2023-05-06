@@ -98,3 +98,11 @@ CTEX 预定义了以下六种中文字库。
 - windowsnew 使用简体中文Windows Vista 或之后系统下的中易字体和微软雅黑字体。
 
 - windowsold 使用简体中文Windows XP 或之前系统下的中易字体。
+
+
+
+
+CTeX套装
+CTeX 中文套装是基于 Windows 下的 MiKTeX 系统，集成了编辑器 WinEdt 和 PostScript 处理软件 Ghostscript 和 GSview 等主要工具。 CTeX 中文套装在 MiKTeX 的基础上增加了对中文的完整支持。 CTeX 中文套装支持 CJK, xeCJK, CCT, TY 等多种中文 TeX 处理方式。
+
+CTEX套装是一套工具，已经不推荐使用了。 注意：不是说ctex包不推荐使用，而是指这一套软件。直接使用texlive， macTex一类的软件

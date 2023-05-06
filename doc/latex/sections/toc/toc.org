@@ -1,0 +1,20 @@
+* toc
+
+** org-mode num:nil 时，toc为空
+
+https://emacs.stackexchange.com/questions/20983/disabling-section-numbering-causes-table-of-contents-to-disappear-in-org-mode-la
+
+
+The num:nil option tells org to export your headings as unnumbered sections, which look like \section* in LaTeX. The normal handling of these sections in LaTeX is to exclude them from the table of contents. To over-ride this, you have to explicitly add them with \addcontentsline, as @Dox has indicated in his answer.
+
+As an alternative, instead of setting the num:nil option, you can use a LaTeX macro to turn of section numbering entirely:
+
+#+BEGIN_SRC latex
+\setcounter{secnumdepth}{0}
+#+END_SRC
+
+If you do this, you only need this one line at the top of your org document, you don't need to add it for every section.
+
+The resulting LaTeX produced by the org-exporter will use normal sections, i.e., \section (without an asterix). These sections show up in your TOC, but will not have numbers.
+
+Using the setcounter macro will only work for LaTeX output, so it's no help if you export to html or other formats.
