@@ -28,9 +28,13 @@
 set-input-method
 #+END_SRC
 
-** dir
+** wubi
 
 ~/usr/share/rime-data~
+
+git clone https://github.com/rime/rime-wubi
+
+git clone https://github.com/rime/rime-pinyin-simp.git
 
 
 #+BEGIN_SRC yaml
@@ -40,3 +44,7 @@ patch:
       - schema: pinyin_simp
   menu/page_size: 7 # 每页显示7个候选字词。
 #+END_SRC
+
+emacs 的编译是根据系统中来的，即根据 /usr/share/rime-data/default.yaml 的设置，进行拷贝
+
+~~/.emacs.d/rime/build/default.yaml~
