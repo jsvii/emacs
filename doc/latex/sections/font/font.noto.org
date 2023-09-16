@@ -1,0 +1,63 @@
+* noto
+
+Noto是Google所开发的开源字型家族，以OFL许可证授权，旨在涵盖所有Unicode区段。涵盖汉字、假名、谚文的版本称为“Noto Sans CJK”。
+
+Noto是“No Tofu”的简称。在部分缺失某些字体的Windows、Linux等系统中，无法显示的字元会变成方块“□”，一般惯称为“tofu”，即“豆腐”之意。因此Noto的开发宗旨即为消除所有无法显示的字元，实现“No tofu”的目标。[1]
+
+Noto和Roboto都是在Android新介面Material design的设计指南中所提及的建议字型。[4]
+
+macOS Big Sur默认安装了Noto部分字体。
+
+https://zh.wikipedia.org/zh-hans/Noto
+
+#+BEGIN_SRC latex
+\setCJKmainfont[ItalicFont=Noto Sans CJK SC Bold, BoldFont=Noto Serif CJK SC Black]{Noto Serif CJK SC}
+#+END_SRC
+
+** Noto Sans和Noto Serif
+
+Noto Sans属于无衬线体，Noto Serif属于衬线体，二者的拉丁文、希腊文、西里尔文字元都采自Droid字型家族。两者皆支持可变字体。
+
+
+** 思源黑体 Noto Sans CJK
+
+2014年7月16日，Google发表了与Adobe等公司共同开发的汉语、日语及韩语字体：“Noto Sans CJK”[6]，汉字皆依各国国家标准写法制作。字重有7种（Thin 100、Light 300、DemiLight 350、Regular 400、Medium 500、Bold 700、Black 900）。而Adobe针对汉字发行了另一版本：Source Han Sans，其英文、数字采用Source Sans Pro字型。[1]
+
+** 思源宋体 Noto Serif CJK
+
+2017年4月4日，Google发表了与Adobe等公司共同开发有衬线的汉语、日语及韩语字体，字重共有七种含：ExtraLight、Light、Regular、Medium、SemiBold、Bold、Black。Adobe另行发行了另一版本：Source Han Serif。
+
+
+
+** Noto Sans CJK HK
+
+2.002
+
+常规体、瘦体、半细体、细体、中黑体、粗体、黑体
+65535
+
+汉字（香港标准）、谚文、平假名、片假名、注音符号
+
+
+** Noto Sans CJK JP
+
+2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（日本标准）、谚文、平假名、片假名、注音符号
+
+** Noto Sans CJK KR
+
+2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（韩国标准）、谚文、平假名、片假名、注音符号
+
+** Noto Sans CJK SC
+
+2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（简体中文标准）、谚文、平假名、片假名、注音符号
+
+** Noto Sans CJK TC
+
+2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（台湾标准字体）、谚文、平假名、片假名、注音符号
+
+** Noto Serif CJK JP
+
+2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（日本标准）、谚文、平假名、片假名、注音符号
+Noto Serif CJK KR	2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（韩国标准）、谚文、平假名、片假名、注音符号
+Noto Serif CJK SC	2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（简体中文标准）、谚文、平假名、片假名、注音符号
+Noto Serif CJK TC	2.002	常规体、瘦体、半细体、细体、中黑体、粗体、黑体	65535	汉字（台湾标准字体）、谚文、平假名、片假名、注音符号

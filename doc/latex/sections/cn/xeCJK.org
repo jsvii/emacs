@@ -1,0 +1,5 @@
+* xeCJK
+
+https://www.zhihu.com/question/58656895
+
+总结：部分英文时，可以使用xeCJK，但多数为中文时，都使用ctex

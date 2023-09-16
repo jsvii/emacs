@@ -1,0 +1,43 @@
+* page
+
+https://www.overleaf.com/learn/latex/Page_numbering
+
+pagenumber
+
+Setting the style of page numbers
+The style of page numbers can be changed using the command
+
+\pagenumbering{⟨style⟩}
+where ⟨style⟩ is one of
+
+- arabic: use Arabic numerals (1, 2, 3, ...)
+
+- alph: use lowercase letters (a, b, c, ...)
+- Alph: use uppercase letters (A, B, C, ...)
+
+- roman: use lowercase roman numerals (i, ii, iii, ...)
+
+- Roman: use uppercase roman numerals (I, II, III, ...)
+
+
+
+
+在LaTex中，与页码和页面设置相关的命令有
+
+\pagestyle{type}
+
+\thispagestyle{type}
+
+setcounter{page}{number}
+
+\pagenumbering{style}。
+
+\pagestyle{type} \thispagestyle{type}命令用于设置页面样式（页眉和页脚）。
+
+\pagestyle{type}和\thispagestyle{type}的主要区别在于\pagestyle{type}对后续所有页面都有效，而\thispagestyle{type}仅仅对当前页面有效。在LaTeX中，默认提供了以下五种页面样式：
+
+empty - 没有页眉和页脚
+plain - 没有页眉，页脚包含一个居中的页码
+headings - 没有页脚，页眉包含章/节或者字节的名字和页码
+myheadings - 没有页脚，页眉包含有页码
+默认情况下，页码从第一页开始（通常是包含标题页的）并且以阿拉伯数字形式显示（例如：1，2，3 …）。页码的编号也可以通过\setcounter{page}{number}命令手动设置，需要注意的是，手动设置可能会导致重复的页码出现。

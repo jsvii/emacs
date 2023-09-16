@@ -7,10 +7,6 @@
 - github https://github.com/CTeX-org/ctex-kit
 
 
-
-
-
-
 ** CTEX 宏集的组成
 
 CTEX 宏集的主要功能分散在四个中文文档类和三个宏包当中。

@@ -2,3 +2,31 @@
 
 1. titlesec
 https://github.com/jbezos/titlesec
+
+
+** document title
+
+https://ctan.org/pkg/titling
+
+
+#+BEGIN_SRC latex
+\documentclass{article}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{fontspec}
+% Specify different font for section headings
+\newfontfamily\headingfont[]{Gill Sans}
+\titleformat*{\section}{\LARGE\headingfont}
+\titleformat*{\subsection}{\Large\headingfont}
+\titleformat*{\subsubsection}{\large\headingfont}
+\renewcommand{\maketitlehooka}{\headingfont}
+\author{An author}
+\title{The title of the article}
+\date{\today}
+\begin{document}
+\maketitle
+\section{A section}
+\subsection{A subsection}
+\subsubsection{A subsubsection}
+\end{document}
+#+END_SRC
