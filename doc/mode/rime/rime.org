@@ -11,7 +11,7 @@
 
 https://github.com/DogLooksGood/emacs-rime
 
-
+注意，pacakge-list安装时，是rime包，而不是librime一个包
 
 *** wubi_pinyin
 
@@ -42,7 +42,25 @@ sudo pacman -S librime
   brew install --cask squirrel # 不能解决问题，还得编译
 #+END_SRC
 
-   https://github.com/rime/librime/blob/master/README-mac.md
+自己编译一下librime
+
+https://github.com/rime/librime/blob/master/README-mac.md
+
+#+BEGIN_SRC bash
+git clone https://github.com/rime/librime.git
+git submodule update --init --recursive
+
+bash install-boost.sh
+export BOOST_ROOT="$(pwd)/deps/boost_1_83_0"
+
+# build deps
+make deps
+
+# build rime
+make
+#+END_SRC
+
+mac可能因为安全问题，无法使用，可以自己进行编译
 
 ** appendix 相关的命令
 
