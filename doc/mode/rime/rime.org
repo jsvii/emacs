@@ -1,13 +1,35 @@
 * rime
 
-  https://github.com/DogLooksGood/emacs-rime
+#+BEGIN_SRC elisp
+(describe-variable system-configuration-options)
+
+;; output
+"--sysconfdir=/etc --prefix=/usr --libexecdir=/usr/lib --with-tree-sitter --localstatedir=/var --with-cairo --disable-build-details --with-harfbuzz --with-libsystemd --with-modules --with-x-toolkit=gtk3 'CFLAGS=-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions         -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security         -fstack-clash-protection -fcf-protection -g -ffile-prefix-map=/build/emacs/src=/usr/src/debug/emacs -flto=auto' 'LDFLAGS=-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now -flto=auto'"
+#+END_SRC
+
+必须要有 ~--with-modules~  这一选项
+
+https://github.com/DogLooksGood/emacs-rime
+
+
+
+*** wubi_pinyin
+
+#+BEGIN_SRC elisp
+git clone https://github.com/rime/rime-wubi.git
+#+END_SRC
+
+*** 其他要注意的issure
+
+https://github.com/DogLooksGood/emacs-rime/issues/79
+重点： 即librime-data 这个变量值不能为nil 默认为 ~/usr/share/rime-data~
 
 
 
 ** linux设置
 
 #+BEGIN_SRC bash
-  sudo pacman -S librime
+sudo pacman -S librime
 #+END_SRC
 
 #+BEGIN_SRC elisp

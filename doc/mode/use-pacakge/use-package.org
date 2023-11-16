@@ -1,0 +1,50 @@
+* use package
+
+** :custom
+
+#+BEGIN_SRC elisp
+(defcustom persp-mode-prefix-key ...)
+#+END_SRC
+
+用于来定义当前package 中的custom变量
+
+** :custom-face
+
+与上面的:custom 类似，但是用于定位custom-face变量的
+
+** :bind
+
+bind对应的command会在当前package中进行autoload
+
+** :commands
+
+为这些commands新建autoloads
+
+** :defer
+
+不使用 command, bind, bind* bind-keymap, bind-keymap*, mode, interpreter, hook 还可以通过:defer t 来延迟加载
+
+
+** hook
+
+当前package所提供的hook进行绑定
+
+** :if
+
+使用if来判断是否要加载
+
+** :disabled
+
+关闭当前package
+
+
+** :after
+
+控制加载顺序
+
+
+** use-package 2中的 :init
+
+- :init是 "before"
+
+- :config 是 "after"

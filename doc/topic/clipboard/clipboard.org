@@ -1,0 +1,47 @@
+* copy
+
+** mac
+
+mac中的copy 与 paste
+
+- pbcopy
+
+- pbpaste
+
+M-| pbcopy RET
+
+
+** linux
+
+xclip
+
+alias pbcopy="xclip -selection clipboard"
+
+alias pbpaste="xsel -selection clipboard -o"
+
+xsel
+
+alias pbcopy="xsel --clipboard --input"
+alias pbpaste="xsel --clipboard --output"
+
+
+** 终极方案
+
+#+BEGIN_SRC bash
+bind-key -T copy-mode-vi 'y' send -X copy-pipe \
+  "if command -v reattach-to-user-namespace >/dev/null; \
+   then reattach-to-user-namespace pbcopy; \
+   elif command -v xclip >/dev/null; \
+   then xclip -selection clipboard; fi"
+#+END_SRC
+
+这里定义了使用哪种方式进行copy xclip-mode 启动后，就可以正常copy了，上面是比较通用的
+
+
+如果系统比较奇怪，要自己定义，如在orbstack 中，是希望copy 到mac的clipboard中的，所以直接写成 copy-pipe "pbcopy"
+再设置一下
+#+BEGIN_SRC elisp
+(setq xclip-method 'pbpaste)
+#+END_SRC
+
+*** orbstack中的方法

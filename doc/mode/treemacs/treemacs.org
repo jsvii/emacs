@@ -7,3 +7,14 @@
 - cf create file
 
 - yf yank file
+
+
+** rename 时
+
+
+treemacs 在linux中, cfrs这个函数会出现问题，统一改为from-minibuffer
+postframe-delete-all 防止popup的frame显示
+
+#+BEGIN_SRC emacs-lisp
+(setq treemacs-read-string-input 'from-minibuffer)
+#+END_SRC
