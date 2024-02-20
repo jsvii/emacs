@@ -1,0 +1,83 @@
+* variable
+
+
+
+buffer-local-binding
+
+** buffer local
+
+#+BEGIN_SRC elisp
+;; 定义：
+(set (make-local-variable 'foo) "value")
+
+;; 定义默认值：
+(setq-default foo "value")
+
+#+END_SRC
+
+ref to https://emacswiki.org/emacs/BufferLocalVariable
+
+写emacs-lisp 插件时，要用 buffer-local value
+
+(make-variable-buffer-local 'foo)
+
+defvar
+
+defcustom
+
+1. 这种local variable 是什么时候执行的
+
+1. 如何执行的
+
+** defvar-local是什么
+
+#+BEGIN_SRC elisp
+(defmacro defvar-local (var val &optional docstring)
+  "Define VAR as a buffer-local variable with default value VAL.
+Like `defvar' but additionally marks the variable as being automatically
+buffer-local wherever it is set."
+  (declare (debug defvar) (doc-string 3) (indent 2))
+  ;; Can't use backquote here, it's too early in the bootstrap.
+  (list 'progn (list 'defvar var val docstring)
+        (list 'make-variable-buffer-local (list 'quote var))))
+
+
+(defvar var val)
+(make-variable-buffer-local 'var)
+#+END_SRC
+
+
+** make-local-variable vs make-variable-buffer-local
+
+*** make-local-variable
+
+在当前 buffer 中创建一个 buffer-local 的变量
+(make-local-variable 'xx-b)
+
+其他buffer会用默认值
+
+只是在当前缓存区中声明了一个buffer-local变量，而其他缓冲区中都用的是共享的变量，所以 make-local-variable 一般只会在函数中用这个方法。
+
+
+#+BEGIN_SRC elisp
+(setq foo "I'm global variable!")
+(make-local-variable 'foo)
+foo
+(setq foo "I'm buffer-local variable")
+
+foo
+;; => I'm buffer-local variable
+
+(with-current-buffer "*Messages*" foo)
+;; => I'm global variable!
+#+END_SRC
+
+*** make-variable-buffer-local
+
+使用时，必须用 defvar 来声明一个这个变量名
+
+在所有的变量中都产生了一个buffer-local的变量
+
+make-variable-buffer-local 是声明这变量是 buffer-local，当时并没有定义这个变量的value
+
+make-variable-buffer-local 不会用来做可以给用户自定义的变量。

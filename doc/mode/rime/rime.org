@@ -42,16 +42,17 @@ sudo pacman -S librime
   brew install --cask squirrel # 不能解决问题，还得编译
 #+END_SRC
 
-自己编译一下librime
-
-https://github.com/rime/librime/blob/master/README-mac.md
+自己编译一下librime，参考https://github.com/rime/librime/blob/master/README-mac.md
 
 #+BEGIN_SRC bash
+# mac可能因为安全问题，无法使用，可以自己进行编译
 git clone https://github.com/rime/librime.git
 git submodule update --init --recursive
 
 bash install-boost.sh
 export BOOST_ROOT="$(pwd)/deps/boost_1_83_0"
+
+# 上一步生成的boost的文件，尽量全局不要有boost lib了
 
 # build deps
 make deps
@@ -60,7 +61,20 @@ make deps
 make
 #+END_SRC
 
-mac可能因为安全问题，无法使用，可以自己进行编译
+会生成 ~build/lib~ 这一文件夹，下面有三个内容：
+
+1. librime.1.9.0.dylib
+
+1. librime.1.dylib
+
+1. librime.dylib
+
+include文件夹
+
+1. rime_api.h
+
+1. rim_levers_aph.h
+
 
 ** appendix 相关的命令
 
