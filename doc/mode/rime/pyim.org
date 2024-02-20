@@ -1,5 +1,7 @@
 *  @deprecated pyim
 
+此输入法不再使用，不怎么好用
+
 ** 五笔输入法配置
 
 #+BEGIN_SRC elisp

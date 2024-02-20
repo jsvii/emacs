@@ -1,5 +1,7 @@
 * rime
 
+** system configuration options
+
 #+BEGIN_SRC elisp
 (describe-variable system-configuration-options)
 
@@ -25,8 +27,7 @@ https://github.com/DogLooksGood/emacs-rime/issues/79
 重点： 即librime-data 这个变量值不能为nil 默认为 ~/usr/share/rime-data~
 
 
-
-** linux设置
+** linux installation
 
 #+BEGIN_SRC bash
 sudo pacman -S librime
@@ -36,10 +37,10 @@ sudo pacman -S librime
 ;; 安装rime包
 #+END_SRC
 
-** mac os
+** Mac OS
 
 #+BEGIN_SRC bash
-  brew install --cask squirrel # 不能解决问题，还得编译
+brew install --cask squirrel # 不能解决问题，还得编译
 #+END_SRC
 
 自己编译一下librime，参考https://github.com/rime/librime/blob/master/README-mac.md
@@ -71,7 +72,7 @@ make
 
 include文件夹
 
-1. rime_api.h
+p1. rime_api.h
 
 1. rim_levers_aph.h
 
@@ -82,14 +83,19 @@ include文件夹
 set-input-method
 #+END_SRC
 
-** wubi
+** input
+
+*** wubi
 
 ~/usr/share/rime-data~
 
+#+BEGIN_SRC bash
 git clone https://github.com/rime/rime-wubi
 
 git clone https://github.com/rime/rime-pinyin-simp.git
+#+END_SRC
 
+rime 启动时，会在 ~.emacs.d/rime/build/~ 文件夹下生成文件，其中，deafult.yaml会有设置
 
 #+BEGIN_SRC yaml
 patch:
