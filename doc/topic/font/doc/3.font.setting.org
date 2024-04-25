@@ -1,0 +1,65 @@
+* fonts
+
+#+BEGIN_SRC elisp
+(defun font-installed-p (font-name)
+  "Check if font with FONT-NAME is available."
+  (find-font (font-spec :name font-name)))
+
+(when (and (display-graphic-p) (eq system-type 'gnu/linux))
+  (cl-loop for font in '("JetBrains Mono" "Cascadia Code" "SF Mono" "Source Code Pro"
+                         "Fira Code" "Menlo" "Monaco" "Dejavu Sans Mono"
+                         "Lucida Console" "Consolas" "SAS Monospace" "Iosevka Nerd Font Mono" )
+           when (font-installed-p font)
+           return (set-face-attribute
+                   'default nil
+                   :font (font-spec :family font
+                                    :weight 'normal
+                                    :slant 'normal
+                                    :size 24)))
+  (cl-loop for font in '("Hack Nerd Font Mono" "OpenSansEmoji" "Noto Color Emoji" "Segoe UI Emoji"
+                         "EmojiOne Color" "Apple Color Emoji" "Symbola" "Symbol")
+           when (font-installed-p font)
+           return (set-fontset-font t 'unicode
+                                    (font-spec :family font
+                                               :size 24
+                                               nil 'prepend)))
+  (cl-loop for font in '("Sarasa Mono Slab SC" "思源黑体 CN" "思源宋体 CN" "微软雅黑 CN"
+                         "Source Han Sans CN" "Source Han Serif CN"
+                         "WenQuanYi Micro Hei" "文泉驿等宽微米黑"
+                         "Microsoft Yahei UI" "Microsoft Yahei")
+           when (font-installed-p font)
+           return (set-fontset-font t '(#x4e00 . #x9fff)
+                                    (font-spec :name font
+                                               :weight 'normal
+                                               :slant 'normal
+                                               :size 24)))
+  (cl-loop for font in '("HanaMinB" "SimSun-ExtB")
+           when (font-installed-p font)
+           return (set-fontset-font t '(#x20000 . #x2A6DF)
+                                    (font-spec :name font
+                                               :weight 'normal
+                                               :slant 'normal
+                                               :size 24))))
+#+END_SRC
+
+** default字体
+
+1. JetBrains Mono  Jetbrains 公司推出的免费代码字体
+
+** unicode
+
+Hack Nerd Font Mono
+
+icon的字体中，Hack Nerd Font Mono 最为全面。
+
+** 中文字体
+
+Sarasa Mono Slab SC 更纱黑体，包含着全部中文
+
+** mac
+
+mac中的中文字体是 ~PingFang SC~ 苹方Simple Chinese
+
+** linux
+
+https://aur.archlinux.org/ttf-pingfang.git

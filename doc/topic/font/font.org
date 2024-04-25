@@ -1,32 +1,5 @@
-* font 字体设置
+#+TITLE: 字体说明
 
-`C-u C-x =`可以查看光标处的文字信息。如下：
+* 当前字体查看
 
-#+BEGIN_SRC txt
-             position: 497 of 1698 (29%), column: 27
-            character: 体 (displayed as 体) (codepoint 20307, #o47523, #x4f53)
-              charset: unicode (Unicode (ISO10646))
-code point in charset: 0x4F53
-               script: han
-               syntax: w        which means: word
-             category: .:Base, C:2-byte han, L:Strong L2R, c:Chinese, j:Japanese, |:line breakable
-             to input: type "C-x 8 RET 4f53"
-          buffer code: #xE4 #xBD #x93
-            file code: #xE4 #xBD #x93 (encoded by coding system utf-8-unix)
-              display: by this font (glyph code):
-    ftcrhb:-GOOG-Noto Serif CJK SC-regular-normal-normal-*-40-*-*-*-*-0-iso10646-1 (#x2702)
-
-Character code properties: customize what to show
-  name: CJK IDEOGRAPH-4F53
-  general-category: Lo (Letter, Other)
-  decomposition: (20307) ('体')
-#+END_SRC
-
-
-** mac
-
-mac中的中文字体是 ~PingFang SC~ 苹方Simple Chinese
-
-** manjaro
-
-https://aur.archlinux.org/ttf-pingfang.git
+#+INCLUDE: ./doc/1.inspect.font.org

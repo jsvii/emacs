@@ -9,10 +9,3 @@
 - docs 所有文档
 
 - other 其他与emacs相关的文件，如tmux， vsconde, sublime
-
-* ZEN
-
-- 简单
-
-  1. 直观，易用，不需要作记忆
-字体
